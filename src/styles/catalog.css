@@ -1,0 +1,4 @@
+.catalog--wrapper {
+    grid-gap: 3em;
+    grid-template-columns: repeat(3, 1fr);
+}

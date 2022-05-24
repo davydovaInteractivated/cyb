@@ -1,0 +1,23 @@
+.header {
+    margin-bottom: 4em;
+}
+
+.header--search > input {
+    background: transparent;
+    border: 1px solid rgba(211,211,211, .6);
+    border-radius: 4px;
+    width: 18em;
+    height: 2em;
+    padding: 2em;
+    outline: none;
+}
+
+.header--menu__list-item {
+    margin-right: 2em;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.header--menu__list-item:hover {
+    color: #5889b7;
+}

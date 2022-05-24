@@ -1,0 +1,37 @@
+.card {
+    border-radius: 4px;
+    background: rgba(58, 97, 134, 1);
+    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
+    padding: 2em;
+    transition: all .3s ease-out;
+}
+
+.card:hover {
+    box-shadow: none;
+}
+
+.card > h2 {
+    margin-bottom: 1em;
+}
+
+.card > p {
+    margin-bottom: 4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card--wrapper__button {
+    border: 1px solid #89253e;
+    border-radius: 4px;
+    padding: 1em 2em;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.card--wrapper__button:hover {
+    /* box-shadow: 6px 6px 14px 0px rgba(0, 0, 0, .2); */
+    transform: translateX(10px);
+    opacity: .9;
+}

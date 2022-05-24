@@ -1,0 +1,98 @@
+.aside--wrapper {
+    width: 14em;
+    position: sticky;
+    top: 4em;
+}
+
+.aside--menu__cube {
+    width: 4em;
+    height: 4em;
+    cursor: pointer;
+    color: #89253e;
+    transform-style: preserve-3d;
+    animation: 18s rotateCube infinite linear;
+}
+
+.aside--menu__cube:hover {
+    animation: paused;
+}
+
+/* .aside--menu__cube:hover > .aside--menu__cube_side {
+} */
+
+.aside--menu__cube:hover > .aside--menu__cube_side-back {
+    animation: .1s rotateCubeSideStop 0s linear forwards;
+    top: 0;
+    width: 8em;
+}
+.aside--menu__cube:hover > .aside--menu__cube_side-front {
+    animation: .1s rotateCubeSideStop .1s linear forwards;
+    top: 4em;
+}
+.aside--menu__cube:hover > .aside--menu__cube_side-top {
+    animation: .1s rotateCubeSideStop .2s linear forwards;
+    top: 8em;
+}
+.aside--menu__cube:hover > .aside--menu__cube_side-bottom {
+    animation: .1s rotateCubeSideStop .3s linear forwards;
+    top: 12em;
+}
+.aside--menu__cube:hover > .aside--menu__cube_side-left {
+    animation: .1s rotateCubeSideStop .4s linear forwards;
+    top: 16em;
+}
+.aside--menu__cube:hover > .aside--menu__cube_side-right {
+    animation: .1s rotateCubeSideStop .5s linear forwards;
+    top: 20em;
+}
+
+.aside--menu__cube_side {
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    left: 0;
+    background: #3a6186;
+    border: 1px solid #89253e;
+    border-radius: 4px;
+    color: lightgrey;
+    transition: all .5s ease;
+}
+.aside--menu__cube_side:hover {
+    opacity: .9;
+    left: 10px;
+}
+
+.aside--menu__cube_side-back {
+    transform: translateZ(-2em) rotateX(180deg);
+}
+.aside--menu__cube_side-front {
+    transform: translateZ(2em);
+}
+.aside--menu__cube_side-top {
+    transform: translateY(-2em) rotateX(90deg);
+}
+.aside--menu__cube_side-bottom {
+    transform: translateY(2em) rotateX(-90deg);
+}
+.aside--menu__cube_side-left {
+    transform: translateX(-2em) rotateY(-90deg);
+}
+.aside--menu__cube_side-right {
+    transform: translateX(2em) rotateY(90deg);
+}
+
+@keyframes rotateCube {
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+@keyframes rotateCubeSideStop {
+    0% {
+        transform: translateX(6em);
+    }
+    100% {
+        transform: translateX(0) translateY(0) translateZ(0);
+        width: 8em;
+    }
+}
