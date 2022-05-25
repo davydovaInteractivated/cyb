@@ -1,13 +1,13 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "../../styles/header.css"
 
 const Header = () => {
-    const [search, setSearch] = useState(null);
+    // const [search, setSearch] = useState(null);
 
     const searching = (event) => {
         console.log(event.target.value);
 
-        setSearch(event.target.value);
+        // setSearch(event.target.value);
 
         // Get serching next!
     };

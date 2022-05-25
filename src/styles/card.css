@@ -1,25 +1,28 @@
 .card {
     border-radius: 4px;
     background: rgba(58, 97, 134, 1);
-    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
-    padding: 2em;
-    transition: all .3s ease-out;
 }
 
-.card:hover {
+.card:hover > .card--wrapper {
     box-shadow: none;
 }
 
-.card > h2 {
+.card--wrapper > h2 {
     margin-bottom: 1em;
 }
 
-.card > p {
+.card--wrapper > p {
     margin-bottom: 4em;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.card--wrapper {
+    padding: 2em;
+    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
+    transition: all .3s ease;
 }
 
 .card--wrapper__button {

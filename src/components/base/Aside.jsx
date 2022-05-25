@@ -10,7 +10,7 @@ const Aside = () => {
                     <span className="aside--menu__cube_side flex align-center justify-center aside--menu__cube_side-right">web</span>
                     <span className="aside--menu__cube_side flex align-center justify-center aside--menu__cube_side-top">mobile</span>
                     <span className="aside--menu__cube_side flex align-center justify-center aside--menu__cube_side-bottom">soft</span>
-                    <span className="aside--menu__cube_side flex align-center justify-center aside--menu__cube_side-front">core</span>
+                    <span className="aside--menu__cube_side flex align-center justify-center aside--menu__cube_side-front">support</span>
                 </nav>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { TransitionGroup } from 'react-transition-group';
 
 import '../styles/catalog.css';
 
@@ -23,19 +24,24 @@ const Catalog = () => {
                 },
             ]
         );
-    }, 2000);
+    }, 200);
+
+    
 
     return (
-        <div className="catalog catalog--wrapper w-100 grid gap">
-            {
-                cardsData.map(card =>
-                    <Card
-                        key={card.value}
-                        card={card}
-                    />
-                )
-            }
-        </div>
+        <TransitionGroup>
+            <div className="catalog catalog--wrapper w-100 grid gap">
+                {
+                    cardsData.map((card, index) =>
+                        <Card
+                            key={card.value}
+                            card={card}
+                            index={index}
+                        />
+                    )
+                }
+            </div>
+        </TransitionGroup>
     )
 };
 
