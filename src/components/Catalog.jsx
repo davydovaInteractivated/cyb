@@ -21,6 +21,24 @@ const Catalog = () => {
                     value: 'admin',
                 }, {
                     value: 'manage',
+                }, {
+                    value: 'e-commerce',
+                }, {
+                    value: 'design',
+                }, {
+                    value: 'website',
+                }, {
+                    value: 'admin',
+                }, {
+                    value: 'manage',
+                }, {
+                    value: 'e-commerce',
+                }, {
+                    value: 'design',
+                }, {
+                    value: 'website',
+                }, {
+                    value: 'admin',
                 },
             ]
         );
