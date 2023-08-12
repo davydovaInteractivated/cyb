@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cyb/static/css/main.67bc5e80.css",
+    "main.js": "/cyb/static/js/main.5bb6b226.js",
+    "index.html": "/cyb/index.html",
+    "main.67bc5e80.css.map": "/cyb/static/css/main.67bc5e80.css.map",
+    "main.5bb6b226.js.map": "/cyb/static/js/main.5bb6b226.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.67bc5e80.css",
+    "static/js/main.5bb6b226.js"
+  ]
+}
