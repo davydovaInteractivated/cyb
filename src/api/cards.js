@@ -67,8 +67,8 @@ export const cards = [
         is_liked: false,
     }, {
         id: 12,
-        title: 'api: documentation',
-        value: 'api_documentation',
+        title: 'api',
+        value: 'api',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
     }, {

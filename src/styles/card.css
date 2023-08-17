@@ -1,9 +1,11 @@
 .card {
     border-radius: 4px;
     background: rgba(58, 97, 134, 1);
+    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
+    transition: all .3s ease;
 }
 
-.card:hover > .card--wrapper {
+.card:hover {
     box-shadow: none;
 }
 
@@ -21,8 +23,6 @@
 
 .card--wrapper {
     padding: 2em;
-    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
-    transition: all .3s ease;
 }
 
 .card--wrapper__button {
