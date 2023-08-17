@@ -1,0 +1,81 @@
+export const cards = [
+    {
+        id: 1,
+        title: 'e-commerce',
+        value: 'e-commerce',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 2,
+        title: 'design',
+        value: 'design',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 3,
+        title: 'website',
+        value: 'website',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 4,
+        title: 'admin',
+        value: 'admin',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 5,
+        title: 'manage',
+        value: 'manage',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 6,
+        title: 'mobile',
+        value: 'mobile',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 7,
+        title: 'PWA',
+        value: 'pwa',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 8,
+        title: 'SPA',
+        value: 'spa',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 9,
+        title: 'SEO',
+        value: 'seo',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 10,
+        title: 'server',
+        value: 'server',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 11,
+        title: 'support',
+        value: 'support',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 12,
+        title: 'api: documentation',
+        value: 'api_documentation',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    }, {
+        id: 13,
+        title: 'tech',
+        value: 'tech',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        is_liked: false,
+    },
+];

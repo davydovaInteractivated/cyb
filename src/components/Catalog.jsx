@@ -1,65 +1,48 @@
 import { useState } from 'react';
-import { TransitionGroup } from 'react-transition-group';
 
 import '../styles/catalog.css';
 
 import Card from "./Card";
 
+/** Api */
+import { cards } from '../api/cards';
+
 const Catalog = () => {
-    const [cardsData, setCardsData ] = useState([]);
+    const [cardsData, setCardsData ] = useState(cards);
 
-    setTimeout(() => {
-        setCardsData(
-            [
-                {
-                    value: 'e-commerce',
-                }, {
-                    value: 'design',
-                }, {
-                    value: 'website',
-                }, {
-                    value: 'admin',
-                }, {
-                    value: 'manage',
-                }, {
-                    value: 'e-commerce',
-                }, {
-                    value: 'design',
-                }, {
-                    value: 'website',
-                }, {
-                    value: 'admin',
-                }, {
-                    value: 'manage',
-                }, {
-                    value: 'e-commerce',
-                }, {
-                    value: 'design',
-                }, {
-                    value: 'website',
-                }, {
-                    value: 'admin',
-                },
-            ]
-        );
-    }, 200);
+    /**
+     * Like Card
+     * @param {Boolean} isLiked
+     * @param {Number} cardId
+     * @returns 
+     */
+    const like = (isLiked, cardId) => {
+        const cardsDataCopy = [...cardsData];
+        const currentCardDataIndex = cardsDataCopy
+            .findIndex((card) => card.id === cardId);
 
-    
+        if (currentCardDataIndex === -1) return;
+
+        cardsDataCopy[currentCardDataIndex] = {
+            ...cardsDataCopy[currentCardDataIndex],
+            is_liked: isLiked,
+        };
+
+        setCardsData(cardsDataCopy);
+    };
 
     return (
-        <TransitionGroup>
-            <div className="catalog catalog--wrapper w-100 grid gap">
-                {
-                    cardsData.map((card, index) =>
-                        <Card
-                            key={card.value}
-                            card={card}
-                            index={index}
-                        />
-                    )
-                }
-            </div>
-        </TransitionGroup>
+        <div className="catalog catalog--wrapper w-100 grid gap">
+            {
+                cardsData.map((card) =>
+                    <Card
+                        key={card.id}
+                        card={card}
+                        like={(isLiked) => like(isLiked, card.id)}
+                    />
+                )
+            }
+        </div>
     )
 };
 

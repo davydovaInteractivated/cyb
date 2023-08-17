@@ -21,3 +21,20 @@
 .header--menu__list-item:hover {
     color: #5889b7;
 }
+
+.header--icons__icon {
+    cursor: pointer;
+    height: 24px;
+    margin-left: 8px;
+    transition: fill .2s ease;
+    transition: opacity .2s ease;
+}
+
+.header--icons__icon:hover {
+    fill: #89253e;
+    opacity: .6;
+}
+
+.header--icons__icon:first-child {
+    margin-left: 32px;
+}

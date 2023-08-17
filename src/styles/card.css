@@ -26,6 +26,8 @@
 }
 
 .card--wrapper__button {
+    background: transparent;
+    font-size: inherit;
     border: 1px solid #89253e;
     border-radius: 4px;
     padding: 1em 2em;
@@ -34,7 +36,18 @@
 }
 
 .card--wrapper__button:hover {
-    /* box-shadow: 6px 6px 14px 0px rgba(0, 0, 0, .2); */
     transform: translateX(10px);
     opacity: .9;
+}
+
+.card--wrapper__heart {
+    height: 24px;
+    cursor: pointer;
+    fill: #3a6186;
+    stroke: lightgrey;
+}
+
+.card--wrapper__heart.liked {
+    fill: #89253e;
+    stroke: lightgrey;
 }
