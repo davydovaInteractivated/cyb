@@ -25,6 +25,7 @@ const Header = ({ sortDirection, showLiked, search, sort, setLiked }) => {
                     </nav>
                     <div className="header--search">
                         <input
+                            className="header--search__input"
                             type="text"
                             placeholder="search"
                             onChange={event => search(event)}

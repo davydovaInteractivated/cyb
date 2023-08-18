@@ -2,7 +2,7 @@
     margin-bottom: 4em;
 }
 
-.header--search > input {
+.header--search__input {
     background: transparent;
     border: 1px solid rgba(211,211,211, .6);
     border-radius: 4px;

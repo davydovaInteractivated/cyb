@@ -67,7 +67,6 @@
 }
 
 .card--wrapper__reference-img {
-    height: 14em;
     border-radius: 4px;
     transition: transform .2s ease;
 }

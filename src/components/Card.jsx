@@ -21,7 +21,7 @@ const Card = ({ card, likeCard }) => {
                         card.references.map((ref) => 
                             <a className="card--wrapper__link" key={ref.url} href={ref.url}>
                                 <img
-                                    className="card--wrapper__reference-img"
+                                    className="card--wrapper__reference-img w-100"
                                     src={require(`../assets/${ref.src}`)}
                                     alt={`img ${card.id}`}
                                 />
