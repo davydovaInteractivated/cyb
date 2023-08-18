@@ -4,6 +4,29 @@
     top: 4em;
 }
 
+.aside--icons__icon {
+    position: fixed;
+    cursor: pointer;
+    height: 24px;
+    left: 100px;
+    bottom: 80px;
+    transition: fill .2s ease;
+    transition: opacity .2s ease;
+}
+
+.aside--icons__icon.active {
+    fill: #89253e;
+}
+
+.aside--icons__icon.none {
+    width: 0!important;
+}
+
+.aside--icons__icon:hover {
+    fill: #3a6186;
+    opacity: .6;
+}
+
 .aside--cube {
     width: 4em;
     height: 4em;

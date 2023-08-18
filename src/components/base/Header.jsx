@@ -1,29 +1,16 @@
-import { useState } from "react";
-import "../../styles/header.css"
+/** Styles */
+import '../../styles/header.css'
 
-/** Iconst */
+/** Icons */
 import {
     HeartIcon,
+    ArrowsUpDownIcon,
     BarsArrowDownIcon,
-    // BarsArrowUpIcon,
-    Cog6ToothIcon,
+    BarsArrowUpIcon,
 } from '@heroicons/react/24/solid';
 
-const Header = () => {
-    const [cardsData, setCardsData] = useState();
-
-    const searching = (event) => {
-        console.log(event.target.value);
-        // setSearch(event.target.value);
-        // Get serching next!
-    };
-
-    const sort = () => {
-        console.log('cardsData', cardsData);
-        setCardsData([...(cardsData || [])]
-            .sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())));
-    };
-
+const Header = ({ sortDirection, showLiked, search, sort, setLiked }) => {
+    console.log('Header render');
     return (
         <header className="header">
             <div className="header--wrapper flex justify-space-b align-center">
@@ -40,14 +27,26 @@ const Header = () => {
                         <input
                             type="text"
                             placeholder="search"
-                            onChange={event => searching(event)}
+                            onChange={event => search(event)}
                         />
                     </div>
                     <div className="header--icons">
-                        <HeartIcon className="header--icons__icon"/>
-                        <BarsArrowDownIcon onClick={sort} className="header--icons__icon"/>
-                        {/* <BarsArrowUpIcon className="header--icons__icon"/> */}
-                        <Cog6ToothIcon className="header--icons__icon"/>
+                        <HeartIcon
+                            className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
+                            onClick={setLiked}
+                        />
+                        <ArrowsUpDownIcon
+                            className={!sortDirection ? "header--icons__icon" : "header--icons__icon none m-0"}
+                            onClick={sort}
+                        />
+                        <BarsArrowDownIcon
+                            className={sortDirection > 0 ? "header--icons__icon active" : "header--icons__icon none m-0"}
+                            onClick={sort}
+                        />
+                        <BarsArrowUpIcon
+                            className={sortDirection < 0 ? "header--icons__icon active" : "header--icons__icon none m-0"}
+                            onClick={sort}
+                        />
                     </div>
                 </div>
             </div>

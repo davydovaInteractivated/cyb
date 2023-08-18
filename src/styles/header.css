@@ -25,9 +25,17 @@
 .header--icons__icon {
     cursor: pointer;
     height: 24px;
-    margin-left: 8px;
+    margin-left: 18px;
     transition: fill .2s ease;
     transition: opacity .2s ease;
+}
+
+.header--icons__icon.active {
+    fill: #89253e;
+}
+
+.header--icons__icon.none {
+    width: 0!important;
 }
 
 .header--icons__icon:hover {

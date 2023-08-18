@@ -1,4 +1,10 @@
-import "../../styles/aside.css";
+/** Styles */
+import '../../styles/aside.css';
+
+/** Icons */
+import {
+    Cog6ToothIcon,
+} from '@heroicons/react/24/solid';
 
 const Aside = () => {
     return (
@@ -12,6 +18,8 @@ const Aside = () => {
                     <span className="aside--cube_side flex align-center justify-center aside--cube_side-bottom">soft</span>
                     <span className="aside--cube_side flex align-center justify-center aside--cube_side-front">support</span>
                 </div>
+
+                <Cog6ToothIcon className="aside--icons__icon"/>
             </div>
         </div>
     )

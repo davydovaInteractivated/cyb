@@ -21,6 +21,19 @@ body * {
     line-height: 1.5;
 }
 
+.m-0 {
+    margin: 0!important;
+}
+
+.p-0 {
+    padding: 0!important;
+}
+
+.none
+.d-none {
+    display: none!important;
+}
+
 .flex,
 .d-flex {
     display: flex!important;
