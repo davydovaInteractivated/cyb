@@ -3,7 +3,7 @@ export const cards = [
         id: 1,
         title: 'e-commerce',
         value: 'e-commerce',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'e-commerce - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
         references: [{
             src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
@@ -11,93 +11,162 @@ export const cards = [
         }, {
             src: 'mike-von-X4d6DUMappU-unsplash.webp',
             url: 'https://unsplash.com/photos/X4d6DUMappU',
-        }, {
-            src: 'mick-n-50XwniKxiXI-unsplash.webp',
-            url: 'https://unsplash.com/photos/50XwniKxiXI',
         }],
     }, {
         id: 2,
         title: 'design',
         value: 'design',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'design - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'mike-von-X4d6DUMappU-unsplash.webp',
+            url: 'https://unsplash.com/photos/X4d6DUMappU',
+        }, {
+            src: 'mick-n-50XwniKxiXI-unsplash.webp',
+            url: 'https://unsplash.com/photos/50XwniKxiXI',
+        }],
     }, {
         id: 3,
         title: 'website',
         value: 'website',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'website - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
+            url: 'https://unsplash.com/photos/6148mnVnY-s',
+        }, {
+            src: 'mick-n-50XwniKxiXI-unsplash.webp',
+            url: 'https://unsplash.com/photos/50XwniKxiXI',
+        }],
     }, {
         id: 4,
         title: 'admin',
         value: 'admin',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'admin - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
+            url: 'https://unsplash.com/photos/6148mnVnY-s',
+        }, {
+            src: 'mike-von-X4d6DUMappU-unsplash.webp',
+            url: 'https://unsplash.com/photos/X4d6DUMappU',
+        }],
     }, {
         id: 5,
         title: 'manage',
         value: 'manage',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'manage - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'mike-von-X4d6DUMappU-unsplash.webp',
+            url: 'https://unsplash.com/photos/X4d6DUMappU',
+        }, {
+            src: 'mick-n-50XwniKxiXI-unsplash.webp',
+            url: 'https://unsplash.com/photos/50XwniKxiXI',
+        }],
     }, {
         id: 6,
         title: 'mobile',
         value: 'mobile',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'mobile - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
+            url: 'https://unsplash.com/photos/6148mnVnY-s',
+        }, {
+            src: 'mick-n-50XwniKxiXI-unsplash.webp',
+            url: 'https://unsplash.com/photos/50XwniKxiXI',
+        }],
     }, {
         id: 7,
         title: 'PWA',
         value: 'pwa',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'PWA - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
+            url: 'https://unsplash.com/photos/6148mnVnY-s',
+        }, {
+            src: 'mike-von-X4d6DUMappU-unsplash.webp',
+            url: 'https://unsplash.com/photos/X4d6DUMappU',
+        }],
     }, {
         id: 8,
         title: 'SPA',
         value: 'spa',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'SPA - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'mike-von-X4d6DUMappU-unsplash.webp',
+            url: 'https://unsplash.com/photos/X4d6DUMappU',
+        }, {
+            src: 'mick-n-50XwniKxiXI-unsplash.webp',
+            url: 'https://unsplash.com/photos/50XwniKxiXI',
+        }],
     }, {
         id: 9,
         title: 'SEO',
         value: 'seo',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'SEO - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
+            url: 'https://unsplash.com/photos/6148mnVnY-s',
+        }, {
+            src: 'mick-n-50XwniKxiXI-unsplash.webp',
+            url: 'https://unsplash.com/photos/50XwniKxiXI',
+        }],
     }, {
         id: 10,
         title: 'server',
         value: 'server',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'server - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
+            url: 'https://unsplash.com/photos/6148mnVnY-s',
+        }, {
+            src: 'mike-von-X4d6DUMappU-unsplash.webp',
+            url: 'https://unsplash.com/photos/X4d6DUMappU',
+        }],
     }, {
         id: 11,
         title: 'support',
         value: 'support',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'support - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'mike-von-X4d6DUMappU-unsplash.webp',
+            url: 'https://unsplash.com/photos/X4d6DUMappU',
+        }, {
+            src: 'mick-n-50XwniKxiXI-unsplash.webp',
+            url: 'https://unsplash.com/photos/50XwniKxiXI',
+        }],
     }, {
         id: 12,
         title: 'api',
         value: 'api',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'api - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
+            url: 'https://unsplash.com/photos/6148mnVnY-s',
+        }, {
+            src: 'mick-n-50XwniKxiXI-unsplash.webp',
+            url: 'https://unsplash.com/photos/50XwniKxiXI',
+        }],
     }, {
         id: 13,
         title: 'tech',
         value: 'tech',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
+        description: 'tech - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro distinctio explicabo minus ex iure aliquid non iste incidunt sunt voluptateipsam, totam reiciendis eaque maxime, laboriosam, nihil ea impedit suscipit?',
         is_liked: false,
-        references: [],
+        references: [{
+            src: 'arthur-mazi-6148mnVnY-s-unsplash.webp',
+            url: 'https://unsplash.com/photos/6148mnVnY-s',
+        }, {
+            src: 'mike-von-X4d6DUMappU-unsplash.webp',
+            url: 'https://unsplash.com/photos/X4d6DUMappU',
+        }],
     },
 ];

@@ -9,10 +9,11 @@ const Catalog = ({ cards, likeCard }) => {
     return (
         <div className="catalog catalog--wrapper w-100 grid gap">
             {
-                cards.map((card) =>
+                cards.map((card, index) =>
                     <Card
                         key={card.id}
                         card={card}
+                        index={index}
                         likeCard={(isLiked) => likeCard(isLiked, card.id)}
                     />
                 )

@@ -5,10 +5,11 @@ import {
     HeartIcon,
 } from '@heroicons/react/24/solid';
 
-const Card = ({ card, likeCard }) => {
+const Card = ({ card, index, likeCard }) => {
     console.log('Card render');
     return (
-        <div className={card.id === 1 ? 'card card--main' : 'card'}>
+        // <div className={card.id === 1 ? 'card card--main' : 'card'}>
+        <div className="card">
             <div className="card--wrapper h-100 flex f-col align-start justify-space-b">
                 <div>
                     <h2 className="card--wrapper__title">{card.title}</h2>
@@ -16,7 +17,7 @@ const Card = ({ card, likeCard }) => {
                         {card.description}
                     </p>
                 </div>
-                <div className={!card.references.length ? "d-none" : "card--wrapper__reference grid grid-gap w-100"}>
+                <div className={card.references.length && index === 0 ? "card--wrapper__reference grid grid-gap w-100" : "d-none"}>
                     {
                         card.references.map((ref) => 
                             <a className="card--wrapper__link" key={ref.url} href={ref.url}>

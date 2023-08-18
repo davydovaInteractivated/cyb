@@ -29,7 +29,7 @@ body * {
     padding: 0!important;
 }
 
-.none
+.none,
 .d-none {
     display: none!important;
 }

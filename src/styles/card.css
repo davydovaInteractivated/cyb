@@ -5,8 +5,8 @@
     transition: all .3s ease;
 }
 
-.card--main {
-    grid-column: 1/3;
+.card:first-child {
+    /* grid-column: 1/3; */
     grid-row: 1/3;
 }
 
@@ -59,7 +59,7 @@
 
 .card--wrapper__reference {
     margin-bottom: 2em;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
 }
 
 .card--wrapper__link:first-child {
