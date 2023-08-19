@@ -1,8 +1,11 @@
 .card {
+    opacity: 0;
+    transform: translateX(-20px);
     border-radius: 4px;
     background: rgba(58, 97, 134, 1);
     box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
     transition: all .3s ease;
+    animation: showCard .4s forwards
 }
 
 .card:first-child {
@@ -73,4 +76,12 @@
 
 .card--wrapper__reference-img:hover {
     transform: scale(.9);
+}
+
+/** Animation */
+@keyframes showCard {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Component } from 'react';
 
 /** Styles */
 import './styles/_base.css';
@@ -12,21 +12,32 @@ import Catalog from './components/Catalog';
 /** Api */
 import { cards } from './api/cards';
 
-const App = () => {
-  const [cardsData, setCardsData] = useState(cards);
-  const [filteredCardsData, setFilteredCardsData ] = useState(cards);
+class App extends Component {
+  constructor() {
+    super();
 
-  /** Filtered Params */
-  const [searchValue, setSearchValue] = useState('');
-  const [sortDirection, setSortDirection ] = useState(0);
-  const [showLiked, setShowLiked ] = useState(false);
+    this.state = {
+      cardsData: [],
+      filteredCardsData: [],
+      searchValue: '',
+      sortDirection: 0,
+      showLiked: false,
+    }
+  }
 
   /**
    * Like Card
    * @param {Boolean} isLiked
    * @param {Number} cardId
    */
-  const likeCard = (isLiked, cardId) => {
+  likeCard = (isLiked, cardId) => {
+    const {
+      cardsData,
+      searchValue,
+      sortDirection,
+      showLiked,
+    } = this.state;
+
     const cardsDataCopy = [...cardsData];
     const currentCardDataIndex = cardsDataCopy
         .findIndex((card) => card.id === cardId);
@@ -38,49 +49,68 @@ const App = () => {
         is_liked: isLiked,
     };
 
-    setCardsData(cardsDataCopy);
-    filter({
+    this.setState({ cardsData: cardsDataCopy });
+    this.filter({
       cardsData: cardsDataCopy,
       searchValue,
       sortDirection,
       showLiked,
     });
-  };
+  }
 
   /**
    * Search Cards
    * @param {Event} event
    */
-  const search = (event) => {
+  search = (event) => {
+    const {
+      cardsData,
+      sortDirection,
+      showLiked,
+    } = this.state;
+
     const sValue = event.target.value.toLocaleLowerCase();
-    setSearchValue(sValue);
-    filter({ cardsData, searchValue: sValue, sortDirection, showLiked });
-  };
+    this.setState({ searchValue: sValue });
+    this.filter({ cardsData, searchValue: sValue, sortDirection, showLiked });
+  }
 
   /**
    * Sort Cards
-   * @param {Number} sortDirection
    */
-  const sort = () => {
+  sort = () => {
+    const {
+      cardsData,
+      searchValue,
+      sortDirection,
+      showLiked,
+    } = this.state;
+
     const newSortDirection = sortDirection <= 0 ? sortDirection + 1 : sortDirection - 2;
-    setSortDirection(newSortDirection);
-    filter({ cardsData, sortDirection: newSortDirection, searchValue, showLiked });
-  };
+
+    this.setState({ sortDirection: newSortDirection });
+    this.filter({ cardsData, sortDirection: newSortDirection, searchValue, showLiked });
+  }
 
   /**
    * Set Liked Cards
    */
-  const setLiked = () => {
+  setLiked = () => {
+    const {
+      cardsData,
+      searchValue,
+      sortDirection,
+      showLiked,
+    } = this.state;
     const newShow = !showLiked;
-    setShowLiked(newShow);
-    filter({ cardsData, searchValue, sortDirection, showLiked: newShow });
-  };
+    this.setState({ showLiked: newShow });
+    this.filter({ cardsData, searchValue, sortDirection, showLiked: newShow });
+  }
 
   /**
    * Filter Cards
    * @param {*} param0
    */
-  const filter = ({
+  filter = ({
     cardsData,
     searchValue,
     sortDirection,
@@ -108,27 +138,45 @@ const App = () => {
         .filter((card) => card.is_liked);
     }
 
-    setFilteredCardsData(filteredCards);
-  };
+    this.setState({ filteredCardsData: filteredCards });
+  }
 
-  return (
-    <div className="app">
-      <div className="app--wrapper flex f-col">
-        <Header
-          sortDirection={sortDirection}
-          showLiked={showLiked}
-          search={search}
-          sort={sort}
-          setLiked={setLiked}
-        />
+  componentDidMount() {
+    setTimeout(() => this.setState({
+      cardsData: cards,
+      filteredCardsData: cards,
+    }), 320);
+  }
 
-        <div className="flex justify-space-b">
-          <Aside />
-          <Catalog cards={filteredCardsData} likeCard={likeCard}/>
+  render() {
+    const {
+      filteredCardsData,
+      sortDirection,
+      showLiked,
+    } = this.state;
+
+    return (
+      <div className="app">
+        <div className="app--wrapper flex f-col">
+          <Header
+            sortDirection={sortDirection}
+            showLiked={showLiked}
+            search={this.search}
+            sort={this.sort}
+            setLiked={this.setLiked}
+          />
+
+          <div className="flex justify-space-b">
+            <Aside />
+            <Catalog
+              cards={filteredCardsData}
+              likeCard={this.likeCard}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
