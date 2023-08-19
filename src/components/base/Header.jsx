@@ -9,7 +9,7 @@ import {
     BarsArrowUpIcon,
 } from '@heroicons/react/24/solid';
 
-const Header = ({ sortDirection, showLiked, search, sort, setLiked }) => {
+const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked }) => {
     console.log('Header render');
     return (
         <header className="header">
@@ -36,6 +36,7 @@ const Header = ({ sortDirection, showLiked, search, sort, setLiked }) => {
                             className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
                             onClick={setLiked}
                         />
+                        <sub className="header--icons__liked-count">{likedCount || ' '}</sub>
                         <ArrowsUpDownIcon
                             className={!sortDirection ? "header--icons__icon" : "header--icons__icon none m-0"}
                             onClick={sort}

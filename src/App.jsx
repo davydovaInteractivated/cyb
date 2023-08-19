@@ -22,6 +22,7 @@ class App extends Component {
       searchValue: '',
       sortDirection: 0,
       showLiked: false,
+      likedCount: 0,
     }
   }
 
@@ -35,12 +36,13 @@ class App extends Component {
       cardsData,
       searchValue,
       sortDirection,
+      likedCount,
       showLiked,
     } = this.state;
 
     const cardsDataCopy = [...cardsData];
     const currentCardDataIndex = cardsDataCopy
-        .findIndex((card) => card.id === cardId);
+      .findIndex((card) => card.id === cardId);
 
     if (currentCardDataIndex === -1) return;
 
@@ -50,6 +52,7 @@ class App extends Component {
     };
 
     this.setState({ cardsData: cardsDataCopy });
+    this.setState({ likedCount: isLiked ? likedCount + 1: likedCount - 1 });
     this.filter({
       cardsData: cardsDataCopy,
       searchValue,
@@ -153,6 +156,7 @@ class App extends Component {
       filteredCardsData,
       sortDirection,
       showLiked,
+      likedCount,
     } = this.state;
 
     return (
@@ -161,6 +165,7 @@ class App extends Component {
           <Header
             sortDirection={sortDirection}
             showLiked={showLiked}
+            likedCount={likedCount}
             search={this.search}
             sort={this.sort}
             setLiked={this.setLiked}

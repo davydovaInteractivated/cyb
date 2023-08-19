@@ -25,7 +25,7 @@
 .header--icons__icon {
     cursor: pointer;
     height: 24px;
-    margin-left: 18px;
+    margin-left: 8px;
     transition: fill .2s ease;
     transition: opacity .2s ease;
 }
@@ -45,4 +45,12 @@
 
 .header--icons__icon:first-child {
     margin-left: 32px;
+}
+
+.header--icons__liked-count {
+    transition: color .1s ease;
+    user-select: none;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
 }
