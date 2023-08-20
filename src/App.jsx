@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 
 /** Styles */
 import './styles/_base.css';
@@ -12,7 +12,7 @@ import Catalog from './components/Catalog';
 /** Api */
 import { cards } from './api/cards';
 
-class App extends Component {
+class App extends PureComponent {
   constructor() {
     super();
 

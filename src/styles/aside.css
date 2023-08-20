@@ -8,7 +8,6 @@
     position: fixed;
     cursor: pointer;
     height: 24px;
-    left: 100px;
     bottom: 80px;
     transition: fill .2s ease;
     transition: opacity .2s ease;

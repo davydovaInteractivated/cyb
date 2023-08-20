@@ -12,6 +12,17 @@
     outline: none;
 }
 
+.header--search__input::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+    border-radius: 50em;
+    background: url(../assets/icons/xmark-solid.svg) no-repeat 50% 50%;
+    background-size: contain;
+    transition: all .2s ease;
+}
+
 .header--menu__list-item {
     margin-right: 2em;
     cursor: pointer;

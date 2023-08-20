@@ -24,7 +24,7 @@ const Card = ({ card, index, likeCard }) => {
                                 <img
                                     className="card--wrapper__reference-img w-100"
                                     src={require(`../assets/${ref.src}`)}
-                                    alt={`img ${card.id}`}
+                                    alt={card.title}
                                 />
                             </a>
                         )

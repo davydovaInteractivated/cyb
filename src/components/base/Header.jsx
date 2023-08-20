@@ -18,7 +18,7 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked }
                 <div className="flex align-center">
                     <nav className="header--menu">
                         <ul className="header--menu__list flex">
-                            <li className="header--menu__list-item">community</li>
+                            {/* <li className="header--menu__list-item">community</li> */}
                             <li className="header--menu__list-item">contacts</li>
                             <li className="header--menu__list-item">faq?</li>
                         </ul>
@@ -26,7 +26,7 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked }
                     <div className="header--search">
                         <input
                             className="header--search__input"
-                            type="text"
+                            type="search"
                             placeholder="search"
                             onChange={event => search(event)}
                         />
