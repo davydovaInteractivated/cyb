@@ -1,5 +1,5 @@
 /** Styles */
-import '../styles/catalog.css';
+import '../styles/catalog.scss';
 
 /** Components */
 import Card from './Card';

@@ -1,8 +1,8 @@
 import { PureComponent } from 'react';
 
 /** Styles */
-import './styles/_base.css';
-import './styles/app.css';
+import './styles/_base.scss';
+import './styles/app.scss';
 
 /** Components */
 import Header from './components/base/Header';

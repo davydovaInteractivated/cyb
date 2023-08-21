@@ -1,5 +1,5 @@
 /** Styles */
-import '../../styles/header.css'
+import '../../styles/header.scss'
 
 /** Icons */
 import {

@@ -1,0 +1,88 @@
+.aside {
+    &--wrapper {
+        width: 14em;
+        position: sticky;
+        top: 4em;
+    }
+
+    &--icons {
+        &__icon {
+            position: fixed;
+            cursor: pointer;
+            height: 24px;
+            bottom: 80px;
+            transition: fill .2s ease;
+            transition: opacity .2s ease;
+
+            &.active {
+                fill: #89253e;
+            }
+            
+            &.none {
+                width: 0!important;
+            }
+            
+            &:hover {
+                fill: #3a6186;
+                opacity: .6;
+            }
+        }
+    }
+
+    /** Cube El. */
+    &--cube {
+        width: 4em;
+        height: 4em;
+        margin-left: 20px;
+        color: #89253e;
+        transform-style: preserve-3d;
+        animation: 18s rotateCube infinite linear;
+        user-select: none;
+
+        &__side {
+            position: absolute;
+            width: 4em;
+            height: 4em;
+            left: 0;
+            background: #3a6186;
+            border: 1px solid #89253e;
+            border-radius: 4px;
+            color: lightgrey;
+
+            &-back {
+                transform: translateZ(-2em) rotateX(180deg);
+            }
+            &-front {
+                transform: translateZ(2em);
+            }
+            &-top {
+                transform: translateY(-2em) rotateX(90deg);
+            }
+            &-bottom {
+                transform: translateY(2em) rotateX(-90deg);
+            }
+            &-left {
+                transform: translateX(-2em) rotateY(-90deg);
+            }
+            &-right {
+                transform: translateX(2em) rotateY(90deg);
+            }
+        }
+    }
+}
+
+/** Animation */
+@keyframes rotateCube {
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+@keyframes rotateCubeSideStop {
+    0% {
+        transform: translateX(6em);
+    }
+    100% {
+        transform: translateX(0) translateY(0) translateZ(0);
+        width: 8em;
+    }
+}

@@ -1,4 +1,4 @@
-import '../styles/card.css';
+import '../styles/card.scss';
 
 /** Icons */
 import {
