@@ -1,8 +1,10 @@
+@import './variables';
+
 .card {
     opacity: 0;
     transform: translateX(-20px);
     border-radius: 4px;
-    background: rgba(58, 97, 134, 1);
+    background: var(--color-dark);
     box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
     transition: all .3s ease;
     animation: showCard .4s forwards;
@@ -34,7 +36,7 @@
         &__button {
             background: transparent;
             font-size: inherit;
-            border: 1px solid #89253e;
+            border: 1px solid var(--color-light);
             border-radius: 4px;
             padding: 1em 2em;
             cursor: pointer;
@@ -49,11 +51,11 @@
         &__heart {
             height: 24px;
             cursor: pointer;
-            fill: #3a6186;
-            stroke: lightgrey;
+            fill: var(--color-dark);
+            stroke: var(--main-font);
 
             &.liked {
-                fill: #89253e;
+                fill: var(--color-light);
                 stroke: none;
             }
         }

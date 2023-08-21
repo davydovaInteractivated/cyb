@@ -1,10 +1,12 @@
+@import './variables';
+
 body {
     margin: 0;
     padding: 0;
 
-    background: #3a6186;
-    background: -webkit-linear-gradient(to right, #89253e, #3a6186);
-    background: linear-gradient(to right, #89253e, #3a6186);
+    background: var(--color-dark);
+    background: -webkit-linear-gradient(to right, var(--color-light), var(--color-dark));
+    background: linear-gradient(to right, var(--color-light), var(--color-dark));
 
     font-size: 16px;
     font-weight: 200;
@@ -17,7 +19,7 @@ body * {
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
-    color: lightgrey;
+    color: var(--main-font);
     line-height: 1.5;
 }
 
@@ -32,6 +34,13 @@ body * {
 .none,
 .d-none {
     display: none!important;
+}
+
+.absolute {
+    position: absolute!important;
+}
+.relative {
+    position: relative!important;
 }
 
 .flex,

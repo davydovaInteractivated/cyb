@@ -23,6 +23,7 @@ class App extends PureComponent {
       sortDirection: 0,
       showLiked: false,
       likedCount: 0,
+      isShowSettings: false,
     }
   }
 
@@ -144,6 +145,34 @@ class App extends PureComponent {
     this.setState({ filteredCardsData: filteredCards });
   }
 
+  /**
+   * Show Settings popup
+   */
+  showSettings = () => {
+    const {
+      isShowSettings,
+    } = this.state;
+
+    this.setState({ isShowSettings: !isShowSettings });
+  }
+
+  /**
+   * Select Main app. Theme
+   * @param {*} param0 
+   */
+  selectTheme = ({ colors }) => {
+    const [ body ] = document.getElementsByTagName('body');
+    if (!body) return;
+
+    const {
+      light, dark, font,
+    } = colors;
+
+    body.style.setProperty('--color-light', light);
+    body.style.setProperty('--color-dark', dark);
+    body.style.setProperty('--main-font', font);
+  }
+
   componentDidMount() {
     setTimeout(() => this.setState({
       cardsData: cards,
@@ -156,7 +185,9 @@ class App extends PureComponent {
       filteredCardsData,
       sortDirection,
       showLiked,
+      searchValue,
       likedCount,
+      isShowSettings,
     } = this.state;
 
     return (
@@ -172,9 +203,15 @@ class App extends PureComponent {
           />
 
           <div className="flex justify-space-b">
-            <Aside />
+            <Aside
+              isShowSettings ={isShowSettings}
+              showSettings={this.showSettings}
+              selectTheme={this.selectTheme}
+            />
             <Catalog
               cards={filteredCardsData}
+              showLiked={showLiked}
+              searchValue={searchValue}
               likeCard={this.likeCard}
             />
           </div>

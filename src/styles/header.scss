@@ -1,9 +1,20 @@
+@import './variables';
+
 .header {
     margin-bottom: 4em;
 
+    &--logo {
+        cursor: pointer;
+        transform: opacity .3s ease;
+
+        &:hover {
+            opacity: .6;
+        }
+    }
+
     &--search__input {
         background: transparent;
-        border: 1px solid rgba(211,211,211, .6);
+        border: 1px solid var(--main-font);
         border-radius: 4px;
         width: 18em;
         height: 2em;
@@ -15,7 +26,6 @@
             height: 1em;
             width: 1em;
             cursor: pointer;
-            border-radius: 50em;
             background: url(../assets/icons/xmark-solid.svg) no-repeat 50% 50%;
             background-size: contain;
             transition: all .2s ease;
@@ -28,7 +38,7 @@
         transition: all .2s ease;
 
         &:hover {
-            color: #5889b7;
+            color: var(--color-dark);
         }
     }
 
@@ -41,7 +51,7 @@
             transition: opacity .2s ease;
 
             &.active {
-                fill: #89253e;
+                fill: var(--color-light);
             }
 
             &.none {
@@ -49,7 +59,7 @@
             }
             
             &:hover {
-                fill: #89253e;
+                // fill: var(--color-light);
                 opacity: .6;
             }
             

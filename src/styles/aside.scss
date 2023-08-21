@@ -1,5 +1,8 @@
+@import './variables';
+
 .aside {
     &--wrapper {
+        height: calc(100vh - 54px - 8em - 4em);
         width: 14em;
         position: sticky;
         top: 4em;
@@ -7,7 +10,7 @@
 
     &--icons {
         &__icon {
-            position: fixed;
+            // position: fixed;
             cursor: pointer;
             height: 24px;
             bottom: 80px;
@@ -15,7 +18,7 @@
             transition: opacity .2s ease;
 
             &.active {
-                fill: #89253e;
+                fill: var(--color-light);
             }
             
             &.none {
@@ -23,7 +26,52 @@
             }
             
             &:hover {
-                fill: #3a6186;
+                // fill: var(--color-dark);
+                opacity: .6;
+            }
+        }
+    }
+
+    &--settings {
+        bottom: -.6em;
+        left: -1.4em;
+        background-color: var(--color-dark);
+        border-radius: 4px;
+        padding: 2em 2em 2em 3em;
+        z-index: -1;
+        box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transition: all .2s ease;
+
+        &__title {
+            user-select: none;
+        }
+
+        &:hover {
+            box-shadow: none;
+        }
+
+        &.active {
+            opacity: 1;
+            left: -.6em;
+        }
+
+        &__theme {
+            padding: .2em;
+            font-size: .8rem;
+            cursor: pointer;
+            transition: opacity .2s ease;
+
+            &-color {
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                border-radius: 4px;
+                margin-left: .28em;
+                border: var(--color-light) solid 1px;
+            }
+
+            &:hover {
                 opacity: .6;
             }
         }
@@ -34,7 +82,7 @@
         width: 4em;
         height: 4em;
         margin-left: 20px;
-        color: #89253e;
+        color: var(--color-light);
         transform-style: preserve-3d;
         animation: 18s rotateCube infinite linear;
         user-select: none;
@@ -44,10 +92,10 @@
             width: 4em;
             height: 4em;
             left: 0;
-            background: #3a6186;
-            border: 1px solid #89253e;
+            background: var(--color-dark);
+            border: 1px solid var(--color-light);
             border-radius: 4px;
-            color: lightgrey;
+            color: var(--main-font);
 
             &-back {
                 transform: translateZ(-2em) rotateX(180deg);
