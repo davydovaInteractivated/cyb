@@ -9,6 +9,9 @@ import {
     BarsArrowUpIcon,
 } from '@heroicons/react/24/solid';
 
+/** Components */
+import CustomInput from '../custom/CustomInput';
+
 const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked }) => {
     console.log('Header render');
     return (
@@ -24,12 +27,13 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked }
                         </ul>
                     </nav>
                     <div className="header--search">
-                        <input
+                        <CustomInput onChange={event => search(event)}/>
+                        {/* <input
                             className="header--search__input"
                             type="search"
                             placeholder="search"
                             onChange={event => search(event)}
-                        />
+                        /> */}
                     </div>
                     <div className="header--icons">
                         <HeartIcon

@@ -29,6 +29,11 @@
                 // fill: var(--color-dark);
                 opacity: .6;
             }
+
+            &.check-icon {
+                width: 1.2em;
+                margin-right: 0.2em;
+            }
         }
     }
 
@@ -37,7 +42,7 @@
         left: -1.4em;
         background-color: var(--color-dark);
         border-radius: 4px;
-        padding: 2em 2em 2em 3em;
+        padding: 1em 1em 1em 2em;
         z-index: -1;
         box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
         opacity: 0;
@@ -56,10 +61,11 @@
             left: -.6em;
         }
 
-        &__theme {
-            padding: .2em;
+        &__item {
+            padding: 0.2em 0 0.2em 1em;
             font-size: .8rem;
             cursor: pointer;
+            user-select: none;
             transition: opacity .2s ease;
 
             &-color {

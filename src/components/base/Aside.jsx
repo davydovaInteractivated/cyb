@@ -3,6 +3,7 @@ import '../../styles/aside.scss';
 
 /** Api */
 import { themes } from '../../api/themes';
+import { langs } from '../../api/lang';
 
 /** Icons */
 import {
@@ -10,9 +11,16 @@ import {
 } from '@heroicons/react/24/solid';
 
 /** Components */
-import AsideTheme from '../aside/AsideTheme';
+import AsideSetting from '../aside/AsideSetting';
 
-const Aside = ({ isShowSettings, showSettings, selectTheme }) => {
+const Aside = ({
+    isShowSettings,
+    activeTheme,
+    activeLang,
+    showSettings,
+    selectTheme,
+    selectLang,
+}) => {
     return (
         <div className="aside">
             <div className="aside--wrapper flex f-col justify-space-b align-start">
@@ -36,10 +44,25 @@ const Aside = ({ isShowSettings, showSettings, selectTheme }) => {
                     <div className="flex f-col">
                         {
                             themes.map((theme) =>
-                                <AsideTheme
+                                <AsideSetting
                                     key={theme.name}
-                                    theme={theme}
-                                    selectTheme={selectTheme}
+                                    item={theme}
+                                    activeItem={activeTheme}
+                                    selectItem={selectTheme}
+                                />
+                            )
+                        }
+                    </div>
+
+                    <h3 className='aside--settings__title'>lang</h3>
+                    <div className="flex f-col">
+                        {
+                            langs.map((ln) =>
+                                <AsideSetting
+                                    key={ln.name}
+                                    item={ln}
+                                    activeItem={activeLang}
+                                    selectItem={selectLang}
                                 />
                             )
                         }

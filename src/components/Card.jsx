@@ -5,6 +5,9 @@ import {
     HeartIcon,
 } from '@heroicons/react/24/solid';
 
+/** Components */
+import CustomButton from './custom/CustomButton';
+
 const Card = ({ card, index, likeCard }) => {
     console.log('Card render');
     return (
@@ -31,9 +34,7 @@ const Card = ({ card, index, likeCard }) => {
                     }
                 </div>
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
-                    <button className="card--wrapper__button">
-                        more
-                    </button>
+                    <CustomButton text="more"/>
                     <HeartIcon onClick={() => likeCard(!card.is_liked)} className={card.is_liked ? "card--wrapper__heart liked" : "card--wrapper__heart"}/>
                 </div>
             </div>

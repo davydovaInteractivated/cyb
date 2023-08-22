@@ -12,26 +12,6 @@
         }
     }
 
-    &--search__input {
-        background: transparent;
-        border: 1px solid var(--main-font);
-        border-radius: 4px;
-        width: 18em;
-        height: 2em;
-        padding: 2em;
-        outline: none;
-    
-        &::-webkit-search-cancel-button {
-            -webkit-appearance: none;
-            height: 1em;
-            width: 1em;
-            cursor: pointer;
-            background: url(../assets/icons/xmark-solid.svg) no-repeat 50% 50%;
-            background-size: contain;
-            transition: all .2s ease;
-        }
-    }
-
     &--menu__list-item {
         margin-right: 2em;
         cursor: pointer;

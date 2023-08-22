@@ -2,6 +2,7 @@ import { PureComponent } from 'react';
 
 /** Styles */
 import './styles/_base.scss';
+import './styles/_custom.scss';
 import './styles/app.scss';
 
 /** Components */
@@ -24,6 +25,8 @@ class App extends PureComponent {
       showLiked: false,
       likedCount: 0,
       isShowSettings: false,
+      activeTheme: 'transfile',
+      activeLang: 'en',
     }
   }
 
@@ -160,7 +163,7 @@ class App extends PureComponent {
    * Select Main app. Theme
    * @param {*} param0 
    */
-  selectTheme = ({ colors }) => {
+  selectTheme = ({ colors, name }) => {
     const [ body ] = document.getElementsByTagName('body');
     if (!body) return;
 
@@ -171,6 +174,16 @@ class App extends PureComponent {
     body.style.setProperty('--color-light', light);
     body.style.setProperty('--color-dark', dark);
     body.style.setProperty('--main-font', font);
+
+    this.setState({ activeTheme: name });
+  }
+
+  /**
+   * Select Main app. Language
+   * @param {*} param0 
+   */
+  selectLang = ({ name }) => {
+    this.setState({ activeLang: name });
   }
 
   componentDidMount() {
@@ -188,6 +201,8 @@ class App extends PureComponent {
       searchValue,
       likedCount,
       isShowSettings,
+      activeTheme,
+      activeLang,
     } = this.state;
 
     return (
@@ -205,8 +220,11 @@ class App extends PureComponent {
           <div className="flex justify-space-b">
             <Aside
               isShowSettings ={isShowSettings}
+              activeTheme={activeTheme}
+              activeLang={activeLang}
               showSettings={this.showSettings}
               selectTheme={this.selectTheme}
+              selectLang={this.selectLang}
             />
             <Catalog
               cards={filteredCardsData}
