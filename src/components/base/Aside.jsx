@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useTranslation, withTranslation } from 'react-i18next';
+
 /** Styles */
 import '../../styles/aside.scss';
 
@@ -12,6 +15,7 @@ import {
 
 /** Components */
 import AsideSetting from '../aside/AsideSetting';
+import AsideCube from '../aside/AsideCube';
 
 const Aside = ({
     isShowSettings,
@@ -20,18 +24,33 @@ const Aside = ({
     showSettings,
     selectTheme,
     selectLang,
+    t,
 }) => {
+    const { i18n } = useTranslation('common');
+    const [cubeData] = useState([{
+        name: 'tech',
+        class: 'aside--cube__side-back',
+    }, {
+        name: 'app',
+        class: 'aside--cube__side-left',
+    }, {
+        name: 'web',
+        class: 'aside--cube__side-right',
+    }, {
+        name: 'mobile',
+        class: 'aside--cube__side-top',
+    }, {
+        name: 'soft',
+        class: 'aside--cube__side-bottom',
+    }, {
+        name: 'support',
+        class: 'aside--cube__side-front',
+    }]);
+
     return (
         <div className="aside">
             <div className="aside--wrapper flex f-col justify-space-b align-start">
-                <div className="aside--cube">
-                    <span className="aside--cube__side flex align-center justify-center aside--cube__side-back">tech</span>
-                    <span className="aside--cube__side flex align-center justify-center aside--cube__side-left">app's</span>
-                    <span className="aside--cube__side flex align-center justify-center aside--cube__side-right">web</span>
-                    <span className="aside--cube__side flex align-center justify-center aside--cube__side-top">mobile</span>
-                    <span className="aside--cube__side flex align-center justify-center aside--cube__side-bottom">soft</span>
-                    <span className="aside--cube__side flex align-center justify-center aside--cube__side-front">support</span>
-                </div>
+                <AsideCube data={cubeData} />
 
                 <Cog6ToothIcon
                     className="aside--icons__icon"
@@ -40,7 +59,7 @@ const Aside = ({
 
                 <div
                     className={ isShowSettings ? 'aside--settings absolute active' : 'aside--settings absolute' }>
-                    <h3 className='aside--settings__title'>themes</h3>
+                    <h3 className='aside--settings__title'>{t('settings.theme')}</h3>
                     <div className="flex f-col">
                         {
                             themes.map((theme) =>
@@ -54,7 +73,7 @@ const Aside = ({
                         }
                     </div>
 
-                    <h3 className='aside--settings__title'>lang</h3>
+                    <h3 className='aside--settings__title'>{t('settings.lang')}</h3>
                     <div className="flex f-col">
                         {
                             langs.map((ln) =>
@@ -62,7 +81,10 @@ const Aside = ({
                                     key={ln.name}
                                     item={ln}
                                     activeItem={activeLang}
-                                    selectItem={selectLang}
+                                    selectItem={() => {
+                                        i18n.changeLanguage(ln.name);
+                                        selectLang(ln);
+                                    }}
                                 />
                             )
                         }
@@ -73,4 +95,5 @@ const Aside = ({
     )
 };
 
-export default Aside;
+const AsideTranslated = withTranslation('common')(Aside)
+export default AsideTranslated;

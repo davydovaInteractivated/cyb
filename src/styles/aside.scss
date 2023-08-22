@@ -10,7 +10,6 @@
 
     &--icons {
         &__icon {
-            // position: fixed;
             cursor: pointer;
             height: 24px;
             bottom: 80px;
@@ -90,13 +89,18 @@
         margin-left: 20px;
         color: var(--color-light);
         transform-style: preserve-3d;
-        animation: 18s rotateCube infinite linear;
+        animation: 18s rotateCube infinite ease-in-out;
         user-select: none;
+
+        &:hover {
+            animation-play-state: paused;
+        }
 
         &__side {
             position: absolute;
-            width: 4em;
-            height: 4em;
+            width: 60px;
+            height: 60px;
+            font-size: 10px;
             left: 0;
             background: var(--color-dark);
             border: 1px solid var(--color-light);
@@ -104,22 +108,22 @@
             color: var(--main-font);
 
             &-back {
-                transform: translateZ(-2em) rotateX(180deg);
+                transform: translateZ(-32px) rotateX(180deg);
             }
             &-front {
-                transform: translateZ(2em);
+                transform: translateZ(32px);
             }
             &-top {
-                transform: translateY(-2em) rotateX(90deg);
+                transform: translateY(-32px) rotateX(90deg);
             }
             &-bottom {
-                transform: translateY(2em) rotateX(-90deg);
+                transform: translateY(32px) rotateX(-90deg);
             }
             &-left {
-                transform: translateX(-2em) rotateY(-90deg);
+                transform: translateX(-32px) rotateY(-90deg);
             }
             &-right {
-                transform: translateX(2em) rotateY(90deg);
+                transform: translateX(32px) rotateY(90deg);
             }
         }
     }

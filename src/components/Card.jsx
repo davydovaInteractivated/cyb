@@ -34,7 +34,7 @@ const Card = ({ card, index, likeCard }) => {
                     }
                 </div>
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
-                    <CustomButton text="more"/>
+                    <CustomButton />
                     <HeartIcon onClick={() => likeCard(!card.is_liked)} className={card.is_liked ? "card--wrapper__heart liked" : "card--wrapper__heart"}/>
                 </div>
             </div>

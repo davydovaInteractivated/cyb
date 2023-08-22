@@ -1,3 +1,5 @@
+import { withTranslation } from 'react-i18next';
+
 /** Styles */
 import '../../styles/header.scss'
 
@@ -12,28 +14,22 @@ import {
 /** Components */
 import CustomInput from '../custom/CustomInput';
 
-const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked }) => {
+const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked, t }) => {
     console.log('Header render');
     return (
         <header className="header">
             <div className="header--wrapper flex justify-space-b align-center">
-                <div className="header--logo b">KYB <sub className="thin">web studio</sub></div>
+                <div className="header--logo b">KYB <sub className="thin">{t('header.logo')}</sub></div>
                 <div className="flex align-center">
                     <nav className="header--menu">
                         <ul className="header--menu__list flex">
                             {/* <li className="header--menu__list-item">community</li> */}
-                            <li className="header--menu__list-item">contacts</li>
-                            <li className="header--menu__list-item">faq?</li>
+                            <li className="header--menu__list-item">{t('header.menu.contacts')}</li>
+                            <li className="header--menu__list-item">{t('header.menu.faq')}</li>
                         </ul>
                     </nav>
                     <div className="header--search">
                         <CustomInput onChange={event => search(event)}/>
-                        {/* <input
-                            className="header--search__input"
-                            type="search"
-                            placeholder="search"
-                            onChange={event => search(event)}
-                        /> */}
                     </div>
                     <div className="header--icons">
                         <HeartIcon
@@ -60,4 +56,5 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked }
     )
 };
 
-export default Header;
+const HeaderTranslated = withTranslation('common')(Header)
+export default HeaderTranslated;

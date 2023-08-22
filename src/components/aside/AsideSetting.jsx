@@ -17,9 +17,9 @@ const AsideSetting = ({ item, activeItem, selectItem }) => {
             <span>{itemLabel}</span>
             { colors ?
                 <span
-                className='aside--settings__item-color'
-                style={{ background: `linear-gradient(90deg, ${light}, ${dark})` }}
-            ></span>: <span></span>}
+                    className='aside--settings__item-color'
+                    style={{ background: `linear-gradient(90deg, ${light}, ${dark})` }}
+            ></span> : <span></span> }
         </span>
     );
 }

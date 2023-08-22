@@ -2,11 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-import {I18nextProvider} from "react-i18next";
-import i18next from "i18next";
+/** Translations */
+import { I18nextProvider } from 'react-i18next';
+import i18next from 'i18next';
+import common_en from './translations/en/common.json';
+import common_ua from './translations/ua/common.json';
+import common_ru from './translations/ru/common.json';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
+  lng: 'en',                              // language to use
+  useSuspense: false,
+  resources: {
+    en: {
+      common: common_en               // 'common' is our custom namespace
+    },
+    ua: {
+      common: common_ua
+    },
+    ru: {
+      common: common_ru
+    },
+  },
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

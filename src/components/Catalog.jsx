@@ -1,10 +1,12 @@
+import { withTranslation } from 'react-i18next';
+
 /** Styles */
 import '../styles/catalog.scss';
 
 /** Components */
 import Card from './Card';
 
-const Catalog = ({ cards, showLiked, searchValue, likeCard }) => {
+const Catalog = ({ cards, showLiked, searchValue, likeCard, t }) => {
     console.log('Catalog render');
     return (
         <div className="catalog catalog--wrapper w-100 grid gap">
@@ -19,10 +21,11 @@ const Catalog = ({ cards, showLiked, searchValue, likeCard }) => {
                 )
             }
 
-            { showLiked && !cards.length ? <span>Oops, You don't have any favorites.<br />Please add some.</span> : "" }
-            { searchValue && !showLiked && !cards.length ? <span>Oops, You don't have any cards.<br />Please change Your search.</span> : "" }
+            { showLiked && !searchValue && !cards.length ? <span>{t('main.text.empty.favorites')}</span> : "" }
+            { searchValue && !cards.length ? <span>{t('main.text.empty.search')}</span> : "" }
         </div>
     )
 };
 
-export default Catalog;
+const CatalogTranslated = withTranslation('common')(Catalog)
+export default CatalogTranslated;

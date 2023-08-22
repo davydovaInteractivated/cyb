@@ -1,12 +1,15 @@
-const CustomInput = ({ onChange }) => {
+import { withTranslation } from 'react-i18next';
+
+const CustomInput = ({ onChange, t }) => {
     return (
         <input
             className="custom--input"
             type="search"
-            placeholder="search"
+            placeholder={t('custom.input.search.placeholder')}
             onChange={onChange}
         />
     );
 }
 
-export default CustomInput;
+const CustomInputTranslated = withTranslation('common')(CustomInput)
+export default CustomInputTranslated;
