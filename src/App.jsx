@@ -16,6 +16,9 @@ const Contacts = () => {
 const Faq = () => {
   return (<div><h1>FAQ Page!</h1></div>);
 }
+const NoMatch = () => {
+  return (<div><h1>404 Not Found!</h1></div>);
+}
 
 const App = () => {
   console.log('App render');
@@ -148,6 +151,8 @@ const App = () => {
         } />
         <Route path='contacts' element={<Contacts />} />
         <Route path='faq' element={<Faq />} />
+
+        <Route path='*' element={<NoMatch />} />
       </Route>
     </Routes>
   )
