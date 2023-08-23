@@ -1,136 +1,114 @@
-import { PureComponent } from 'react';
+/** Router */
+import { Routes, Route } from 'react-router-dom';
 
-/** Styles */
-import './styles/_base.scss';
-import './styles/_custom.scss';
-import './styles/app.scss';
+import { useState, useEffect } from 'react';
 
 /** Components */
-import Header from './components/base/Header';
-import Aside from './components/base/Aside';
+import Home from './components/Home';
 import Catalog from './components/Catalog';
 
 /** Api */
 import { cards } from './api/cards';
 
-class App extends PureComponent {
-  constructor() {
-    super();
+const Contacts = () => {
+  return (<div><h1>Contacts Page!</h1></div>);
+}
+const Faq = () => {
+  return (<div><h1>FAQ Page!</h1></div>);
+}
 
-    this.state = {
-      cardsData: [],
-      filteredCardsData: [],
-      searchValue: '',
-      sortDirection: 0,
-      showLiked: false,
-      likedCount: 0,
-      isShowSettings: false,
-      activeTheme: 'transfile',
-      activeLang: 'en',
-    }
-  }
+const App = () => {
+  console.log('App render');
+
+  const [cardsData, setCardsData] = useState([]);
+  const [filteredCardsData, setFilteredCardsData] = useState([]);
+  const [showLiked, setShowLiked] = useState(false);
+  const [likedCount, setLikedCount] = useState(0);
+  const [sortDirection, setSortDirection] = useState(0);
+  const [searchValue, setSearchValue] = useState('');
+
+  /** ~ DidMount Hook */
+  useEffect(() => {
+    setTimeout(() =>{
+      setCardsData(cards);
+      setFilteredCardsData(cards);
+    }, 320);
+  }, []);
 
   /**
    * Like Card
    * @param {Boolean} isLiked
    * @param {Number} cardId
    */
-  likeCard = (isLiked, cardId) => {
-    const {
-      cardsData,
-      searchValue,
-      sortDirection,
-      likedCount,
-      showLiked,
-    } = this.state;
-
+  const likeCard = (isLiked, cardId) => {
     const cardsDataCopy = [...cardsData];
     const currentCardDataIndex = cardsDataCopy
       .findIndex((card) => card.id === cardId);
-
+  
     if (currentCardDataIndex === -1) return;
-
+  
     cardsDataCopy[currentCardDataIndex] = {
-        ...cardsDataCopy[currentCardDataIndex],
-        is_liked: isLiked,
+      ...cardsDataCopy[currentCardDataIndex],
+      is_liked: isLiked,
     };
-
-    this.setState({ cardsData: cardsDataCopy });
-    this.setState({ likedCount: isLiked ? likedCount + 1: likedCount - 1 });
-    this.filter({
+  
+    setCardsData(cardsDataCopy);
+    setLikedCount(isLiked ? likedCount + 1: likedCount - 1);
+    filter({
       cardsData: cardsDataCopy,
       searchValue,
       sortDirection,
       showLiked,
     });
+  };
+
+   /**
+   * Set Liked Cards
+   */
+  const setLikedShow = () => {
+    const newShow = !showLiked;
+    setShowLiked(newShow);
+    filter({ cardsData, searchValue, sortDirection, showLiked: newShow });
   }
 
   /**
    * Search Cards
    * @param {Event} event
    */
-  search = (event) => {
-    const {
-      cardsData,
-      sortDirection,
-      showLiked,
-    } = this.state;
-
+  const search = (event) => {
     const sValue = event.target.value.toLocaleLowerCase();
-    this.setState({ searchValue: sValue });
-    this.filter({ cardsData, searchValue: sValue, sortDirection, showLiked });
-  }
-
+    setSearchValue(sValue);
+    filter({ cardsData, searchValue: sValue, sortDirection, showLiked });
+  };
+  
   /**
    * Sort Cards
    */
-  sort = () => {
-    const {
-      cardsData,
-      searchValue,
-      sortDirection,
-      showLiked,
-    } = this.state;
-
+  const sort = () => {
     const newSortDirection = sortDirection <= 0 ? sortDirection + 1 : sortDirection - 2;
 
-    this.setState({ sortDirection: newSortDirection });
-    this.filter({ cardsData, sortDirection: newSortDirection, searchValue, showLiked });
+    setSortDirection(newSortDirection);
+    filter({ cardsData, sortDirection: newSortDirection, searchValue, showLiked });
   }
-
-  /**
-   * Set Liked Cards
-   */
-  setLiked = () => {
-    const {
-      cardsData,
-      searchValue,
-      sortDirection,
-      showLiked,
-    } = this.state;
-    const newShow = !showLiked;
-    this.setState({ showLiked: newShow });
-    this.filter({ cardsData, searchValue, sortDirection, showLiked: newShow });
-  }
-
+  
   /**
    * Filter Cards
    * @param {*} param0
    */
-  filter = ({
+  const filter = ({
     cardsData,
     searchValue,
     sortDirection,
     showLiked,
   }) => {
     let filteredCards = [...(cardsData || [])];
-
+  
     /** Search Cards */
     if (searchValue) {
       filteredCards = filteredCards
         .filter((card) => card.title.toLocaleLowerCase().includes(searchValue));
     }
-
+  
     /** Sort Cards */
     if (sortDirection) {
       filteredCards = sortDirection === 1
@@ -144,99 +122,35 @@ class App extends PureComponent {
       filteredCards = filteredCards
         .filter((card) => card.is_liked);
     }
+  
+    setFilteredCardsData(filteredCards);
+  };
 
-    this.setState({ filteredCardsData: filteredCards });
-  }
-
-  /**
-   * Show Settings popup
-   */
-  showSettings = () => {
-    const {
-      isShowSettings,
-    } = this.state;
-
-    this.setState({ isShowSettings: !isShowSettings });
-  }
-
-  /**
-   * Select Main app. Theme
-   * @param {*} param0 
-   */
-  selectTheme = ({ colors, name }) => {
-    const [ body ] = document.getElementsByTagName('body');
-    if (!body) return;
-
-    const {
-      light, dark, font,
-    } = colors;
-
-    body.style.setProperty('--color-light', light);
-    body.style.setProperty('--color-dark', dark);
-    body.style.setProperty('--main-font', font);
-
-    this.setState({ activeTheme: name });
-  }
-
-  /**
-   * Select Main app. Language
-   * @param {*} param0 
-   */
-  selectLang = ({ name }) => {
-    this.setState({ activeLang: name });
-  }
-
-  componentDidMount() {
-    setTimeout(() => this.setState({
-      cardsData: cards,
-      filteredCardsData: cards,
-    }), 320);
-  }
-
-  render() {
-    const {
-      filteredCardsData,
-      sortDirection,
-      showLiked,
-      searchValue,
-      likedCount,
-      isShowSettings,
-      activeTheme,
-      activeLang,
-    } = this.state;
-
-    return (
-      <div className="app">
-        <div className="app--wrapper flex f-col">
-          <Header
-            sortDirection={sortDirection}
+  return (
+    <Routes>
+      <Route path='/' element={
+        <Home
+          sortDirection={sortDirection}
+          showLiked={showLiked}
+          likedCount={likedCount}
+          search={search}
+          sort={sort}
+          setLikedShow={setLikedShow}
+        />
+      }>
+        <Route index element={
+          <Catalog
+            cards={filteredCardsData}
             showLiked={showLiked}
-            likedCount={likedCount}
-            search={this.search}
-            sort={this.sort}
-            setLiked={this.setLiked}
+            searchValue={searchValue}
+            likeCard={likeCard}
           />
-
-          <div className="flex justify-space-b">
-            <Aside
-              isShowSettings ={isShowSettings}
-              activeTheme={activeTheme}
-              activeLang={activeLang}
-              showSettings={this.showSettings}
-              selectTheme={this.selectTheme}
-              selectLang={this.selectLang}
-            />
-            <Catalog
-              cards={filteredCardsData}
-              showLiked={showLiked}
-              searchValue={searchValue}
-              likeCard={this.likeCard}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
+        } />
+        <Route path='contacts' element={<Contacts />} />
+        <Route path='faq' element={<Faq />} />
+      </Route>
+    </Routes>
+  )
 }
 
 export default App;

@@ -1,4 +1,5 @@
 import { withTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 /** Styles */
 import '../../styles/header.scss'
@@ -14,18 +15,22 @@ import {
 /** Components */
 import CustomInput from '../custom/CustomInput';
 
-const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked, t }) => {
+const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedShow, t }) => {
     console.log('Header render');
     return (
         <header className="header">
             <div className="header--wrapper flex justify-space-b align-center">
-                <div className="header--logo b">KYB <sub className="thin">{t('header.logo')}</sub></div>
+                <Link to='/'>
+                    <div className="header--logo b">KYB <sub className="thin">{t('header.logo')}</sub></div>
+                </Link>
+
                 <div className="flex align-center">
                     <nav className="header--menu">
                         <ul className="header--menu__list flex">
-                            {/* <li className="header--menu__list-item">community</li> */}
-                            <li className="header--menu__list-item">{t('header.menu.contacts')}</li>
-                            <li className="header--menu__list-item">{t('header.menu.faq')}</li>
+                            <li className="header--menu__list-item">
+                                <Link to='/contacts'>{t('header.menu.contacts')}</Link></li>
+                            <li className="header--menu__list-item">
+                                <Link to='/faq'>{t('header.menu.faq')}</Link></li>
                         </ul>
                     </nav>
                     <div className="header--search">
@@ -34,7 +39,7 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLiked, 
                     <div className="header--icons">
                         <HeartIcon
                             className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
-                            onClick={setLiked}
+                            onClick={setLikedShow}
                         />
                         <sub className="header--icons__liked-count">{likedCount || ' '}</sub>
                         <ArrowsUpDownIcon
