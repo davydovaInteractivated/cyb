@@ -1,0 +1,11 @@
+.card--refs {
+    // &__link {}
+    &__img {
+        border-radius: 4px;
+        transition: transform .2s ease;
+
+        &:hover {
+            transform: scale(.96);
+        }
+    }
+}

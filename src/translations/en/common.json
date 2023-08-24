@@ -22,7 +22,8 @@
         },
         "button" : {
             "card": {
-                "text": "more"
+                "text": "more",
+                "contact": "contact us for more details"
             }
         }
     },

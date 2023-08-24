@@ -47,22 +47,6 @@
 
         &__reference {
             margin-bottom: 2em;
-            /* grid-template-columns: 1fr 1fr; */
-
-            &-img {
-                border-radius: 4px;
-                transition: transform .2s ease;
-
-                &:hover {
-                    transform: scale(.9);
-                }
-            }
-        }
-
-        &__link {
-            &:first-child {
-                grid-row: 1/3;
-            }
         }
     }
 }

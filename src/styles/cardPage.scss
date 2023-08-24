@@ -1,0 +1,39 @@
+@import './_variables.css';
+
+.card--page {
+    &__title {
+        margin-bottom: 1em;
+    }
+
+    &__reference {
+        margin-bottom: 2em;
+
+        .card--refs__link {
+            .card--refs__img {
+                height: 180px;
+            }
+        }
+    }
+
+    &__description {
+        margin-bottom: 2em;
+        line-height: 2;
+        max-width: 70%;
+    }
+
+    &__actions {
+        &-item {
+            margin-left: 1em;
+        }
+    }
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        
+        &.active {
+            fill: var(--color-dark);
+        }
+    }
+}

@@ -3,6 +3,11 @@
 .header {
     margin-bottom: 4em;
 
+    & .active {
+        // color: var(--color-light);
+        text-decoration: underline;
+    }
+
     &--logo {
         cursor: pointer;
         transform: opacity .3s ease;
@@ -12,22 +17,35 @@
         }
     }
 
+    &--search {
+        margin: 0 32px;
+    }
+
     &--menu__list-item {
         margin-right: 2em;
         cursor: pointer;
         transition: opacity .2s ease;
 
         &:hover {
-            // color: var(--color-dark);
             opacity: .6;
         }
     }
 
+    &--liked-count {
+        transition: color .1s ease;
+        user-select: none;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        position: relative;
+        top: 8px;
+    }
+
     &--icons {
+        line-height: 0;
         &__icon {
             cursor: pointer;
             height: 24px;
-            margin-left: 8px;
             transition: fill .2s ease;
             transition: opacity .2s ease;
 
@@ -43,18 +61,6 @@
                 // fill: var(--color-light);
                 opacity: .6;
             }
-            
-            &:first-child {
-                margin-left: 32px;
-            }
-        }
-
-        &__liked-count {
-            transition: color .1s ease;
-            user-select: none;
-            width: 16px;
-            height: 16px;
-            display: inline-block;
         }
     }
 }

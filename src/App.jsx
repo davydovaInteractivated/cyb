@@ -7,18 +7,14 @@ import { useState, useEffect } from 'react';
 import Home from './components/Home';
 import Catalog from './components/Catalog';
 
+/** Routes */
+import Card from './routes/card/CardPage';
+import Contacts from './routes/contacts/Contacts';
+import Faq from './routes/faq/Faq';
+import NoMatch from './routes/NoMatch';
+
 /** Api */
 import { cards } from './api/cards';
-
-const Contacts = () => {
-  return (<div><h1>Contacts Page!</h1></div>);
-}
-const Faq = () => {
-  return (<div><h1>FAQ Page!</h1></div>);
-}
-const NoMatch = () => {
-  return (<div><h1>404 Not Found!</h1></div>);
-}
 
 const App = () => {
   console.log('App render');
@@ -151,6 +147,7 @@ const App = () => {
         } />
         <Route path='contacts' element={<Contacts />} />
         <Route path='faq' element={<Faq />} />
+        <Route path=':id' element={<Card />} />
 
         <Route path='*' element={<NoMatch />} />
       </Route>

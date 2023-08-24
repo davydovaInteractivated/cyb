@@ -21,6 +21,7 @@ body * {
     list-style-type: none;
     color: var(--main-font);
     line-height: 1.5;
+    user-select: none;
 }
 
 .m-0 {
@@ -81,6 +82,9 @@ body * {
 .justify-center {
     justify-content: center!important;
 }
+.justify-end {
+    justify-content: end!important;
+}
 .justify-space-b,
 .justify-space-between {
     justify-content: space-between!important;
@@ -98,6 +102,7 @@ body * {
 .grid-gap,
 .gap {
     grid-gap: 1em;
+    gap: 1em;
 }
 
 .w100,

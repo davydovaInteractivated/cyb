@@ -1,5 +1,5 @@
 import { withTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation, useLinkClickHandler } from 'react-router-dom';
 
 /** Styles */
 import '../../styles/header.scss'
@@ -17,6 +17,17 @@ import CustomInput from '../custom/CustomInput';
 
 const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedShow, t }) => {
     console.log('Header render');
+    const { pathname } = useLocation();
+    console.log('location pathname', pathname);
+    const inCatalog = pathname === '/';
+
+    const goHome = useLinkClickHandler('/');
+
+    const goToLikedPage = (e) => {
+        setLikedShow(e);
+        if (!inCatalog) goHome(e);
+    };
+
     return (
         <header className="header">
             <div className="header--wrapper flex justify-space-b align-center">
@@ -28,30 +39,36 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedSh
                     <nav className="header--menu">
                         <ul className="header--menu__list flex">
                             <li className="header--menu__list-item">
-                                <Link to='/contacts'>{t('header.menu.contacts')}</Link></li>
+                                <NavLink
+                                    to='/contacts'
+                                    className={({ isActive }) => isActive ? "active" : ""}
+                                >{t('header.menu.contacts')}</NavLink></li>
                             <li className="header--menu__list-item">
-                                <Link to='/faq'>{t('header.menu.faq')}</Link></li>
+                                <NavLink
+                                    to='/faq'
+                                    className={({ isActive }) => isActive ? "active" : ""}
+                                >{t('header.menu.faq')}</NavLink></li>
                         </ul>
                     </nav>
-                    <div className="header--search">
+                    <HeartIcon
+                        className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
+                        onClick={goToLikedPage}
+                    />
+                    <sub className={likedCount ? 'header--liked-count' : 'd-none' }>{likedCount || ''}</sub>
+                    <div className={inCatalog ? 'header--search' : 'd-none'}>
                         <CustomInput onChange={event => search(event)}/>
                     </div>
                     <div className="header--icons">
-                        <HeartIcon
-                            className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
-                            onClick={setLikedShow}
-                        />
-                        <sub className="header--icons__liked-count">{likedCount || ' '}</sub>
                         <ArrowsUpDownIcon
-                            className={!sortDirection ? "header--icons__icon" : "header--icons__icon none m-0"}
+                            className={!sortDirection && inCatalog ? "header--icons__icon" : "header--icons__icon none m-0"}
                             onClick={sort}
                         />
                         <BarsArrowDownIcon
-                            className={sortDirection > 0 ? "header--icons__icon active" : "header--icons__icon none m-0"}
+                            className={sortDirection > 0 && inCatalog ? "header--icons__icon active" : "header--icons__icon none m-0"}
                             onClick={sort}
                         />
                         <BarsArrowUpIcon
-                            className={sortDirection < 0 ? "header--icons__icon active" : "header--icons__icon none m-0"}
+                            className={sortDirection < 0 && inCatalog ? "header--icons__icon active" : "header--icons__icon none m-0"}
                             onClick={sort}
                         />
                     </div>
