@@ -1,0 +1,15 @@
+.contacts {
+    &--form {
+        min-width: 24em;
+        align-self: end;
+
+        &__icon {
+            width: 16px;
+        }
+
+        &__title {
+            align-self: start;
+            line-height: 1;
+        }
+    }
+}

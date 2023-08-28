@@ -40,5 +40,18 @@
     "settings": {
         "theme": "theme",
         "lang": "lang"
+    },
+    "form": {
+        "title": "contact us",
+        "input" : {
+            "placeholder": {
+                "name": "name",
+                "phone": "phone",
+                "mail": "e-mail"
+            }
+        },
+        "button" : {
+            "send": "send"
+        }
     }
 }

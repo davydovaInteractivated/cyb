@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 
 /** Styles */
 import '../styles/card.scss';
@@ -12,7 +13,7 @@ import {
 import CustomButton from './custom/CustomButton';
 import CardReference from './card/CardReference';
 
-const Card = ({ card, index, likeCard }) => {
+const Card = ({ card, index, likeCard, t }) => {
     console.log('Card render');
     return (
         <div className="card">
@@ -23,11 +24,11 @@ const Card = ({ card, index, likeCard }) => {
                         {card.description}
                     </p>
                 </div>
-                <div className={card.references.length && index === 0 ? "card--wrapper__reference grid grid-gap w-100" : "d-none"}>
+                {(card.references.length > 0 && index === 0) && <div className="card--wrapper__reference grid grid-gap w-100">
                     <CardReference refs={card.references} alt={card.title}/>
-                </div>
+                </div>}
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
-                    <Link to={`/${card.id}`}><CustomButton /></Link>
+                    <Link to={`/${card.id}`}><CustomButton text={t('custom.button.card.text')} /></Link>
                     <HeartIcon onClick={() => likeCard(!card.is_liked)} className={card.is_liked ? "card--wrapper__heart liked" : "card--wrapper__heart"}/>
                 </div>
             </div>
@@ -35,4 +36,5 @@ const Card = ({ card, index, likeCard }) => {
     );
 };
 
-export default Card;
+const CardTranslated = withTranslation('common')(Card)
+export default CardTranslated;

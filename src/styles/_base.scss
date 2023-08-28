@@ -105,6 +105,12 @@ body * {
     gap: 1em;
 }
 
+.grid-gap-2,
+.gap-2 {
+    grid-gap: calc(1em * 2);
+    gap: calc(1em * 2);
+}
+
 .w100,
 .w-100,
 .width100,

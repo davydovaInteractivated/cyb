@@ -1,14 +1,11 @@
-import { withTranslation } from 'react-i18next';
-
-const CustomButton = ({ onClick, t }) => {
+const CustomButton = ({ text = 'more', type = 'button', onClick }) => {
     return (
         <button
             className="custom--button"
-            type="button"
+            type={type}
             onClick={onClick}
-        >{t('custom.button.card.text')}</button>
+        >{text}</button>
     );
 }
 
-const CustomButtonTranslated = withTranslation('common')(CustomButton)
-export default CustomButtonTranslated;
+export default CustomButton;

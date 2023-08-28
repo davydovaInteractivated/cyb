@@ -47,9 +47,9 @@ const CardPage = ({ t }) => {
                         />
                     </div>
                 </div>
-                <div className={currentCard?.references.length ? "card--page__reference flex gap justify-end" : "d-none"}>
+                {currentCard?.references.length && <div className="card--page__reference flex gap justify-end">
                     <CardReference refs={currentCard.references} alt={currentCard.title}/>
-                </div>
+                </div>}
             </div>
 
             <p className='card--page__description'>{currentCard?.description || ''}</p>

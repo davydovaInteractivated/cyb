@@ -54,10 +54,13 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedSh
                         className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
                         onClick={goToLikedPage}
                     />
-                    <sub className={likedCount ? 'header--liked-count' : 'd-none' }>{likedCount || ''}</sub>
-                    <div className={inCatalog ? 'header--search' : 'd-none'}>
-                        <CustomInput onChange={event => search(event)}/>
-                    </div>
+                    {Boolean(likedCount) && <sub className='header--liked-count'>{likedCount}</sub>}
+                    {inCatalog && <div className='header--search'>
+                        <CustomInput
+                            placeholder={t('custom.input.search.placeholder')}
+                            onChange={event => search(event)}
+                        />
+                    </div>}
                     <div className="header--icons">
                         <ArrowsUpDownIcon
                             className={!sortDirection && inCatalog ? "header--icons__icon" : "header--icons__icon none m-0"}

@@ -1,15 +1,14 @@
-import { withTranslation } from 'react-i18next';
+import { forwardRef } from 'react';
 
-const CustomInput = ({ onChange, t }) => {
+const CustomInput = forwardRef(({ className, type = 'search', placeholder = 'search', onChange }) => {
     return (
         <input
-            className="custom--input"
-            type="search"
-            placeholder={t('custom.input.search.placeholder')}
+            className={`custom--input w-100 ${className}`}
+            type={type}
+            placeholder={placeholder}
             onChange={onChange}
         />
     );
-}
+});
 
-const CustomInputTranslated = withTranslation('common')(CustomInput)
-export default CustomInputTranslated;
+export default CustomInput;
