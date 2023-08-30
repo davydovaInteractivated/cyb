@@ -45,7 +45,7 @@ const Contacts = ({ t }) => {
     return (
         <div className="contacts w-100 flex gap-2 justify-center">
             <form className="contacts--form flex f-col align-end gap">
-                <h2 className="contacts--form__title">{t('form.title')}</h2>
+                <strong className="contacts--form__title">{t('form.title.contacts')}</strong>
                 <CustomInput
                     ref={inputNameEl}
                     className="contacts--form__item name"
@@ -64,7 +64,7 @@ const Contacts = ({ t }) => {
                     // ref={inputMailEl}
                     className="contacts--form__item mail"
                     type="text"
-                    placeholder={t('form.input.placeholder.mail')}
+                    placeholder={t('form.input.placeholder.email')}
                     onChange={(e) => setMail(e.target.value)}
                 />
                 <CustomButton className="contacts--form__submit" text={t('form.button.send')} onClick={send}/>

@@ -18,7 +18,6 @@ import CustomInput from '../custom/CustomInput';
 const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedShow, t }) => {
     console.log('Header render');
     const { pathname } = useLocation();
-    console.log('location pathname', pathname);
     const inCatalog = pathname === '/';
 
     const goHome = useLinkClickHandler('/');
@@ -38,6 +37,11 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedSh
                 <div className="flex align-center">
                     <nav className="header--menu">
                         <ul className="header--menu__list flex">
+                            <li className="header--menu__list-item">
+                                <NavLink
+                                    to='/auth'
+                                    className={({ isActive }) => isActive ? "active" : ""}
+                                >{t('header.menu.auth')}</NavLink></li>
                             <li className="header--menu__list-item">
                                 <NavLink
                                     to='/contacts'

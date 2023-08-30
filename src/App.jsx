@@ -9,6 +9,7 @@ import Catalog from './components/Catalog';
 
 /** Routes */
 import Card from './routes/card/CardPage';
+import Auth from './routes/auth/Auth';
 import Contacts from './routes/contacts/Contacts';
 import Faq from './routes/faq/Faq';
 import NoMatch from './routes/NoMatch';
@@ -145,6 +146,7 @@ const App = () => {
             likeCard={likeCard}
           />
         } />
+        <Route path='auth' element={<Auth />} />
         <Route path='contacts' element={<Contacts />} />
         <Route path='faq' element={<Faq />} />
         <Route path=':id' element={<Card />} />

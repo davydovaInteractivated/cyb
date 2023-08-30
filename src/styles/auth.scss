@@ -1,0 +1,11 @@
+.auth {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    &--form {
+        width: 18em;
+    
+        &__submit {
+            align-self: end;
+        }
+    }
+}

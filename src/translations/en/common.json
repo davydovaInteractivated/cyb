@@ -11,7 +11,8 @@
         "logo": "web studio",
         "menu": {
             "contacts": "contacts",
-            "faq": "faq"
+            "faq": "faq",
+            "auth": "sign in / sign up"
         }
     },
     "custom": {
@@ -42,16 +43,26 @@
         "lang": "lang"
     },
     "form": {
-        "title": "contact us",
+        "title": {
+            "contacts": "contact us",
+            "signIn": "if U have an account",
+            "signUp": "if U don't have an account",
+            "signInWith": "U can"
+        },
         "input" : {
             "placeholder": {
                 "name": "name",
                 "phone": "phone",
-                "mail": "e-mail"
+                "email": "e-mail",
+                "password": "password",
+                "confirmPassword": "confirm the password"
             }
         },
         "button" : {
-            "send": "send"
+            "send": "send",
+            "signIn": "sign in",
+            "signUp": "sign up",
+            "signInWith": "sign in with"
         }
     }
 }
