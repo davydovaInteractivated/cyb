@@ -76,6 +76,7 @@ class Home extends PureComponent {
         sortDirection,
         showLiked,
         likedCount,
+        searchValue,
         search,
         sort,
         setLikedShow,
@@ -88,6 +89,7 @@ class Home extends PureComponent {
             sortDirection={sortDirection}
             showLiked={showLiked}
             likedCount={likedCount}
+            searchValue={searchValue}
             search={search}
             sort={sort}
             setLikedShow={setLikedShow}

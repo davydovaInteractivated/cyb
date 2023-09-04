@@ -6,7 +6,7 @@ import '../styles/card.scss';
 
 /** Icons */
 import {
-    HeartIcon,
+    BookmarkIcon,
 } from '@heroicons/react/24/solid';
 
 /** Components */
@@ -29,7 +29,7 @@ const Card = ({ card, index, likeCard, t }) => {
                 </div>}
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
                     <Link to={`/${card.id}`}><CustomButton text={t('custom.button.card.text')} /></Link>
-                    <HeartIcon onClick={() => likeCard(!card.is_liked)} className={card.is_liked ? "card--wrapper__heart liked" : "card--wrapper__heart"}/>
+                    <BookmarkIcon onClick={() => likeCard(!card.is_liked)} className={card.is_liked ? "card--wrapper__bookmark liked" : "card--wrapper__bookmark"}/>
                 </div>
             </div>
         </div>

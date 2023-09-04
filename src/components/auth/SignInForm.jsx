@@ -4,6 +4,7 @@ import { useState } from "react";
 /** Components */
 import CustomInput from "../custom/CustomInput";
 import CustomButton from "../custom/CustomButton";
+import CustomAlert from '../custom/CustomAlert';
 
 /** Utils */
 import {
@@ -15,11 +16,21 @@ const SignInForm = ({ t }) => {
         email: '',
         password: '',
     });
-
     const {
         email,
         password,
     } = formIn;
+
+    const [alertProps, setAlertProps] = useState({
+        show: false,
+        type: 'success',
+        message: '',
+    });
+    const {
+        show,
+        type,
+        message,
+    } = alertProps;
  
     /**
      * Handle Form In Change
@@ -48,11 +59,24 @@ const SignInForm = ({ t }) => {
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
             console.log(user);
+            setAlertProps({
+                show: true,
+                type: 'success',
+                message: 'U have successfully signed in!',
+            });
             resetFormIn();
         } catch (error) {
             console.error(error);
-            if (error.code === 'auth/wrong-password') alert('Wrong password. Please, try again.');
-            if (error.code === 'auth/user-not-found') alert('User not found.');
+
+            let message = '';
+            if (error.code === 'auth/wrong-password') message = 'Wrong password. Please, try again.';
+            if (error.code === 'auth/user-not-found') message = 'User not found.';
+
+            setAlertProps({
+                show: true,
+                type: 'error',
+                message,
+            });
         }
     };
 
@@ -70,7 +94,7 @@ const SignInForm = ({ t }) => {
 
     return (
         <form className="auth--form flex f-col gap" onSubmit={submitFormIn}>
-            <strong>{t('form.title.signIn')}</strong>
+            <h3>{t('form.title.signIn')}</h3>
             <CustomInput
                 placeholder={t('form.input.placeholder.email')}
                 name="email"
@@ -90,6 +114,13 @@ const SignInForm = ({ t }) => {
             <div className="auth--form__submit">
                 <CustomButton type="submit" text={t('form.button.signIn')} />
             </div>
+
+            <CustomAlert
+                show={show}
+                type={type}
+                message={message}
+                hideAlert={() => setAlertProps({show: false})}
+            />
         </form>
     )
 };

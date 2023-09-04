@@ -6,7 +6,7 @@ import '../../styles/header.scss'
 
 /** Icons */
 import {
-    HeartIcon,
+    BookmarkIcon,
     ArrowsUpDownIcon,
     BarsArrowDownIcon,
     BarsArrowUpIcon,
@@ -15,7 +15,7 @@ import {
 /** Components */
 import CustomInput from '../custom/CustomInput';
 
-const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedShow, t }) => {
+const Header = ({ sortDirection, showLiked, likedCount, searchValue, search, sort, setLikedShow, t }) => {
     console.log('Header render');
     const { pathname } = useLocation();
     const inCatalog = pathname === '/';
@@ -54,7 +54,7 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedSh
                                 >{t('header.menu.faq')}</NavLink></li>
                         </ul>
                     </nav>
-                    <HeartIcon
+                    <BookmarkIcon
                         className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
                         onClick={goToLikedPage}
                     />
@@ -62,6 +62,8 @@ const Header = ({ sortDirection, showLiked, likedCount, search, sort, setLikedSh
                     {inCatalog && <div className='header--search'>
                         <CustomInput
                             placeholder={t('custom.input.search.placeholder')}
+                            value={searchValue}
+                            type="search"
                             onChange={event => search(event)}
                         />
                     </div>}

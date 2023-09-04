@@ -133,6 +133,7 @@ const App = () => {
           sortDirection={sortDirection}
           showLiked={showLiked}
           likedCount={likedCount}
+          searchValue={searchValue}
           search={search}
           sort={sort}
           setLikedShow={setLikedShow}

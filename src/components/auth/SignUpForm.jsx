@@ -4,6 +4,7 @@ import { useState } from "react";
 /** Components */
 import CustomInput from "../custom/CustomInput";
 import CustomButton from "../custom/CustomButton";
+import CustomAlert from '../custom/CustomAlert';
 
 /** Utils */
 import {
@@ -18,6 +19,17 @@ const SignUpForm = ({ t }) => {
         password: '',
         confirmPassword: '',
     });
+
+    const [alertProps, setAlertProps] = useState({
+        show: false,
+        type: 'success',
+        message: '',
+    });
+    const {
+        show,
+        type,
+        message,
+    } = alertProps;
 
     const {
         displayName,
@@ -55,11 +67,24 @@ const SignUpForm = ({ t }) => {
             await createUserDocFromAuth(user, {
                 displayName,
             });
+            setAlertProps({
+                show: true,
+                type: 'success',
+                message: 'U have successfully registered!',
+            });
             resetFormUp();
         } catch (error) {
             console.error(error);
-            if (error.code === 'auth/email-already-in-use') alert('Cannot create User. E-mail already in use.');
-            if (error.code === 'auth/weak-password') alert('Password should be at least 6 characters.');
+
+            let message = '';
+            if (error.code === 'auth/email-already-in-use') message = 'Cannot create User. E-mail already in use.';
+            if (error.code === 'auth/weak-password') message = 'Password should be at least 6 characters.';
+
+            setAlertProps({
+                show: true,
+                type: 'error',
+                message,
+            });
         }
     };
 
@@ -77,7 +102,7 @@ const SignUpForm = ({ t }) => {
 
     return (
         <form className="auth--form flex f-col gap" onSubmit={submitFormUp}>
-            <strong>{t('form.title.signUp')}</strong>
+            <h3>{t('form.title.signUp')}</h3>
             <CustomInput
                 placeholder={t('form.input.placeholder.name')}
                 name="displayName"
@@ -113,6 +138,12 @@ const SignUpForm = ({ t }) => {
             <div className="auth--form__submit">
                 <CustomButton type="submit" text={t('form.button.signUp')} />
             </div>
+
+            <CustomAlert
+                show={show}
+                type={type}
+                message={message}
+            />
         </form>
     )
 };

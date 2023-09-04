@@ -43,7 +43,7 @@ const Auth = ({ t }) => {
     return (
         <div className="auth w-100 grid gap-2">
             <div className="auth--btns flex f-col gap">
-                <strong>{t('form.title.signInWith')}</strong>
+                <h3>{t('form.title.signInWith')}</h3>
                 <button
                     className="custom--button"
                     onClick={signInWithGoogle}

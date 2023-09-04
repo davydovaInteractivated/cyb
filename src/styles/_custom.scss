@@ -34,3 +34,96 @@
         transition: all .2s ease;
     }
 }
+
+.custom--alert {
+    position: fixed;
+    width: 22em;
+    // opacity: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 1em;
+    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+
+    &:hover {
+        opacity: 1!important;
+        box-shadow: none;
+    }
+
+    &__icon {
+        width: 24px;
+    }
+
+    // position
+    &.top {
+        top: 1em;
+    }
+    &.bottom {
+        bottom: 1em;
+    }
+    &.left {
+        left: -8em;
+    }
+    &.right {
+        right: -8em;
+    }
+
+    // visibility
+    &.right.show {
+        animation: showAlertRight .4s forwards;
+    }
+    &.left.show {
+        animation: showAlertLeft .4s forwards;
+    }
+    &.right.hide {
+        animation: hideAlertRight .4s forwards;
+    }
+    &.left.hide {
+        animation: hideAlertLeft .4s forwards;
+    }
+
+    // type
+    &__success {
+        background: #4CAF50;
+        color: #212121!important;
+    }
+    &__error {
+        background: #BF360C;
+    }
+    &__warning {
+        background: #FFB74D;
+        color: #212121!important;
+    }
+    &__info {
+        background: #424242;
+    }
+}
+
+/** Animation */
+@keyframes showAlertLeft {
+    to {
+        opacity: .8;
+        left: 1em;
+    }
+}
+
+@keyframes showAlertRight {
+    to {
+        opacity: .8;
+        right: 1em;
+    }
+}
+
+@keyframes hideAlertLeft {
+    to {
+        opacity: 0;
+        left: -28em;
+    }
+}
+
+@keyframes hideAlertRight {
+    to {
+        opacity: 0;
+        right: -28em;
+    }
+}

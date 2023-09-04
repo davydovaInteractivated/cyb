@@ -16,7 +16,7 @@ import CardReference from '../../components/card/CardReference';
 
 /** Icons */
 import {
-    HeartIcon,
+    BookmarkIcon,
     CalculatorIcon,
 } from '@heroicons/react/24/solid';
 
@@ -37,7 +37,7 @@ const CardPage = ({ t }) => {
                 <div className='flex f-col'>
                     <h2 className='card--page__title'>{currentCard?.title || ''}</h2>
                     <div className='card--page__icons flex gap'>
-                        <HeartIcon
+                        <BookmarkIcon
                             className={currentCard.is_liked ? 'card--page__icon active' : 'card--page__icon'}
                             // onClick={}
                         />
