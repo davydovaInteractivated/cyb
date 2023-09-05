@@ -1,5 +1,5 @@
 import { withTranslation } from 'react-i18next';
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 /** Components */
 import CustomInput from "../custom/CustomInput";
@@ -11,7 +11,12 @@ import {
     signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase";
 
+/** Contexts */
+import { UserContext } from '../../context/user.context';
+
 const SignInForm = ({ t }) => {
+    const { userData, setUser, setUserData } = useContext(UserContext);
+
     const [formIn, setFormIn] = useState({
         email: '',
         password: '',
@@ -58,12 +63,17 @@ const SignInForm = ({ t }) => {
 
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log(user);
             setAlertProps({
                 show: true,
                 type: 'success',
                 message: 'U have successfully signed in!',
             });
+            setUserData({
+                ...userData,
+                displayName: user.displayName,
+                email: user.email,
+            });
+            setUser(user);
             resetFormIn();
         } catch (error) {
             console.error(error);

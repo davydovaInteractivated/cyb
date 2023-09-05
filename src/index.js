@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
+/** Contexts */
+import { UserContextProvider } from './context/user.context';
+
 /** Router */
 import { BrowserRouter } from 'react-router-dom';
 
@@ -35,7 +38,9 @@ root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <App/>
+        <UserContextProvider>
+          <App/>
+        </UserContextProvider>
       </BrowserRouter>
     </I18nextProvider>
   </React.StrictMode>

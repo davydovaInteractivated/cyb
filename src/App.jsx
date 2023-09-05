@@ -49,7 +49,7 @@ const App = () => {
   
     cardsDataCopy[currentCardDataIndex] = {
       ...cardsDataCopy[currentCardDataIndex],
-      is_liked: isLiked,
+      is_marked: isLiked,
     };
   
     setCardsData(cardsDataCopy);
@@ -120,7 +120,7 @@ const App = () => {
 
     if (showLiked) {
       filteredCards = filteredCards
-        .filter((card) => card.is_liked);
+        .filter((card) => card.is_marked);
     }
   
     setFilteredCardsData(filteredCards);

@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { UserContext } from '../../context/user.context';
 import { withTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation, useLinkClickHandler } from 'react-router-dom';
 
@@ -15,10 +17,26 @@ import {
 /** Components */
 import CustomInput from '../custom/CustomInput';
 
-const Header = ({ sortDirection, showLiked, likedCount, searchValue, search, sort, setLikedShow, t }) => {
+const Header = ({
+    // sortDirection,
+    showLiked,
+    // likedCount,
+    searchValue,
+    search,
+    sort,
+    setLikedShow,
+    t,
+}) => {
     console.log('Header render');
     const { pathname } = useLocation();
     const inCatalog = pathname === '/';
+
+    const { userData } = useContext(UserContext);
+    console.log('user', userData);
+    const { catalog } = userData;
+    const { settings } = userData;
+    const { marked } = catalog;
+    const { sortDirection } = settings;
 
     const goHome = useLinkClickHandler('/');
 
@@ -58,7 +76,7 @@ const Header = ({ sortDirection, showLiked, likedCount, searchValue, search, sor
                         className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
                         onClick={goToLikedPage}
                     />
-                    {Boolean(likedCount) && <sub className='header--liked-count'>{likedCount}</sub>}
+                    {Boolean(marked) && <sub className='header--liked-count'>{marked}</sub>}
                     {inCatalog && <div className='header--search'>
                         <CustomInput
                             placeholder={t('custom.input.search.placeholder')}

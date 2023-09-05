@@ -1,5 +1,5 @@
-import { PureComponent } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useState } from 'react';
 
 /** Styles */
 import '../styles/_base.scss';
@@ -10,39 +10,32 @@ import '../styles/app.scss';
 import Header from './base/Header';
 import Aside from './base/Aside';
 
-class Home extends PureComponent {
-  constructor() {
-    super();
-
-    this.state = {
-      cardsData: [],
-      filteredCardsData: [],
-      searchValue: '',
-      sortDirection: 0,
-      showLiked: false,
-      likedCount: 0,
-      isShowSettings: false,
-      activeTheme: 'transfile',
-      activeLang: 'en',
-    }
-  }
+const Home = ({
+  sortDirection,
+  showLiked,
+  likedCount,
+  searchValue,
+  search,
+  sort,
+  setLikedShow,
+}) => {
+  const [isShowSettings, setIsShowSettings] = useState(false);
+  const [activeTheme, setActiveTheme] = useState('transfile');
+  const [activeLang, setActiveLang] = useState('en');
 
   /**
    * Show Settings popup
    */
-  showSettings = () => {
-    const {
-      isShowSettings,
-    } = this.state;
-
-    this.setState({ isShowSettings: !isShowSettings });
-  }
+  const showSettings = () => {
+    const newIsShowSettings = !isShowSettings;
+    setIsShowSettings(newIsShowSettings);
+  };
 
   /**
    * Select Main app. Theme
-   * @param {*} param0 
+   * @param {*} param0
    */
-  selectTheme = ({ colors, name }) => {
+  const selectTheme = ({ colors, name }) => {
     const [ body ] = document.getElementsByTagName('body');
     if (!body) return;
 
@@ -54,62 +47,44 @@ class Home extends PureComponent {
     body.style.setProperty('--color-dark', dark);
     body.style.setProperty('--main-font', font);
 
-    this.setState({ activeTheme: name });
-  }
+    setActiveTheme(name);
+  };
 
   /**
    * Select Main app. Language
    * @param {*} param0 
    */
-  selectLang = ({ name }) => {
-    this.setState({ activeLang: name });
-  }
+  const selectLang = ({ name }) => {
+    setActiveLang(name);
+  };
 
-  render() {
-    const {
-      isShowSettings,
-      activeTheme,
-      activeLang,
-    } = this.state;
-
-    const {
-        sortDirection,
-        showLiked,
-        likedCount,
-        searchValue,
-        search,
-        sort,
-        setLikedShow,
-    } = this.props;
-
-    return (
-      <div className="app">
-        <div className="app--wrapper flex f-col">
-          <Header
-            sortDirection={sortDirection}
-            showLiked={showLiked}
-            likedCount={likedCount}
-            searchValue={searchValue}
-            search={search}
-            sort={sort}
-            setLikedShow={setLikedShow}
+  return (
+    <div className="app">
+      <div className="app--wrapper flex f-col">
+        <Header
+          sortDirection={sortDirection}
+          showLiked={showLiked}
+          likedCount={likedCount}
+          searchValue={searchValue}
+          search={search}
+          sort={sort}
+          setLikedShow={setLikedShow}
           />
 
-          <div className="flex justify-space-b">
-            <Aside
-              isShowSettings ={isShowSettings}
-              activeTheme={activeTheme}
-              activeLang={activeLang}
-              showSettings={this.showSettings}
-              selectTheme={this.selectTheme}
-              selectLang={this.selectLang}
-            />
-            <Outlet />
-          </div>
+        <div className="flex justify-space-b">
+          <Aside
+            isShowSettings ={isShowSettings}
+            activeTheme={activeTheme}
+            activeLang={activeLang}
+            showSettings={showSettings}
+            selectTheme={selectTheme}
+            selectLang={selectLang}
+          />
+          <Outlet />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Home;

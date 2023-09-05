@@ -38,7 +38,7 @@ const CardPage = ({ t }) => {
                     <h2 className='card--page__title'>{currentCard?.title || ''}</h2>
                     <div className='card--page__icons flex gap'>
                         <BookmarkIcon
-                            className={currentCard.is_liked ? 'card--page__icon active' : 'card--page__icon'}
+                            className={currentCard.is_marked ? 'card--page__icon active' : 'card--page__icon'}
                             // onClick={}
                         />
                         <CalculatorIcon

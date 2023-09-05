@@ -29,7 +29,7 @@ const Card = ({ card, index, likeCard, t }) => {
                 </div>}
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
                     <Link to={`/${card.id}`}><CustomButton text={t('custom.button.card.text')} /></Link>
-                    <BookmarkIcon onClick={() => likeCard(!card.is_liked)} className={card.is_liked ? "card--wrapper__bookmark liked" : "card--wrapper__bookmark"}/>
+                    <BookmarkIcon onClick={() => likeCard(!card.is_marked)} className={card.is_marked ? "card--wrapper__bookmark liked" : "card--wrapper__bookmark"}/>
                 </div>
             </div>
         </div>
