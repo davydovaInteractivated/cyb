@@ -40,12 +40,13 @@ const Home = ({
     if (!body) return;
 
     const {
-      light, dark, font,
+      light, dark, font, fontInverted,
     } = colors;
 
     body.style.setProperty('--color-light', light);
     body.style.setProperty('--color-dark', dark);
     body.style.setProperty('--main-font', font);
+    body.style.setProperty('--main-font-inverted', fontInverted);
 
     setActiveTheme(name);
   };

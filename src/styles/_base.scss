@@ -24,6 +24,10 @@ body * {
     user-select: none;
 }
 
+.font-inverted {
+    color: var(--main-font-inverted);
+}
+
 .m-0 {
     margin: 0!important;
 }

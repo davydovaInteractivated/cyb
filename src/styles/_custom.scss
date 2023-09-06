@@ -113,11 +113,34 @@
     background: var(--color-light);
     border-radius: var(--main-border-radius);
     opacity: .8;
-    color: var(--main-font);
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.custom--details {
+    border: 1px solid var(--main-font);
+    padding: 1em;
+    border-radius: 4px;
+    width: 80%;
+
+    &__title {
+        display: inline-block;
+    }
+
+    &__summary {
+        cursor: pointer;
+        list-style: none;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    &__content {
+        margin-top: 1em;
+    }
 }
 
 /** Animation */

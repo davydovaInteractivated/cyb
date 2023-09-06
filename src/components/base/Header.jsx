@@ -49,7 +49,7 @@ const Header = ({
         <header className="header">
             <div className="header--wrapper flex justify-space-b align-center">
                 <Link to='/'>
-                    <div className="header--logo b">KYB <sub className="thin">{t('header.logo')}</sub></div>
+                    <div className="header--logo font-inverted b">KYB <sub className="thin font-inverted">{t('header.logo')}</sub></div>
                 </Link>
 
                 <div className="flex align-center">
@@ -108,7 +108,7 @@ const Header = ({
                                 >{t('header.menu.auth')}</NavLink></li>
                         }
                         {user && <li className="header--menu__list-item right cursor-default">
-                            <div className='custom--avatar'>{
+                            <div className='custom--avatar font-inverted'>{
                                 user.displayName
                                     ? user.displayName.substr(0, 2).toUpperCase()
                                     : user.email.substr(0, 2).toUpperCase()
