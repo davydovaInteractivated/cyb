@@ -19,20 +19,20 @@ import CustomInput from '../custom/CustomInput';
 
 const Header = ({
     // sortDirection,
-    showLiked,
-    // likedCount,
+    showMarked,
+    // markedCount,
     searchValue,
     search,
     sort,
-    setLikedShow,
+    setMarkedShow,
     t,
 }) => {
     console.log('Header render');
     const { pathname } = useLocation();
     const inCatalog = pathname === '/';
 
-    const { userData } = useContext(UserContext);
-    console.log('user', userData);
+    const { user, userData } = useContext(UserContext);
+    console.log('userData', userData);
     const { catalog } = userData;
     const { settings } = userData;
     const { marked } = catalog;
@@ -40,8 +40,8 @@ const Header = ({
 
     const goHome = useLinkClickHandler('/');
 
-    const goToLikedPage = (e) => {
-        setLikedShow(e);
+    const goToMarkedPage = (e) => {
+        setMarkedShow(e);
         if (!inCatalog) goHome(e);
     };
 
@@ -55,17 +55,12 @@ const Header = ({
                 <div className="flex align-center">
                     <nav className="header--menu">
                         <ul className="header--menu__list flex">
-                            <li className="header--menu__list-item">
-                                <NavLink
-                                    to='/auth'
-                                    className={({ isActive }) => isActive ? "active" : ""}
-                                >{t('header.menu.auth')}</NavLink></li>
-                            <li className="header--menu__list-item">
+                            <li className="header--menu__list-item left">
                                 <NavLink
                                     to='/contacts'
                                     className={({ isActive }) => isActive ? "active" : ""}
                                 >{t('header.menu.contacts')}</NavLink></li>
-                            <li className="header--menu__list-item">
+                            <li className="header--menu__list-item left">
                                 <NavLink
                                     to='/faq'
                                     className={({ isActive }) => isActive ? "active" : ""}
@@ -73,10 +68,10 @@ const Header = ({
                         </ul>
                     </nav>
                     <BookmarkIcon
-                        className={showLiked ? "header--icons__icon active" : "header--icons__icon"}
-                        onClick={goToLikedPage}
+                        className={showMarked ? "header--icons__icon active" : "header--icons__icon"}
+                        onClick={goToMarkedPage}
                     />
-                    {Boolean(marked) && <sub className='header--liked-count'>{marked}</sub>}
+                    {Boolean(marked) && <sub className='header--marked-count'>{marked}</sub>}
                     {inCatalog && <div className='header--search'>
                         <CustomInput
                             placeholder={t('custom.input.search.placeholder')}
@@ -99,6 +94,27 @@ const Header = ({
                             onClick={sort}
                         />
                     </div>
+                    <ul className="header--menu__list flex align-center">
+                        {user
+                            ? <li className="header--menu__list-item right">
+                                <NavLink
+                                    to='/auth'
+                                    className={({ isActive }) => isActive ? "active" : ""}
+                                >sign out</NavLink></li>
+                            : <li className="header--menu__list-item right">
+                                <NavLink
+                                    to='/auth'
+                                    className={({ isActive }) => isActive ? "active" : ""}
+                                >{t('header.menu.auth')}</NavLink></li>
+                        }
+                        {user && <li className="header--menu__list-item right cursor-default">
+                            <div className='custom--avatar'>{
+                                user.displayName
+                                    ? user.displayName.substr(0, 2).toUpperCase()
+                                    : user.email.substr(0, 2).toUpperCase()
+                            }</div>
+                        </li>}
+                    </ul>
                 </div>
             </div>
         </header>

@@ -22,16 +22,22 @@
     }
 
     &--menu__list-item {
-        margin-right: 2em;
         cursor: pointer;
         transition: opacity .2s ease;
 
         &:hover {
             opacity: .6;
         }
+
+        &.left {
+            margin-right: 2em;
+        }
+        &.right {
+            margin-left: 2em;
+        }
     }
 
-    &--liked-count {
+    &--marked-count {
         transition: color .1s ease;
         user-select: none;
         width: 16px;

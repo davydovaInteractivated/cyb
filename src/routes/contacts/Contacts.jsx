@@ -43,9 +43,9 @@ const Contacts = ({ t }) => {
     };
 
     return (
-        <div className="contacts w-100 flex gap-2 justify-center">
+        <div className="contacts w-100 grid gap-2">
             <form className="contacts--form flex f-col align-end gap">
-                <strong className="contacts--form__title">{t('form.title.contacts')}</strong>
+                <h3 className="contacts--form__title">{t('form.title.contacts')}</h3>
                 <CustomInput
                     ref={inputNameEl}
                     className="contacts--form__item name"
@@ -87,8 +87,8 @@ const Contacts = ({ t }) => {
                 </div>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24067.479066256474!2d108.68189404520994!3d34.30019879815902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x366383670d4b99e1%3A0x85f132342b1ee247!2zRGlhb3RhaSBOZWlnaGJvcmhvb2QsIFFpbmR1IERpc3RyaWN0LCDQodGP0L3RjNGP0L0sINCo0LXQvdGM0YHRliwg0JrQuNGC0LDQuSwgNzEyMDk5!5e1!3m2!1suk!2sru!4v1693220643686!5m2!1suk!2sru"
-                    width="600"
-                    height="270"
+                    width="auto"
+                    height="202"
                     style={{ border: 0, borderRadius: '4px' }}
                     allowFullScreen=""
                     title="map"

@@ -1,8 +1,7 @@
 .contacts {
-    &--form {
-        min-width: 24em;
-        align-self: end;
+    grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
 
+    &--form {
         &__icon {
             width: 16px;
         }

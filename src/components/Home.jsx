@@ -12,12 +12,12 @@ import Aside from './base/Aside';
 
 const Home = ({
   sortDirection,
-  showLiked,
-  likedCount,
+  showMarked,
+  markedCount,
   searchValue,
   search,
   sort,
-  setLikedShow,
+  setMarkedShow,
 }) => {
   const [isShowSettings, setIsShowSettings] = useState(false);
   const [activeTheme, setActiveTheme] = useState('transfile');
@@ -63,12 +63,12 @@ const Home = ({
       <div className="app--wrapper flex f-col">
         <Header
           sortDirection={sortDirection}
-          showLiked={showLiked}
-          likedCount={likedCount}
+          showMarked={showMarked}
+          markedCount={markedCount}
           searchValue={searchValue}
           search={search}
           sort={sort}
-          setLikedShow={setLikedShow}
+          setMarkedShow={setMarkedShow}
           />
 
         <div className="flex justify-space-b">

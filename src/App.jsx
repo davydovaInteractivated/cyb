@@ -22,8 +22,8 @@ const App = () => {
 
   const [cardsData, setCardsData] = useState([]);
   const [filteredCardsData, setFilteredCardsData] = useState([]);
-  const [showLiked, setShowLiked] = useState(false);
-  const [likedCount, setLikedCount] = useState(0);
+  const [showMarked, setShowMarked] = useState(false);
+  const [markedCount, setMarkedCount] = useState(0);
   const [sortDirection, setSortDirection] = useState(0);
   const [searchValue, setSearchValue] = useState('');
 
@@ -36,11 +36,11 @@ const App = () => {
   }, []);
 
   /**
-   * Like Card
-   * @param {Boolean} isLiked
+   * Mark Card
+   * @param {Boolean} isMarked
    * @param {Number} cardId
    */
-  const likeCard = (isLiked, cardId) => {
+  const markCard = (isMarked, cardId) => {
     const cardsDataCopy = [...cardsData];
     const currentCardDataIndex = cardsDataCopy
       .findIndex((card) => card.id === cardId);
@@ -49,26 +49,26 @@ const App = () => {
   
     cardsDataCopy[currentCardDataIndex] = {
       ...cardsDataCopy[currentCardDataIndex],
-      is_marked: isLiked,
+      is_marked: isMarked,
     };
   
     setCardsData(cardsDataCopy);
-    setLikedCount(isLiked ? likedCount + 1: likedCount - 1);
+    setMarkedCount(isMarked ? markedCount + 1: markedCount - 1);
     filter({
       cardsData: cardsDataCopy,
       searchValue,
       sortDirection,
-      showLiked,
+      showMarked,
     });
   };
 
    /**
-   * Set Liked Cards
+   * Set Marked Cards
    */
-  const setLikedShow = () => {
-    const newShow = !showLiked;
-    setShowLiked(newShow);
-    filter({ cardsData, searchValue, sortDirection, showLiked: newShow });
+  const setMarkedShow = () => {
+    const newShow = !showMarked;
+    setShowMarked(newShow);
+    filter({ cardsData, searchValue, sortDirection, showMarked: newShow });
   }
 
   /**
@@ -78,7 +78,7 @@ const App = () => {
   const search = (event) => {
     const sValue = event.target.value.toLocaleLowerCase();
     setSearchValue(sValue);
-    filter({ cardsData, searchValue: sValue, sortDirection, showLiked });
+    filter({ cardsData, searchValue: sValue, sortDirection, showMarked });
   };
   
   /**
@@ -88,7 +88,7 @@ const App = () => {
     const newSortDirection = sortDirection <= 0 ? sortDirection + 1 : sortDirection - 2;
 
     setSortDirection(newSortDirection);
-    filter({ cardsData, sortDirection: newSortDirection, searchValue, showLiked });
+    filter({ cardsData, sortDirection: newSortDirection, searchValue, showMarked });
   }
   
   /**
@@ -99,7 +99,7 @@ const App = () => {
     cardsData,
     searchValue,
     sortDirection,
-    showLiked,
+    showMarked,
   }) => {
     let filteredCards = [...(cardsData || [])];
   
@@ -118,7 +118,7 @@ const App = () => {
           .sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
     }
 
-    if (showLiked) {
+    if (showMarked) {
       filteredCards = filteredCards
         .filter((card) => card.is_marked);
     }
@@ -131,20 +131,20 @@ const App = () => {
       <Route path='/' element={
         <Home
           sortDirection={sortDirection}
-          showLiked={showLiked}
-          likedCount={likedCount}
+          showMarked={showMarked}
+          markedCount={markedCount}
           searchValue={searchValue}
           search={search}
           sort={sort}
-          setLikedShow={setLikedShow}
+          setMarkedShow={setMarkedShow}
         />
       }>
         <Route index element={
           <Catalog
             cards={filteredCardsData}
-            showLiked={showLiked}
+            showMarked={showMarked}
             searchValue={searchValue}
-            likeCard={likeCard}
+            markCard={markCard}
           />
         } />
         <Route path='auth' element={<Auth />} />

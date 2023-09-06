@@ -1,5 +1,6 @@
 import { withTranslation } from 'react-i18next';
 import { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 
 /** Components */
 import CustomInput from "../custom/CustomInput";
@@ -36,6 +37,9 @@ const SignInForm = ({ t }) => {
         type,
         message,
     } = alertProps;
+
+    const navigate = useNavigate();
+    const goToHome = () => navigate('/');
  
     /**
      * Handle Form In Change
@@ -72,9 +76,11 @@ const SignInForm = ({ t }) => {
                 ...userData,
                 displayName: user.displayName,
                 email: user.email,
+                phone: user.phone,
             });
             setUser(user);
             resetFormIn();
+            goToHome();
         } catch (error) {
             console.error(error);
 
@@ -103,7 +109,7 @@ const SignInForm = ({ t }) => {
     };
 
     return (
-        <form className="auth--form flex f-col gap" onSubmit={submitFormIn}>
+        <form className="auth--form w-100 flex f-col gap" onSubmit={submitFormIn}>
             <h3>{t('form.title.signIn')}</h3>
             <CustomInput
                 placeholder={t('form.input.placeholder.email')}

@@ -13,7 +13,7 @@ import {
 import CustomButton from './custom/CustomButton';
 import CardReference from './card/CardReference';
 
-const Card = ({ card, index, likeCard, t }) => {
+const Card = ({ card, index, markCard, t }) => {
     console.log('Card render');
     return (
         <div className="card">
@@ -29,7 +29,7 @@ const Card = ({ card, index, likeCard, t }) => {
                 </div>}
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
                     <Link to={`/${card.id}`}><CustomButton text={t('custom.button.card.text')} /></Link>
-                    <BookmarkIcon onClick={() => likeCard(!card.is_marked)} className={card.is_marked ? "card--wrapper__bookmark liked" : "card--wrapper__bookmark"}/>
+                    <BookmarkIcon onClick={() => markCard(!card.is_marked)} className={card.is_marked ? "card--wrapper__bookmark marked" : "card--wrapper__bookmark"}/>
                 </div>
             </div>
         </div>

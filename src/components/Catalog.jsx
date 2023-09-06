@@ -6,7 +6,7 @@ import '../styles/catalog.scss';
 /** Components */
 import Card from './Card';
 
-const Catalog = ({ cards, showLiked, searchValue, likeCard, t }) => {
+const Catalog = ({ cards, showMarked, searchValue, markCard, t }) => {
     console.log('Catalog render');
     return (
         <div className="catalog catalog--wrapper w-100 grid gap">
@@ -16,12 +16,12 @@ const Catalog = ({ cards, showLiked, searchValue, likeCard, t }) => {
                         key={card.id}
                         card={card}
                         index={index}
-                        likeCard={(isLiked) => likeCard(isLiked, card.id)}
+                        markCard={(isMarked) => markCard(isMarked, card.id)}
                     />
                 )
             }
 
-            { showLiked && !searchValue && !cards.length ? <span>{t('main.text.empty.favorites')}</span> : "" }
+            { showMarked && !searchValue && !cards.length ? <span>{t('main.text.empty.favorites')}</span> : "" }
             { searchValue && !cards.length ? <span>{t('main.text.empty.search')}</span> : "" }
         </div>
     )

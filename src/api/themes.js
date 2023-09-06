@@ -17,6 +17,6 @@ export const themes = [{
     colors: {
         light: '#f1f2b5',
         dark: '#135058',
-        font: 'lightcoral',
+        font: 'lightyellow',
     },
 }];

@@ -41,7 +41,7 @@
         bottom: -.6em;
         left: -1.4em;
         background-color: var(--color-dark);
-        border-radius: 4px;
+        border-radius: var(--main-border-radius);
         padding: 1em 1em 1em 2em;
         z-index: -1;
         box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
@@ -73,7 +73,7 @@
                 display: inline-block;
                 width: 1em;
                 height: 1em;
-                border-radius: 4px;
+                border-radius: var(--main-border-radius);
                 margin-left: .28em;
                 border: var(--color-light) solid 1px;
             }
@@ -106,7 +106,7 @@
             left: 0;
             background: var(--color-dark);
             border: 1px solid var(--color-light);
-            border-radius: 4px;
+            border-radius: var(--main-border-radius);
             color: var(--main-font);
 
             &-back {

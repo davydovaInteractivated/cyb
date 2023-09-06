@@ -101,7 +101,7 @@ const SignUpForm = ({ t }) => {
     };
 
     return (
-        <form className="auth--form flex f-col gap" onSubmit={submitFormUp}>
+        <form className="auth--form w-100 flex f-col gap" onSubmit={submitFormUp}>
             <h3>{t('form.title.signUp')}</h3>
             <CustomInput
                 placeholder={t('form.input.placeholder.name')}

@@ -55,7 +55,7 @@ const CardPage = ({ t }) => {
             <p className='card--page__description'>{currentCard?.description || ''}</p>
             <div className='card--page__actions flex justify-end'>
                 {/* <button className='custom--button card--page__actions-item'>pre-calculate</button>
-                <button className='custom--button card--page__actions-item'>like it</button> */}
+                <button className='custom--button card--page__actions-item'>mark it</button> */}
                 <Link to='/contacts'>
                     <button className='custom--button card--page__actions-item'>{t('custom.button.card.contact')}</button>
                 </Link>

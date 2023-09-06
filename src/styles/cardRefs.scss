@@ -1,7 +1,7 @@
 .card--refs {
     // &__link {}
     &__img {
-        border-radius: 4px;
+        border-radius: var(--main-border-radius);
         transition: transform .2s ease;
 
         &:hover {

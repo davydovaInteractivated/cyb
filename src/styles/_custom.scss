@@ -4,10 +4,14 @@
     background: transparent;
     font-size: inherit;
     border: 1px solid var(--color-light);
-    border-radius: 4px;
+    border-radius: var(--main-border-radius);
     padding: 1em 2em;
     cursor: pointer;
     transition: all .5s ease;
+
+    &.filled {
+        background: var(--color-light);
+    }
 
     &:hover {
         transform: translateX(10px);
@@ -18,11 +22,15 @@
 .custom--input {
     background: transparent;
     border: 1px solid var(--main-font);
-    border-radius: 4px;
+    border-radius: var(--main-border-radius);
     width: 18em;
     height: 2em;
     padding: 2em;
     outline: none;
+
+    &::placeholder {
+        color: var(--main-font);
+      }
 
     &::-webkit-search-cancel-button {
         -webkit-appearance: none;
@@ -40,7 +48,7 @@
     width: 22em;
     // opacity: 0;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--main-border-radius);
     padding: 1em;
     box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
@@ -97,6 +105,19 @@
     &__info {
         background: #424242;
     }
+}
+
+.custom--avatar {
+    height: 3em;
+    width: 3em;
+    background: var(--color-light);
+    border-radius: var(--main-border-radius);
+    opacity: .8;
+    color: var(--main-font);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /** Animation */

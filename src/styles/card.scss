@@ -3,7 +3,7 @@
 .card {
     opacity: 0;
     transform: translateX(-20px);
-    border-radius: 4px;
+    border-radius: var(--main-border-radius);
     background: var(--color-dark);
     box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
     transition: all .3s ease;
@@ -39,7 +39,7 @@
             fill: var(--color-dark);
             stroke: var(--main-font);
 
-            &.liked {
+            &.marked {
                 fill: var(--color-light);
                 stroke: none;
             }
