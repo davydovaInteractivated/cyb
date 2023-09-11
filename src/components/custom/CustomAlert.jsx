@@ -42,15 +42,17 @@ const CustomAlert = ({
     useEffect(() => {
         setShowAlert(show);
 
-        setTimeout(() => {
-            setShowAlert(false);
-        }, 4000);
-    }, [show]);
+        if (show) {
+            setTimeout(() => {
+                hideAlert();
+                setShowAlert(false);
+            }, 4000);
+        }
+    }, [show, hideAlert]);
 
     return showAlert && (
         <div
             className={`custom--alert ${CUSTOM_ALERT_CLASSES_BY_TYPES[type]} ${positionsClasses} ${showAlert ? 'show' : 'hide'} flex f-col gap`}
-            onClick={() => hideAlert}
         >
             <div className='flex gap align-center'>
                 {type === 'info' && <InformationCircleIcon className='custom--alert__icon' />}

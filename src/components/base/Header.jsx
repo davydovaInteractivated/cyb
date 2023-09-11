@@ -18,9 +18,9 @@ import {
 import CustomInput from '../custom/CustomInput';
 
 const Header = ({
-    // sortDirection,
+    sortDirection,
     showMarked,
-    // markedCount,
+    markedCount,
     searchValue,
     search,
     sort,
@@ -33,10 +33,10 @@ const Header = ({
 
     const { user, userData } = useContext(UserContext);
     console.log('userData', userData);
-    const { catalog } = userData;
-    const { settings } = userData;
-    const { marked } = catalog;
-    const { sortDirection } = settings;
+    // const { catalog } = userData;
+    // const { settings } = userData;
+    // const { marked } = catalog;
+    // const { sortDirection } = settings;
 
     const goHome = useLinkClickHandler('/');
 
@@ -71,7 +71,7 @@ const Header = ({
                         className={showMarked ? "header--icons__icon active" : "header--icons__icon"}
                         onClick={goToMarkedPage}
                     />
-                    {Boolean(marked) && <sub className='header--marked-count'>{marked}</sub>}
+                    {Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
                     {inCatalog && <div className='header--search'>
                         <CustomInput
                             placeholder={t('custom.input.search.placeholder')}
