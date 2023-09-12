@@ -3,6 +3,8 @@ import { UserContext } from '../../context/user.context';
 import { withTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation, useLinkClickHandler } from 'react-router-dom';
 
+import { signOutUser } from '../../utils/firebase';
+
 /** Styles */
 import '../../styles/header.scss'
 
@@ -16,6 +18,7 @@ import {
 
 /** Components */
 import CustomInput from '../custom/CustomInput';
+import CustomButton from '../custom/CustomButton';
 
 const Header = ({
     sortDirection,
@@ -31,7 +34,7 @@ const Header = ({
     const { pathname } = useLocation();
     const inCatalog = pathname === '/';
 
-    const { user, userData } = useContext(UserContext);
+    const { user, userData, setUser, setUserData } = useContext(UserContext);
     console.log('userData', userData);
     // const { catalog } = userData;
     // const { settings } = userData;
@@ -43,6 +46,28 @@ const Header = ({
     const goToMarkedPage = (e) => {
         setMarkedShow(e);
         if (!inCatalog) goHome(e);
+    };
+
+    const handlerSignOut = async () => {
+        try {
+            await signOutUser();
+            setUser(null);
+            setUserData({
+                displayName: null,
+                email: null,
+                phone: null,
+                settings: {
+                    theme: null,
+                    lang: null,
+                },
+                catalog: {
+                    marked: [],
+                    sortDirection: 0,
+                },
+            });
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
@@ -65,13 +90,18 @@ const Header = ({
                                     to='/faq'
                                     className={({ isActive }) => isActive ? "active" : ""}
                                 >{t('header.menu.faq')}</NavLink></li>
+                            <li className="header--menu__list-item left">
+                                <NavLink
+                                    to='/'
+                                    className={({ isActive }) => isActive ? "active" : ""}
+                                >{t('header.menu.catalog')}</NavLink></li>
                         </ul>
                     </nav>
-                    <BookmarkIcon
+                    {inCatalog && <BookmarkIcon
                         className={showMarked ? "header--icons__icon active" : "header--icons__icon"}
                         onClick={goToMarkedPage}
-                    />
-                    {Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
+                    />}
+                    {inCatalog && Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
                     {inCatalog && <div className='header--search'>
                         <CustomInput
                             placeholder={t('custom.input.search.placeholder')}
@@ -95,18 +125,6 @@ const Header = ({
                         />
                     </div>
                     <ul className="header--menu__list flex align-center">
-                        {user
-                            ? <li className="header--menu__list-item right">
-                                <NavLink
-                                    to='/auth'
-                                    className={({ isActive }) => isActive ? "active" : ""}
-                                >sign out</NavLink></li>
-                            : <li className="header--menu__list-item right">
-                                <NavLink
-                                    to='/auth'
-                                    className={({ isActive }) => isActive ? "active" : ""}
-                                >{t('header.menu.auth')}</NavLink></li>
-                        }
                         {user && <li className="header--menu__list-item right cursor-default">
                             <div className='custom--avatar font-inverted'>{
                                 user.displayName
@@ -114,6 +132,23 @@ const Header = ({
                                     : user.email.substr(0, 2).toUpperCase()
                             }</div>
                         </li>}
+                        {user
+                            ? <li className="header--menu__list-item right">
+                                <CustomButton
+                                    small
+                                    text={t('header.menu.signOut')}
+                                    onClick={handlerSignOut}
+                                /></li>
+                            : <li className="header--menu__list-item right">
+                                <NavLink
+                                    to='/auth'
+                                >
+                                    <CustomButton
+                                        small
+                                        text={t('header.menu.auth')}
+                                    />
+                                </NavLink></li>
+                        }
                     </ul>
                 </div>
             </div>

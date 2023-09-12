@@ -10,9 +10,11 @@
     "header": {
         "logo": "web studio",
         "menu": {
+            "catalog": "catalog",
             "contacts": "contacts",
-            "faq": "faq",
-            "auth": "sign in / sign up"
+            "faq": "FAQ",
+            "auth": "sign in / sign up",
+            "signOut": "sign out"
         }
     },
     "custom": {
