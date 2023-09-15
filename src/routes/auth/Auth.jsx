@@ -1,12 +1,12 @@
 import { withTranslation } from 'react-i18next';
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getRedirectResult } from "firebase/auth";
 
 import {
     auth,
     signInWithGooglePopup,
     // signInWithGoogleRedirect,
-    createUserDocFromAuth,
 } from "../../utils/firebase";
 
 /** Components */
@@ -25,19 +25,18 @@ const Auth = ({ t }) => {
      * Get Redirect Response
      */
     const getRedirect = async () => {
-        const response = await getRedirectResult(auth);
-        if (response) {
-            const { user } = response;
-            await createUserDocFromAuth(user);
-        }
+        await getRedirectResult(auth);
     }
+
+    const navigate = useNavigate();
+    const goToHome = () => navigate('/');
 
     /**
      * Sign In With "Google"
      */
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocFromAuth(user);
+        await signInWithGooglePopup();
+        goToHome();
     };
 
     return (

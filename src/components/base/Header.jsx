@@ -34,7 +34,7 @@ const Header = ({
     const { pathname } = useLocation();
     const inCatalog = pathname === '/';
 
-    const { user, userData, setUser, setUserData } = useContext(UserContext);
+    const { user, userData } = useContext(UserContext);
     console.log('userData', userData);
     // const { catalog } = userData;
     // const { settings } = userData;
@@ -51,20 +51,6 @@ const Header = ({
     const handlerSignOut = async () => {
         try {
             await signOutUser();
-            setUser(null);
-            setUserData({
-                displayName: null,
-                email: null,
-                phone: null,
-                settings: {
-                    theme: null,
-                    lang: null,
-                },
-                catalog: {
-                    marked: [],
-                    sortDirection: 0,
-                },
-            });
         } catch (error) {
             console.error(error);
         }

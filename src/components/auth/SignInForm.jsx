@@ -1,5 +1,8 @@
 import { withTranslation } from 'react-i18next';
-import { useState, useContext } from "react";
+import {
+    useState,
+    // useContext,
+} from "react";
 import { useNavigate } from 'react-router-dom';
 
 /** Components */
@@ -13,11 +16,8 @@ import {
 } from "../../utils/firebase";
 
 /** Contexts */
-import { UserContext } from '../../context/user.context';
 
 const SignInForm = ({ t }) => {
-    const { userData, setUser, setUserData } = useContext(UserContext);
-
     const [formIn, setFormIn] = useState({
         email: '',
         password: '',
@@ -66,19 +66,12 @@ const SignInForm = ({ t }) => {
         if (!email || !password) return;
 
         try {
-            const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+            await signInAuthUserWithEmailAndPassword(email, password);
             setAlertProps({
                 show: true,
                 type: 'success',
                 message: 'U have successfully signed in!',
             });
-            setUserData({
-                ...userData,
-                displayName: user.displayName,
-                email: user.email,
-                phone: user.phone,
-            });
-            setUser(user);
             resetFormIn();
             goToHome();
         } catch (error) {
