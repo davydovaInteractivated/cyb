@@ -23,6 +23,13 @@
                 "placeholder": "search"
             }
         },
+        "select" : {
+            "placeholder" : {
+                "employees" : "the number of employees",
+                "hours" : "hours spent per day",
+                "consult" : "include consultations"
+            }
+        },
         "button" : {
             "card": {
                 "text": "more",
@@ -32,7 +39,7 @@
     },
     "cube": {
         "side": {
-            "support": "suppurt",
+            "support": "support",
             "soft": "soft",
             "mobile": "mobile",
             "app": "app",
@@ -66,5 +73,11 @@
             "signUp": "sign up",
             "signInWith": "sign in with"
         }
-    }
+    },
+    "calculate" : {
+        "title" : "pre-calculate your personal",
+        "service" : "service"
+    },
+    "addtocart" : "add to cart",
+    "total" : "total"
 }

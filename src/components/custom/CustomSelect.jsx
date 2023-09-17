@@ -4,6 +4,8 @@ import { useState } from "react";
 import CustomInput from "./CustomInput"
 
 const CustomSelect = ({
+    placeholder = 'select',
+    className,
     items = [],
     key = 'id',
     name = 'name',
@@ -61,10 +63,10 @@ const CustomSelect = ({
     };
 
     return (
-        <div className="custom--select">
+        <div className={`custom--select ${className}`}>
             <CustomInput
                 type="search"
-                placeholder="select opportunity"
+                placeholder={placeholder}
                 value={selectValue}
                 onChange={onChangeHandler}
                 onFocus={onFocusHandler}
