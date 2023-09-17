@@ -8,6 +8,8 @@ const CustomInput = forwardRef(({
     value='',
     required=false,
     onChange,
+    onFocus,
+    onBlur,
 }, ref) => {
     return (
         <input
@@ -18,6 +20,8 @@ const CustomInput = forwardRef(({
             value={value}
             required={required}
             onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
         />
     );
 });

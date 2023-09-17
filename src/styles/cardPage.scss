@@ -31,9 +31,14 @@
         width: 24px;
         height: 24px;
         cursor: pointer;
+        transition: opacity .2s ease;
         
         &.active {
             fill: var(--color-dark);
+        }
+
+        &:hover {
+            opacity: .6;
         }
     }
 }

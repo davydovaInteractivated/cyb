@@ -13,6 +13,7 @@ import Auth from './routes/auth/Auth';
 import Contacts from './routes/contacts/Contacts';
 import Faq from './routes/faq/Faq';
 import NoMatch from './routes/NoMatch';
+import Calculate from './routes/calculate/Calculate';
 
 /** Api */
 import { cards } from './api/cards';
@@ -151,6 +152,7 @@ const App = () => {
         <Route path='contacts' element={<Contacts />} />
         <Route path='faq' element={<Faq />} />
         <Route path=':id' element={<Card />} />
+        <Route path=':id/calculate' element={<Calculate />} />
 
         <Route path='*' element={<NoMatch />} />
       </Route>

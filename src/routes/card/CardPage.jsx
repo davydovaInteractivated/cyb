@@ -3,6 +3,7 @@ import { withTranslation } from 'react-i18next';
 import {
     Link,
     useParams,
+    useNavigate,
 } from 'react-router-dom';
 
 /** Styles */
@@ -31,6 +32,9 @@ const CardPage = ({ t }) => {
 
     const currentCard = getActiveCard(+id);
 
+    const navigate = useNavigate();
+    const goToCalculate = () => navigate(`/${id}/calculate`);
+
     return (
         <div className='card--page'>
             <div className='flex justify-space-b'>
@@ -43,7 +47,7 @@ const CardPage = ({ t }) => {
                         />
                         <CalculatorIcon
                             className='card--page__icon'
-                            // onClick={}
+                            onClick={goToCalculate}
                         />
                     </div>
                 </div>
