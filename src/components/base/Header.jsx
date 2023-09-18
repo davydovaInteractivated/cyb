@@ -1,9 +1,12 @@
 import { useContext } from 'react';
-import { UserContext } from '../../context/user.context';
 import { withTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation, useLinkClickHandler } from 'react-router-dom';
 
 import { signOutUser } from '../../utils/firebase';
+
+/** Contexts */
+import { UserContext } from '../../context/user.context';
+import { ServicesContext } from '../../context/services.context';
 
 /** Styles */
 import '../../styles/header.scss'
@@ -20,32 +23,27 @@ import {
 import CustomInput from '../custom/CustomInput';
 import CustomButton from '../custom/CustomButton';
 
-const Header = ({
-    sortDirection,
-    showMarked,
-    markedCount,
-    searchValue,
-    search,
-    sort,
-    setMarkedShow,
-    t,
-}) => {
+const Header = ({ t }) => {
     console.log('Header render');
     const { pathname } = useLocation();
-    const inCatalog = pathname === '/';
+    const atHome = pathname === '/';
 
-    const { user, userData } = useContext(UserContext);
-    console.log('userData', userData);
-    // const { catalog } = userData;
-    // const { settings } = userData;
-    // const { marked } = catalog;
-    // const { sortDirection } = settings;
+    const user = useContext(UserContext);
+    const {
+        sortDirection,
+        showMarked,
+        markedCount,
+        searchValue,
+        search,
+        sort,
+        setMarkedShow,
+    } = useContext(ServicesContext);
 
     const goHome = useLinkClickHandler('/');
 
     const goToMarkedPage = (e) => {
         setMarkedShow(e);
-        if (!inCatalog) goHome(e);
+        if (!atHome) goHome(e);
     };
 
     const handlerSignOut = async () => {
@@ -80,15 +78,15 @@ const Header = ({
                                 <NavLink
                                     to='/'
                                     className={({ isActive }) => isActive ? "active" : ""}
-                                >{t('header.menu.catalog')}</NavLink></li>
+                                >{t('header.menu.services')}</NavLink></li>
                         </ul>
                     </nav>
-                    {inCatalog && <BookmarkIcon
+                    {atHome && <BookmarkIcon
                         className={showMarked ? "header--icons__icon active" : "header--icons__icon"}
                         onClick={goToMarkedPage}
                     />}
-                    {inCatalog && Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
-                    {inCatalog && <div className='header--search'>
+                    {atHome && Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
+                    {atHome && <div className='header--search'>
                         <CustomInput
                             placeholder={t('custom.input.search.placeholder')}
                             value={searchValue}
@@ -98,15 +96,15 @@ const Header = ({
                     </div>}
                     <div className="header--icons">
                         <ArrowsUpDownIcon
-                            className={!sortDirection && inCatalog ? "header--icons__icon" : "header--icons__icon none m-0"}
+                            className={!sortDirection && atHome ? "header--icons__icon" : "header--icons__icon none m-0"}
                             onClick={sort}
                         />
                         <BarsArrowDownIcon
-                            className={sortDirection > 0 && inCatalog ? "header--icons__icon active" : "header--icons__icon none m-0"}
+                            className={sortDirection > 0 && atHome ? "header--icons__icon active" : "header--icons__icon none m-0"}
                             onClick={sort}
                         />
                         <BarsArrowUpIcon
-                            className={sortDirection < 0 && inCatalog ? "header--icons__icon active" : "header--icons__icon none m-0"}
+                            className={sortDirection < 0 && atHome ? "header--icons__icon active" : "header--icons__icon none m-0"}
                             onClick={sort}
                         />
                     </div>

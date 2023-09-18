@@ -4,6 +4,7 @@ import App from './App';
 
 /** Contexts */
 import { UserContextProvider } from './context/user.context';
+import { ServicesContextProvider } from './context/services.context';
 
 /** Router */
 import { BrowserRouter } from 'react-router-dom';
@@ -39,7 +40,9 @@ root.render(
     <I18nextProvider i18n={i18next}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <UserContextProvider>
-          <App/>
+          <ServicesContextProvider>
+            <App/>
+          </ServicesContextProvider>
         </UserContextProvider>
       </BrowserRouter>
     </I18nextProvider>

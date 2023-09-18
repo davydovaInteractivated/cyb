@@ -1,6 +1,6 @@
 @import './_variables.css';
 
-.card--page {
+.service--page {
     &__title {
         margin-bottom: 1em;
     }
@@ -8,8 +8,8 @@
     &__reference {
         margin-bottom: 2em;
 
-        .card--refs__link {
-            .card--refs__img {
+        .service--refs__link {
+            .service--refs__img {
                 height: 180px;
             }
         }
@@ -26,6 +26,8 @@
             margin-left: 1em;
         }
     }
+
+    &__icon { margin-bottom: 1em; }
 
     &__icon {
         width: 24px;

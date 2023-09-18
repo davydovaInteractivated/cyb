@@ -10,15 +10,9 @@ import '../styles/app.scss';
 import Header from './base/Header';
 import Aside from './base/Aside';
 
-const Home = ({
-  sortDirection,
-  showMarked,
-  markedCount,
-  searchValue,
-  search,
-  sort,
-  setMarkedShow,
-}) => {
+const Home = () => {
+  console.log('Home render');
+
   const [isShowSettings, setIsShowSettings] = useState(false);
   const [activeTheme, setActiveTheme] = useState('transfile');
   const [activeLang, setActiveLang] = useState('en');
@@ -62,15 +56,7 @@ const Home = ({
   return (
     <div className="app">
       <div className="app--wrapper flex f-col">
-        <Header
-          sortDirection={sortDirection}
-          showMarked={showMarked}
-          markedCount={markedCount}
-          searchValue={searchValue}
-          search={search}
-          sort={sort}
-          setMarkedShow={setMarkedShow}
-          />
+        <Header />
 
         <div className="flex justify-space-b">
           <Aside

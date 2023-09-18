@@ -1,4 +1,4 @@
-export const cards = [
+export const servicesData = [
     {
         id: 1,
         title: 'e-commerce',

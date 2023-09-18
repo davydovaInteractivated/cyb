@@ -1,17 +1,17 @@
 /** Styles */
-import '../../styles/cardRefs.scss';
+import '../../styles/serviceRefs.scss';
 
-const CardReference = ({ refs, alt }) => {
+const ServiceReference = ({ refs, alt }) => {
     return (
         refs.map((ref) => 
-            <a className="card--refs__link"
+            <a className="service--refs__link"
                 key={ref.url}
                 href={ref.url}
                 target="_blank"
                 rel="noreferrer"
             >
                 <img
-                    className="card--refs__img w-100"
+                    className="service--refs__img w-100"
                     src={require(`../../assets/${ref.src}`)}
                     alt={alt}
                 />
@@ -20,4 +20,4 @@ const CardReference = ({ refs, alt }) => {
     );
 };
 
-export default CardReference;
+export default ServiceReference;

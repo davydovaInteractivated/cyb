@@ -2,7 +2,7 @@ import { withTranslation } from 'react-i18next';
 import { useParams, Link } from "react-router-dom";
 
 /** Api */
-import { cards } from '../../api/cards';
+import { servicesData } from '../../api/services';
 
 /** Components */
 import CustomSelect from "../../components/custom/CustomSelect";
@@ -20,7 +20,7 @@ const Calculate = ({ t }) => {
     const { id } = useParams();
 
     const getActiveCard = (cardId) => {
-        return cards
+        return servicesData
             .find((crd) => crd.id === cardId);
     };
 

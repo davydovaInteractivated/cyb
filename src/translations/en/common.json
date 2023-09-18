@@ -10,7 +10,7 @@
     "header": {
         "logo": "web studio",
         "menu": {
-            "catalog": "catalog",
+            "services": "services",
             "contacts": "contacts",
             "faq": "FAQ",
             "auth": "sign in / sign up",

@@ -82,7 +82,7 @@ export const createUserDocFromAuth = async (userAuth, userInfo) => {
  * Create Auth User With Email And Password
  * @param {*} email
  * @param {*} password
- * @returns respponse
+ * @returns response
  */
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
