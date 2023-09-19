@@ -18,6 +18,10 @@ import {
     getFirestore,
     doc,
     getDoc, setDoc,
+    collection,
+    writeBatch,
+    query,
+    getDocs,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -41,6 +45,38 @@ googleProvider.setCustomParameters({
 
 export const auth = getAuth();
 export const db = getFirestore();
+
+/**
+ * Add new Collection
+ * @param {*} collectionKey
+ * @param {*} objectsToAdd
+ * @param {string} field
+ */
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd, field = 'title') => {
+    const collectionRef = collection(db, collectionKey);
+    const batch = writeBatch(db);
+
+    objectsToAdd
+        .forEach((obj) => {
+            const docRef = doc(collectionRef, obj[field].toLowerCase());
+            batch.set(docRef, obj);
+        });
+
+    await batch.commit();
+};
+
+/**
+ * Get Collection
+ * @param {string} collectionKey
+ */
+export const getCollection = async (collectionKey) => {
+    const collectionRef = collection(db, collectionKey);
+    const q = query(collectionRef);
+    const querySnapshot = await getDocs(q);
+
+    return await querySnapshot.docs
+        .map((snapShot) => snapShot.data());
+};
 
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);

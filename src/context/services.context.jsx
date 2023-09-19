@@ -1,7 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+
+/** Utils */
+import {
+    // addCollectionAndDocuments,
+    getCollection,
+} from "../utils/firebase";
 
 /** Api */
-import { servicesData } from '../api/services';
+// import { servicesData } from '../api/services';
 
 export const ServicesContext = createContext({
     services: [],
@@ -14,21 +20,29 @@ export const ServicesContext = createContext({
 });
 
 export const ServicesContextProvider = ({ children }) => {
-    const [services, setServices] = useState(servicesData);
-    const [filteredServices, setFilteredServices] = useState(servicesData);
+    const [services, setServices] = useState([]);
+    const [filteredServices, setFilteredServices] = useState([]);
     const [activeService, setActiveService] = useState(null);
     const [showMarked, setShowMarked] = useState(false);
     const [markedCount, setMarkedCount] = useState(0);
     const [sortDirection, setSortDirection] = useState(0);
     const [searchValue, setSearchValue] = useState('');
 
-    /** ~ DidMount Hook */
-    // useEffect(() => {
-    //   setTimeout(() =>{
-    //     setServices(servicesData);
-    //     setFilteredServices(servicesData);
-    //   }, 320);
-    // }, []);
+    /**
+     * Get Services
+     */
+    const getServices = async () => {
+        const data = await getCollection('services');
+        console.log('services data', data);
+
+        setServices(data);
+        setFilteredServices(data);
+    };
+
+    useEffect(() => {
+        // addCollectionAndDocuments('services', servicesData);
+        getServices();
+    }, []);
 
     /**
      * Mark Service
@@ -129,6 +143,14 @@ export const ServicesContextProvider = ({ children }) => {
         setFilteredServices(filteredServices);
     };
 
+    /**
+     * Get Service
+     * @param {string} id 
+     * @returns 
+     */
+    const getService = (Id) => services
+        .find((serv) => serv.id === Id) || null;
+
     const value = {
         services,
         setServices,
@@ -148,6 +170,7 @@ export const ServicesContextProvider = ({ children }) => {
         setMarkedShow,
         search,
         sort,
+        getService,
     };
 
     return (

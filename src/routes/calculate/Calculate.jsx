@@ -1,8 +1,6 @@
 import { withTranslation } from 'react-i18next';
 import { useParams, Link } from "react-router-dom";
-
-/** Api */
-import { servicesData } from '../../api/services';
+import { useContext } from 'react';
 
 /** Components */
 import CustomSelect from "../../components/custom/CustomSelect";
@@ -16,22 +14,29 @@ import employees from "../../api/employees.json";
 import hours from "../../api/hours.json";
 import consult from "../../api/consult.json";
 
+/** Contexts */
+import { ServicesContext } from '../../context/services.context';
+
 const Calculate = ({ t }) => {
-    const { id } = useParams();
+    const {
+        activeService,
+        getService,
+    } = useContext(ServicesContext);
 
-    const getActiveCard = (cardId) => {
-        return servicesData
-            .find((crd) => crd.id === cardId);
-    };
+    const { id } = activeService || {};
+    const { serviceId } = useParams();
 
-    const currentCard = getActiveCard(+id);
+    const Id = id || serviceId || null;
+
+    const currentService = activeService || getService(Id) || null;
+    const { title } = currentService || {};
 
     return (
-        <div className="calculate--page w-100">
+        currentService && <div className="calculate--page w-100">
             <h2 className="calculate--page__title">
                 {t('calculate.title')}&nbsp;
-                <Link to={`/${id}`}>
-                    <span style={{textDecoration: 'underline'}}>{currentCard?.title}</span>
+                <Link to={`/${Id}`}>
+                    <span style={{textDecoration: 'underline'}}>{title}</span>
                 </Link>&nbsp;
                 {t('calculate.service')}
             </h2>

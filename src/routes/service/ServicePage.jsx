@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import {
     Link,
     useNavigate,
+    useParams,
 } from 'react-router-dom';
 
 /** Styles */
@@ -22,33 +23,43 @@ import {
 import { ServicesContext } from '../../context/services.context';
 
 const ServicePage = ({ t }) => {
-    console.log('service page render');
+    console.log('Service Page render');
 
     const {
         activeService,
         markService,
+        getService,
     } = useContext(ServicesContext);
 
     const {
         id,
+    } = activeService || {};
+
+    const { serviceId } = useParams();
+
+    const Id = id || serviceId || null;
+
+    const currentService = activeService || getService(Id) || null;
+
+    const {
         is_marked,
         title,
         references,
         description,
-    } = activeService;
+    } = currentService || {};
 
     const navigate = useNavigate();
-    const goToCalculate = () => navigate(`/${id}/calculate`);
+    const goToCalculate = () => navigate(`/${Id}/calculate`);
 
     return (
-        <div className='service--page'>
+        currentService && <div className='service--page'>
             <div className='flex justify-space-b'>
                 <div className='flex f-col'>
                     <h2 className='service--page__title'>{title || ''}</h2>
                     <div className='service--page__icons flex gap'>
                         <BookmarkIcon
                             className={is_marked ? 'service--page__icon active' : 'service--page__icon'}
-                            onClick={() => markService(!is_marked, id)}
+                            onClick={() => markService(!is_marked, Id)}
                         />
                         <CalculatorIcon
                             className='service--page__icon'
