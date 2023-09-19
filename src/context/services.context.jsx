@@ -3,7 +3,15 @@ import { createContext, useState } from "react";
 /** Api */
 import { servicesData } from '../api/services';
 
-export const ServicesContext = createContext({});
+export const ServicesContext = createContext({
+    services: [],
+    filteredServices: [],
+    activeService: null,
+    sortDirection: 0,
+    searchValue: '',
+    showMarked: false,
+    markedCount: 0,
+});
 
 export const ServicesContextProvider = ({ children }) => {
     const [services, setServices] = useState(servicesData);

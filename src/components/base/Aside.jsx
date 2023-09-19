@@ -1,12 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useTranslation, withTranslation } from 'react-i18next';
 
 /** Styles */
 import '../../styles/aside.scss';
-
-/** Api */
-import { themes } from '../../api/themes';
-import { langs } from '../../api/lang';
 
 /** Icons */
 import {
@@ -17,15 +13,10 @@ import {
 import AsideSetting from '../aside/AsideSetting';
 import AsideCube from '../aside/AsideCube';
 
-const Aside = ({
-    isShowSettings,
-    activeTheme,
-    activeLang,
-    showSettings,
-    selectTheme,
-    selectLang,
-    t,
-}) => {
+/** Contexts */
+import { SettingsContext } from '../../context/settings.context';
+
+const Aside = ({ t }) => {
     const { i18n } = useTranslation('common');
     const [cubeData] = useState([{
         name: 'tech',
@@ -46,6 +37,17 @@ const Aside = ({
         name: 'support',
         class: 'aside--cube__side-front',
     }]);
+
+    const {
+        themes,
+        langs,
+        isShowSettings,
+        activeTheme,
+        activeLang,
+        selectLang,
+        selectTheme,
+        showSettings,
+    } = useContext(SettingsContext);
 
     return (
         <div className="aside">

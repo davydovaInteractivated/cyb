@@ -5,6 +5,7 @@ import App from './App';
 /** Contexts */
 import { UserContextProvider } from './context/user.context';
 import { ServicesContextProvider } from './context/services.context';
+import { SettingsContextProvider } from './context/settings.context';
 
 /** Router */
 import { BrowserRouter } from 'react-router-dom';
@@ -41,7 +42,9 @@ root.render(
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <UserContextProvider>
           <ServicesContextProvider>
-            <App/>
+            <SettingsContextProvider>
+              <App/>
+            </SettingsContextProvider>
           </ServicesContextProvider>
         </UserContextProvider>
       </BrowserRouter>
