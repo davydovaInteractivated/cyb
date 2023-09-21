@@ -13,7 +13,7 @@ export const ServicesContext = createContext({
     services: [],
     filteredServices: [],
     activeService: null,
-    sortDirection: 0,
+    sortDirection: 1,
     searchValue: '',
     showMarked: false,
     markedCount: 0,
@@ -25,7 +25,7 @@ export const ServicesContextProvider = ({ children }) => {
     const [activeService, setActiveService] = useState(null);
     const [showMarked, setShowMarked] = useState(false);
     const [markedCount, setMarkedCount] = useState(0);
-    const [sortDirection, setSortDirection] = useState(0);
+    const [sortDirection, setSortDirection] = useState(1);
     const [searchValue, setSearchValue] = useState('');
 
     /**
