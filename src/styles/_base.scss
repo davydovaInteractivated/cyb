@@ -3,11 +3,6 @@
 body {
     margin: 0;
     padding: 0;
-
-    background: var(--color-dark);
-    background: -webkit-linear-gradient(to right, var(--color-light), var(--color-dark));
-    background: linear-gradient(to right, var(--color-light), var(--color-dark));
-
     font-size: 16px;
     font-weight: 200;
     font-family: 'Poppins', sans-serif;

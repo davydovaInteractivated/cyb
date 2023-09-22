@@ -64,11 +64,11 @@ const Aside = ({ t }) => {
                     <h3 className='aside--settings__title'>{t('settings.theme')}</h3>
                     <div className="flex f-col">
                         {
-                            themes.map((theme) =>
+                            Object.values(themes).map((theme) =>
                                 <AsideSetting
                                     key={theme.name}
                                     item={theme}
-                                    activeItem={activeTheme}
+                                    activeItem={activeTheme.name}
                                     selectItem={selectTheme}
                                 />
                             )

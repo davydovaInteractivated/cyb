@@ -7,13 +7,13 @@ import { langs } from '../api/lang';
 export const SettingsContext = createContext({
     themes,
     langs,
-    theme: 'transfile',
+    theme: themes.transfile,
     lang: 'en',
 });
 
 export const SettingsContextProvider = ({ children }) => {
     const [isShowSettings, setIsShowSettings] = useState(false);
-    const [activeTheme, setActiveTheme] = useState('transfile');
+    const [activeTheme, setActiveTheme] = useState(themes.transfile);
     const [activeLang, setActiveLang] = useState('en');
 
     /**
@@ -24,25 +24,21 @@ export const SettingsContextProvider = ({ children }) => {
         setIsShowSettings(newIsShowSettings);
     };
 
+    // interface ITheme = {
+    //     colors: {
+    //         light: string,
+    //         dark: string,
+    //         font: string,
+    //         fontInverted: string,
+    //     },
+    //     name: string,
+    // };
+
     /**
      * Select Main app. Theme
      * @param {*} param0
      */
-    const selectTheme = ({ colors, name }) => {
-        const [ body ] = document.getElementsByTagName('body');
-        if (!body) return;
-
-        const {
-            light, dark, font, fontInverted,
-        } = colors;
-
-        body.style.setProperty('--color-light', light);
-        body.style.setProperty('--color-dark', dark);
-        body.style.setProperty('--main-font', font);
-        body.style.setProperty('--main-font-inverted', fontInverted);
-
-        setActiveTheme(name);
-    };
+    const selectTheme = (theme) => setActiveTheme(theme);
 
     /**
      * Select Main app. Language
