@@ -136,7 +136,7 @@ const SignUpForm = ({ t }) => {
                 onChange={(event) => handleFormUpChange(event)}
             />
             <div className="auth--form__submit">
-                <CustomButton type="submit" text={t('form.button.signUp')} />
+                <CustomButton type="submit">{t('form.button.signUp')}</CustomButton>
             </div>
 
             <CustomAlert

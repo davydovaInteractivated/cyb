@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { withTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation, useLinkClickHandler } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { signOutUser } from '../../utils/firebase';
 
@@ -22,6 +23,18 @@ import {
 /** Components */
 import CustomInput from '../custom/CustomInput';
 import CustomButton from '../custom/CustomButton';
+
+const CustomAvatarStyled = styled.div`
+    height: 3em;
+    width: 3em;
+    background: var(--color-light);
+    border-radius: var(--main-border-radius);
+    opacity: .8;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
 const Header = ({ t }) => {
     console.log('Header render');
@@ -110,27 +123,25 @@ const Header = ({ t }) => {
                     </div>
                     <ul className="header--menu__list flex align-center">
                         {user && <li className="header--menu__list-item right cursor-default">
-                            <div className='custom--avatar font-inverted'>{
+                            <CustomAvatarStyled className='font-inverted'>{
                                 user.displayName
                                     ? user.displayName.substr(0, 2).toUpperCase()
                                     : user.email.substr(0, 2).toUpperCase()
-                            }</div>
+                            }</CustomAvatarStyled>
                         </li>}
                         {user
                             ? <li className="header--menu__list-item right">
                                 <CustomButton
                                     small
-                                    text={t('header.menu.signOut')}
                                     onClick={handlerSignOut}
-                                /></li>
+                                >{t('header.menu.signOut')}</CustomButton></li>
                             : <li className="header--menu__list-item right">
                                 <NavLink
                                     to='/auth'
                                 >
                                     <CustomButton
                                         small
-                                        text={t('header.menu.auth')}
-                                    />
+                                    >{t('header.menu.auth')}</CustomButton>
                                 </NavLink></li>
                         }
                     </ul>

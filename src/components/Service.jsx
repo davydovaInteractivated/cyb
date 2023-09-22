@@ -45,9 +45,8 @@ const Service = ({ service, index, t }) => {
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
                     <Link to={`/${id}`}>
                         <CustomButton
-                            text={t('custom.button.card.text')}
                             onClick={() => setActiveService(service)}
-                        />
+                        >{t('custom.button.card.text')}</CustomButton>
                     </Link>
                     <BookmarkIcon onClick={() => markService(!is_marked, id)} className={is_marked ? "card--wrapper__bookmark marked" : "card--wrapper__bookmark"}/>
                 </div>

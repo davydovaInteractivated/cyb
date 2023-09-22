@@ -67,7 +67,7 @@ const Contacts = ({ t }) => {
                     placeholder={t('form.input.placeholder.email')}
                     onChange={(e) => setMail(e.target.value)}
                 />
-                <CustomButton className="contacts--form__submit" text={t('form.button.send')} onClick={send}/>
+                <CustomButton className="contacts--form__submit" onClick={send}>{t('form.button.send')}</CustomButton>
             </form>
             <div className="contacts--map flex gap f-col">
                 <div className="contacts--address flex gap f-col">

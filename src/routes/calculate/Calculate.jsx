@@ -67,9 +67,7 @@ const Calculate = ({ t }) => {
 
                 <div className="calculate--page__form-item flex gap-2 align-center justify-end">
                     <strong>{t('total')}:&nbsp;&nbsp;~&nbsp;${520}</strong>
-                    <CustomButton
-                        text={t('addtocart')}
-                    />
+                    <CustomButton>{t('addtocart')}</CustomButton>
                 </div>
             </div>
         </div>
