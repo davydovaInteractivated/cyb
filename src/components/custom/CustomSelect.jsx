@@ -1,19 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /** Components */
 import CustomInput from "./CustomInput"
 
 const CustomSelect = ({
+    value = null,
     placeholder = 'select',
     className,
     items = [],
     key = 'id',
     name = 'name',
+    returnObject = true,
+    onChange,
 }) => {
     const [selectItems, setSelectItems] = useState(items);
     const [selectValue, setSelectValue] = useState('');
     const [selectOption, setSelectOption] = useState(null);
     const [showOptions, setShowOptions] = useState(false);
+
+    useEffect(() => {
+        if (value) setSelectValue(value);
+    }, [value]);
 
     /**
      * On Custom Input Change Handler
@@ -60,6 +67,8 @@ const CustomSelect = ({
 
         setSelectOption(option);
         setSelectValue(option.name);
+
+        onChange(returnObject ? option : option.name);
     };
 
     return (

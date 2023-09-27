@@ -2,13 +2,13 @@ import { withTranslation } from 'react-i18next';
 import { useContext } from 'react';
 
 /** Styles */
-import '../styles/services.scss';
+import '../../styles/services.scss';
 
 /** Components */
-import Service from './Service';
+import Service from '../../components/services/Service';
 
 /** Contexts */
-import { ServicesContext } from '../context/services.context';
+import { ServicesContext } from '../../context/services.context';
 
 const Services = ({ t }) => {
     console.log('Services list render');

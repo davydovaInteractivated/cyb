@@ -1,21 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import { useContext } from 'react';
 
 /** Styles */
-import '../styles/card.scss';
+import '../../styles/card.scss';
 
 /** Icons */
 import {
     BookmarkIcon,
+    CalculatorIcon,
 } from '@heroicons/react/24/solid';
 
 /** Components */
-import CustomButton from './custom/CustomButton';
-import ServiceReference from './service/ServiceReference';
+import CustomButton from '../custom/CustomButton';
+import ServiceReference from '../service/ServiceReference';
 
 /** Contexts */
-import { ServicesContext } from '../context/services.context';
+import { ServicesContext } from '../../context/services.context';
 
 const Service = ({ service, index, t }) => {
     console.log('Service card render');
@@ -29,6 +30,9 @@ const Service = ({ service, index, t }) => {
         references,
         is_marked,
     } = service;
+
+    const navigate = useNavigate();
+    const goToCalculate = () => navigate(`/${id}/calculate`);
 
     return (
         <div className="card">
@@ -49,7 +53,13 @@ const Service = ({ service, index, t }) => {
                             onClick={() => setActiveService(service)}
                         />
                     </Link>
-                    <BookmarkIcon onClick={() => markService(!is_marked, id)} className={is_marked ? "card--wrapper__bookmark marked" : "card--wrapper__bookmark"}/>
+                    <div className='flex gap'>
+                        <BookmarkIcon onClick={() => markService(!is_marked, id)} className={is_marked ? "card--wrapper__icon card--wrapper__icon-bookmark marked" : "card--wrapper__icon card--wrapper__icon-bookmark"}/>
+                        <CalculatorIcon
+                            className='card--wrapper__icon'
+                            onClick={goToCalculate}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

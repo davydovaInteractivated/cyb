@@ -1,0 +1,26 @@
+.case {
+    max-height: 246px;
+    border: 2px solid var(--main-font);
+    border-radius: var(--main-border-radius);
+    padding: 1.4em;
+
+    &--title {
+        margin-bottom: 1em;
+    }
+
+    &--delete {
+        &__icon {
+            width: 24px;
+            cursor: pointer;
+            transition: opacity .2s ease;
+
+            &:hover {
+                opacity: .6;
+            }
+        }
+    }
+
+    &--total {
+        justify-self: end;
+    }
+}

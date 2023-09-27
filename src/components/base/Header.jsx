@@ -7,6 +7,7 @@ import { signOutUser } from '../../utils/firebase';
 /** Contexts */
 import { UserContext } from '../../context/user.context';
 import { ServicesContext } from '../../context/services.context';
+import { CasesContext } from '../../context/cases.context';
 
 /** Styles */
 import '../../styles/header.scss'
@@ -17,6 +18,7 @@ import {
     ArrowsUpDownIcon,
     BarsArrowDownIcon,
     BarsArrowUpIcon,
+    BriefcaseIcon,
 } from '@heroicons/react/24/solid';
 
 /** Components */
@@ -27,6 +29,7 @@ const Header = ({ t }) => {
     console.log('Header render');
     const { pathname } = useLocation();
     const atHome = pathname === '/';
+    const onCases = pathname === '/cases';
 
     const user = useContext(UserContext);
     const {
@@ -38,6 +41,7 @@ const Header = ({ t }) => {
         sort,
         setMarkedShow,
     } = useContext(ServicesContext);
+    const { cases } = useContext(CasesContext); 
 
     const goHome = useLinkClickHandler('/');
 
@@ -133,6 +137,12 @@ const Header = ({ t }) => {
                                     />
                                 </NavLink></li>
                         }
+                        <li className="header--menu__list-item right">
+                            <NavLink to='/cases'>
+                                <BriefcaseIcon className={onCases ? 'header--icons__icon active' : 'header--icons__icon'} />
+                            </NavLink>
+                            {Boolean(cases.length) && <sub className='header--cases-count'>{cases.length}</sub>}
+                        </li>
                     </ul>
                 </div>
             </div>

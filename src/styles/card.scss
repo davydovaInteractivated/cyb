@@ -33,15 +33,23 @@
             overflow: hidden;
         }
 
-        &__bookmark {
+        &__icon {
             height: 24px;
             cursor: pointer;
-            fill: var(--color-dark);
-            stroke: var(--main-font);
+            transition: opacity .3s ease;
 
-            &.marked {
-                fill: var(--color-light);
-                stroke: none;
+            &:hover {
+                opacity: .6;
+            }
+
+            &-bookmark {
+                fill: var(--color-dark);
+                stroke: var(--main-font);
+    
+                &.marked {
+                    fill: var(--color-light);
+                    stroke: none;
+                }
             }
         }
 
