@@ -46,6 +46,8 @@ const CustomAlert = ({
     }, [top, left, right, bottom]);
 
     useEffect(() => {
+        if (!setShow) return;
+
         setShow(show);
 
         if (show && hideDelay) {

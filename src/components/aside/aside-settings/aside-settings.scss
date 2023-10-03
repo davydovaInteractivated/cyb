@@ -1,0 +1,46 @@
+.aside--settings {
+    bottom: -.6em;
+    left: -1.4em;
+    background-color: var(--color-dark);
+    border-radius: var(--main-border-radius);
+    padding: 1em 1em 1em 2em;
+    z-index: -1;
+    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: all .2s ease;
+    z-index: 99;
+
+    &__title {
+        user-select: none;
+    }
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    &.active {
+        opacity: 1;
+        left: -.6em;
+    }
+
+    &__item {
+        padding: 0.2em 0 0.2em 1em;
+        font-size: .8rem;
+        cursor: pointer;
+        user-select: none;
+        transition: opacity .2s ease;
+
+        &-color {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            border-radius: var(--main-border-radius);
+            margin-left: .28em;
+            border: var(--color-light) solid 1px;
+        }
+
+        &:hover {
+            opacity: .6;
+        }
+    }
+}

@@ -10,7 +10,7 @@ import {
 } from '@heroicons/react/24/solid';
 
 /** Components */
-import AsideSetting from '../aside/AsideSetting';
+import AsideSetting from '../aside/aside-settings/AsideSetting';
 import AsideCube from '../aside/AsideCube';
 
 /** Contexts */
