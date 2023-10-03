@@ -1,7 +1,10 @@
 import { withTranslation } from 'react-i18next';
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRedirectResult } from "firebase/auth";
+
+/** Contexts */
+import { AlertContext } from '../../context/alert.context';
 
 import {
     auth,
@@ -22,6 +25,12 @@ const Auth = ({ t }) => {
         getRedirect();
     }, []);
 
+    const {
+        setShow,
+        setType,
+        setMessage,
+    } = useContext(AlertContext);
+
     /**
      * Get Redirect Response
      */
@@ -36,8 +45,27 @@ const Auth = ({ t }) => {
      * Sign In With "Google"
      */
     const signInWithGoogle = async () => {
-        await signInWithGooglePopup();
-        goToHome();
+        try {
+            await signInWithGooglePopup();
+
+            /** Set Alert props. */
+            setShow(true);
+            setType('success');
+            setMessage('U have successfully signed in with Google!');
+
+            goToHome();
+        } catch (error) {
+            console.error(error);
+
+            let message = '';
+            if (error.code === 'auth/email-already-in-use') message = 'Cannot create User. E-mail already in use.';
+            if (error.code === 'auth/weak-password') message = 'Password should be at least 6 characters.';
+
+            /** Set Alert props. */
+            setShow(true);
+            setType('error');
+            setMessage(message);
+        }
     };
 
     return (

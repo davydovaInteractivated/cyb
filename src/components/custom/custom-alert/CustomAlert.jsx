@@ -1,4 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+
+/** Contexts */
+import { AlertContext } from '../../../context/alert.context';
+
+/** Styles */
+import './custom-alert.scss';
 
 /** Constants */
 import { CUSTOM_ALERT_CLASSES_BY_TYPES } from '../../../constants/custom';
@@ -21,11 +27,12 @@ const CustomAlert = ({
     left = false,
     right = true,
     bottom = true,
-
-    hideAlert,
 }) => {
     const [positionsClasses, setPositionsClasses] = useState('');
-    const [showAlert, setShowAlert] = useState(show);
+
+    const {
+        setShow,
+    } = useContext(AlertContext);
 
     useEffect(() => {
         const positionsClasses = [];
@@ -39,19 +46,18 @@ const CustomAlert = ({
     }, [top, left, right, bottom]);
 
     useEffect(() => {
-        setShowAlert(show);
+        setShow(show);
 
         if (show && hideDelay) {
             setTimeout(() => {
-                hideAlert();
-                setShowAlert(false);
+                setShow(false);
             }, +hideDelay);
         }
-    }, [show, hideAlert]);
+    }, [show, setShow, hideDelay]);
 
-    return showAlert && (
+    return show && (
         <div
-            className={`custom--alert ${CUSTOM_ALERT_CLASSES_BY_TYPES[type]} ${positionsClasses} ${showAlert ? 'show' : 'hide'} flex f-col gap`}
+            className={`custom--alert ${CUSTOM_ALERT_CLASSES_BY_TYPES[type]} ${positionsClasses} ${show ? 'show' : 'hide'} flex f-col gap`}
         >
             <div className='flex gap align-center'>
                 {type === 'info' && <InformationCircleIcon className='custom--alert__icon' />}
