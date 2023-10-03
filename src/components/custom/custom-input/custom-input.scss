@@ -1,0 +1,40 @@
+.custom--input {
+    background: transparent;
+    border: 1px solid var(--main-font);
+    border-radius: var(--main-border-radius);
+    width: 18em;
+    height: 2em;
+    padding: 2em;
+    outline: none;
+    color: var(--main-font);
+
+    &__small {
+        font-size: .808rem;
+    }
+
+    &__large {
+        font-size: 1.12rem;
+    }
+
+    &__disabled {
+        opacity: .4;
+        cursor: default;
+        border-color: #7f7f7f;
+        color: #7f7f7f;
+        background: #acacac;
+    }
+
+    &::placeholder {
+        color: var(--main-font);
+    }
+
+    &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        height: 1em;
+        width: 1em;
+        cursor: pointer;
+        // background: url(../assets/icons/xmark-solid.svg) no-repeat 50% 50%;
+        background-size: contain;
+        transition: all .2s ease;
+    }
+}

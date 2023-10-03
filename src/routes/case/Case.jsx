@@ -13,6 +13,9 @@ import {
 /** Contexts */
 import { CasesContext } from '../../context/cases.context';
 
+/** Components */
+import CustomButton from '../../components/custom/custom-button/CustomButton';
+
 const Case = ({ caseItem, caseIndex, t }) => {
     const { title, data } = caseItem || {};
     const { cases, setCases } = useContext(CasesContext);
@@ -37,7 +40,12 @@ const Case = ({ caseItem, caseIndex, t }) => {
                         <span style={{textDecoration: 'underline'}}>{title}</span>&nbsp;
                     </Link>
                 } pre-calculate case</h2>
-                <XMarkIcon className='case--delete__icon' onClick={() => deleteCase()}/>
+                <CustomButton
+                    icon
+                    onClick={() => deleteCase()}
+                >
+                    <XMarkIcon className='case--delete__icon' />
+                </CustomButton>
             </div>
             <div className='case--content grid gap'>
                 {

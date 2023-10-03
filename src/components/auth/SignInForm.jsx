@@ -6,9 +6,9 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 /** Components */
-import CustomInput from "../custom/CustomInput";
-import CustomButton from "../custom/CustomButton";
-import CustomAlert from '../custom/CustomAlert';
+import CustomInput from "../custom/custom-input/CustomInput";
+import CustomButton from "../custom/custom-button/CustomButton";
+import CustomAlert from '../custom/custom-alert/CustomAlert';
 
 /** Utils */
 import {
@@ -121,7 +121,7 @@ const SignInForm = ({ t }) => {
                 onChange={(event) => handleFormInChange(event)}
             />
             <div className="auth--form__submit">
-                <CustomButton type="submit" text={t('form.button.signIn')} />
+                <CustomButton type="submit">{t('form.button.signIn')}</CustomButton>
             </div>
 
             <CustomAlert

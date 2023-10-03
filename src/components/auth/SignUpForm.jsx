@@ -2,9 +2,9 @@ import { withTranslation } from 'react-i18next';
 import { useState } from "react";
 
 /** Components */
-import CustomInput from "../custom/CustomInput";
-import CustomButton from "../custom/CustomButton";
-import CustomAlert from '../custom/CustomAlert';
+import CustomInput from "../custom/custom-input/CustomInput";
+import CustomButton from "../custom/custom-button/CustomButton";
+import CustomAlert from '../custom/custom-alert/CustomAlert';
 
 /** Utils */
 import {
@@ -136,7 +136,7 @@ const SignUpForm = ({ t }) => {
                 onChange={(event) => handleFormUpChange(event)}
             />
             <div className="auth--form__submit">
-                <CustomButton type="submit" text={t('form.button.signUp')} />
+                <CustomButton type="submit">{t('form.button.signUp')}</CustomButton>
             </div>
 
             <CustomAlert

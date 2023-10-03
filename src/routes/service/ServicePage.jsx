@@ -12,6 +12,7 @@ import '../../styles/servicePage.scss';
 
 /** Components */
 import ServiceReference from '../../components/service/ServiceReference';
+import CustomButton from '../../components/custom/custom-button/CustomButton';
 
 /** Icons */
 import {
@@ -57,14 +58,20 @@ const ServicePage = ({ t }) => {
                 <div className='flex f-col'>
                     <h2 className='service--page__title'>{title || ''}</h2>
                     <div className='service--page__icons flex gap'>
-                        <BookmarkIcon
-                            className={is_marked ? 'service--page__icon active' : 'service--page__icon'}
+                        <CustomButton
+                            icon
                             onClick={() => markService(!is_marked, Id)}
-                        />
-                        <CalculatorIcon
-                            className='service--page__icon'
+                        >
+                            <BookmarkIcon
+                                className={is_marked ? 'service--page__icon active' : 'service--page__icon'}
+                            />
+                        </CustomButton>
+                        <CustomButton
+                            icon
                             onClick={goToCalculate}
-                        />
+                        >
+                            <CalculatorIcon className='service--page__icon' />
+                        </CustomButton>
                     </div>
                 </div>
                 {references.length && <div className="service--page__reference flex gap justify-end">

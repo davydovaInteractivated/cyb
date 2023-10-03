@@ -10,6 +10,7 @@ import {
 } from "../../utils/firebase";
 
 /** Components */
+import CustomButton from '../../components/custom/custom-button/CustomButton';
 import SignInForm from "../../components/auth/SignInForm";
 import SignUpForm from "../../components/auth/SignUpForm";
 
@@ -43,10 +44,10 @@ const Auth = ({ t }) => {
         <div className="auth w-100 grid gap-2">
             <div className="auth--btns flex f-col gap">
                 <h3>{t('form.title.signInWith')}</h3>
-                <button
-                    className="custom--button filled font-inverted"
+                <CustomButton
+                    filled
                     onClick={signInWithGoogle}
-                >{t('form.button.signInWith')}&nbsp;<strong className='font-inverted'>Google</strong></button>
+                >{t('form.button.signInWith')}&nbsp;<strong>Google</strong></CustomButton>
             </div>
             <SignInForm />
             <SignUpForm />

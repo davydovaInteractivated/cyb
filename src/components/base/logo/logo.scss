@@ -1,0 +1,12 @@
+.logo {
+    cursor: pointer;
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .6;
+    }
+
+    &--inverted {
+        color: var(--main-font-inverted);
+    }
+}

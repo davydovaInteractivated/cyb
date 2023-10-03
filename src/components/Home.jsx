@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 /** Styles */
 import '../styles/_base.scss';
-import '../styles/_custom.scss';
+import '../styles/_animations.scss';
 import '../styles/app.scss';
 
 /** Components */

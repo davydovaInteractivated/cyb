@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 /** Constants */
-import { CUSTOM_ALERT_CLASSES_BY_TYPES } from '../../constants/custom';
+import { CUSTOM_ALERT_CLASSES_BY_TYPES } from '../../../constants/custom';
 
 /** Icons */
 import {
@@ -15,9 +15,8 @@ const CustomAlert = ({
     type = 'info',
     title = '',
     message = 'custom alert',
-
+    hideDelay = '4000', // (ms)
     show = false,
-
     top = false,
     left = false,
     right = true,
@@ -42,11 +41,11 @@ const CustomAlert = ({
     useEffect(() => {
         setShowAlert(show);
 
-        if (show) {
+        if (show && hideDelay) {
             setTimeout(() => {
                 hideAlert();
                 setShowAlert(false);
-            }, 4000);
+            }, +hideDelay);
         }
     }, [show, hideAlert]);
 

@@ -8,26 +8,23 @@
         top: 4em;
     }
 
+    &--btn {
+        &__cogs {
+            z-index: 100;
+        }
+    }
+
     &--icons {
         &__icon {
-            cursor: pointer;
             height: 24px;
             bottom: 80px;
-            transition: fill .2s ease;
-            transition: opacity .2s ease;
-            z-index: 100;
 
             &.active {
                 fill: var(--color-light);
             }
-            
+
             &.none {
                 width: 0!important;
-            }
-            
-            &:hover {
-                // fill: var(--color-dark);
-                opacity: .6;
             }
 
             &.check-icon {
