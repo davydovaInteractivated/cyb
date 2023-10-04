@@ -2,8 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { withTranslation } from 'react-i18next';
 
 /** Components */
-import CustomInput from '../../components/custom/CustomInput';
-import CustomButton from '../../components/custom/CustomButton';
+import CustomInput from '../../components/custom/custom-input/CustomInput';
+import CustomButton from '../../components/custom/custom-button/CustomButton';
 
 /** Icons */
 import {
@@ -67,7 +67,7 @@ const Contacts = ({ t }) => {
                     placeholder={t('form.input.placeholder.email')}
                     onChange={(e) => setMail(e.target.value)}
                 />
-                <CustomButton className="contacts--form__submit" text={t('form.button.send')} onClick={send}/>
+                <CustomButton className="contacts--form__submit" onClick={send}>{t('form.button.send')}</CustomButton>
             </form>
             <div className="contacts--map flex gap f-col">
                 <div className="contacts--address flex gap f-col">

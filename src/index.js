@@ -7,6 +7,7 @@ import { UserContextProvider } from './context/user.context';
 import { ServicesContextProvider } from './context/services.context';
 import { CasesContextProvider } from './context/cases.context';
 import { SettingsContextProvider } from './context/settings.context';
+import { AlertContextProvider } from './context/alert.context';
 
 /** Router */
 import { BrowserRouter } from 'react-router-dom';
@@ -45,7 +46,9 @@ root.render(
           <ServicesContextProvider>
             <CasesContextProvider>
               <SettingsContextProvider>
-                <App/>
+                <AlertContextProvider>
+                  <App/>
+                </AlertContextProvider>
               </SettingsContextProvider>
             </CasesContextProvider>
           </ServicesContextProvider>

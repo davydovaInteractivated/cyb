@@ -1,10 +1,12 @@
 import { withTranslation } from 'react-i18next';
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+/** Contexts */
+import { AlertContext } from '../../context/alert.context';
 
 /** Components */
-import CustomInput from "../custom/CustomInput";
-import CustomButton from "../custom/CustomButton";
-import CustomAlert from '../custom/CustomAlert';
+import CustomInput from "../custom/custom-input/CustomInput";
+import CustomButton from "../custom/custom-button/CustomButton";
 
 /** Utils */
 import {
@@ -20,16 +22,11 @@ const SignUpForm = ({ t }) => {
         confirmPassword: '',
     });
 
-    const [alertProps, setAlertProps] = useState({
-        show: false,
-        type: 'success',
-        message: '',
-    });
     const {
-        show,
-        type,
-        message,
-    } = alertProps;
+        setShow,
+        setType,
+        setMessage,
+    } = useContext(AlertContext);
 
     const {
         displayName,
@@ -67,11 +64,12 @@ const SignUpForm = ({ t }) => {
             await createUserDocFromAuth(user, {
                 displayName,
             });
-            setAlertProps({
-                show: true,
-                type: 'success',
-                message: 'U have successfully registered!',
-            });
+
+            /** Set Alert props. */
+            setShow(true);
+            setType('success');
+            setMessage('U have successfully registered!');
+
             resetFormUp();
         } catch (error) {
             console.error(error);
@@ -80,11 +78,10 @@ const SignUpForm = ({ t }) => {
             if (error.code === 'auth/email-already-in-use') message = 'Cannot create User. E-mail already in use.';
             if (error.code === 'auth/weak-password') message = 'Password should be at least 6 characters.';
 
-            setAlertProps({
-                show: true,
-                type: 'error',
-                message,
-            });
+            /** Set Alert props. */
+            setShow(true);
+            setType('error');
+            setMessage(message);
         }
     };
 
@@ -136,14 +133,8 @@ const SignUpForm = ({ t }) => {
                 onChange={(event) => handleFormUpChange(event)}
             />
             <div className="auth--form__submit">
-                <CustomButton type="submit" text={t('form.button.signUp')} />
+                <CustomButton type="submit">{t('form.button.signUp')}</CustomButton>
             </div>
-
-            <CustomAlert
-                show={show}
-                type={type}
-                message={message}
-            />
         </form>
     )
 };

@@ -12,7 +12,7 @@ import {
 } from '@heroicons/react/24/solid';
 
 /** Components */
-import CustomButton from '../custom/CustomButton';
+import CustomButton from '../custom/custom-button/CustomButton';
 import ServiceReference from '../service/ServiceReference';
 
 /** Contexts */
@@ -49,16 +49,19 @@ const Service = ({ service, index, t }) => {
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
                     <Link to={`/${id}`}>
                         <CustomButton
-                            text={t('custom.button.card.text')}
                             onClick={() => setActiveService(service)}
-                        />
+                        >{t('custom.button.card.text')}</CustomButton>
                     </Link>
                     <div className='flex gap'>
-                        <BookmarkIcon onClick={() => markService(!is_marked, id)} className={is_marked ? "card--wrapper__icon card--wrapper__icon-bookmark marked" : "card--wrapper__icon card--wrapper__icon-bookmark"}/>
-                        <CalculatorIcon
-                            className='card--wrapper__icon'
-                            onClick={goToCalculate}
-                        />
+                        <CustomButton
+                            icon
+                            onClick={() => markService(!is_marked, id)}
+                        >
+                            <BookmarkIcon className={is_marked ? "card--wrapper__icon card--wrapper__icon-bookmark marked" : "card--wrapper__icon card--wrapper__icon-bookmark"}/>
+                        </CustomButton>
+                        <CustomButton icon onClick={goToCalculate}>
+                            <CalculatorIcon className='card--wrapper__icon' />
+                        </CustomButton>
                     </div>
                 </div>
             </div>

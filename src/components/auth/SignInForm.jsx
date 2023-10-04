@@ -1,14 +1,13 @@
 import { withTranslation } from 'react-i18next';
 import {
     useState,
-    // useContext,
+    useContext,
 } from "react";
 import { useNavigate } from 'react-router-dom';
 
 /** Components */
-import CustomInput from "../custom/CustomInput";
-import CustomButton from "../custom/CustomButton";
-import CustomAlert from '../custom/CustomAlert';
+import CustomInput from "../custom/custom-input/CustomInput";
+import CustomButton from "../custom/custom-button/CustomButton";
 
 /** Utils */
 import {
@@ -16,6 +15,7 @@ import {
 } from "../../utils/firebase";
 
 /** Contexts */
+import { AlertContext } from '../../context/alert.context';
 
 const SignInForm = ({ t }) => {
     const [formIn, setFormIn] = useState({
@@ -27,16 +27,11 @@ const SignInForm = ({ t }) => {
         password,
     } = formIn;
 
-    const [alertProps, setAlertProps] = useState({
-        show: false,
-        type: 'success',
-        message: '',
-    });
     const {
-        show,
-        type,
-        message,
-    } = alertProps;
+        setShow,
+        setType,
+        setMessage,
+    } = useContext(AlertContext);
 
     const navigate = useNavigate();
     const goToHome = () => navigate('/');
@@ -67,11 +62,12 @@ const SignInForm = ({ t }) => {
 
         try {
             await signInAuthUserWithEmailAndPassword(email, password);
-            setAlertProps({
-                show: true,
-                type: 'success',
-                message: 'U have successfully signed in!',
-            });
+
+            /** Set Alert props. */
+            setShow(true);
+            setType('success');
+            setMessage('U have successfully signed in!');
+
             resetFormIn();
             goToHome();
         } catch (error) {
@@ -81,11 +77,10 @@ const SignInForm = ({ t }) => {
             if (error.code === 'auth/wrong-password') message = 'Wrong password. Please, try again.';
             if (error.code === 'auth/user-not-found') message = 'User not found.';
 
-            setAlertProps({
-                show: true,
-                type: 'error',
-                message,
-            });
+            /** Set Alert props. */
+            setShow(true);
+            setType('error');
+            setMessage(message);
         }
     };
 
@@ -121,15 +116,8 @@ const SignInForm = ({ t }) => {
                 onChange={(event) => handleFormInChange(event)}
             />
             <div className="auth--form__submit">
-                <CustomButton type="submit" text={t('form.button.signIn')} />
+                <CustomButton type="submit">{t('form.button.signIn')}</CustomButton>
             </div>
-
-            <CustomAlert
-                show={show}
-                type={type}
-                message={message}
-                hideAlert={() => setAlertProps({show: false})}
-            />
         </form>
     )
 };

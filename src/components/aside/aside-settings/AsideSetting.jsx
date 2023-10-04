@@ -1,6 +1,9 @@
 /** Icons */
 import { CheckIcon } from '@heroicons/react/24/solid';
 
+/** Styles */
+import './aside-settings.scss';
+
 const AsideSetting = ({ item, activeItem, selectItem }) => {
     const { colors, name } = item;
     const { light, dark } = colors || {};
