@@ -3,8 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { useContext } from 'react';
 
 /** Components */
-import CustomSelect from "../../components/custom/CustomSelect";
-import CustomButton from "../../components/custom/CustomButton";
+import CustomSelect from "../../components/custom/custom-select/CustomSelect";
+import CustomButton from "../../components/custom/custom-button/CustomButton";
 
 /** Styles */
 import "../../styles/calculate.scss";
@@ -111,9 +111,8 @@ const Calculate = ({ t }) => {
                 <div className="calculate--page__form-item flex gap-2 align-center justify-end">
                     <strong>{t('total')}:&nbsp;&nbsp;~&nbsp;${520}</strong>
                     <CustomButton
-                        text={t('addtocase')}
                         onClick={addCase}
-                    />
+                    >{t('addtocase')}</CustomButton>
                 </div>
             </div>
         </div>

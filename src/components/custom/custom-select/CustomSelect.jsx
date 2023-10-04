@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
 
+/** Styles */
+import './custom-select.scss';
+
 /** Components */
-import CustomInput from "./CustomInput"
+import CustomInput from "../custom-input/CustomInput"
 
 const CustomSelect = ({
     value = null,
+    size = 'medium',
     placeholder = 'select',
     className,
     items = [],
-    key = 'id',
+    valueKey = 'id',
     name = 'name',
     returnObject = true,
+    required = false,
+    disabled = false,
     onChange,
 }) => {
     const [selectItems, setSelectItems] = useState(items);
@@ -41,6 +47,8 @@ const CustomSelect = ({
      * On Custom Input Focus Handler
      */
     const onFocusHandler = () => {
+        if (disabled) return;
+
         setTimeout(() => {
             setShowOptions(true);
         }, 100);
@@ -50,9 +58,11 @@ const CustomSelect = ({
      * On Custom Input Blur Handler
      */
     const onBlurHandler = () => {
+        if (disabled) return;
+
         setTimeout(() => {
             setShowOptions(false);
-        }, 300);
+        }, 100);
     };
 
     /**
@@ -72,11 +82,14 @@ const CustomSelect = ({
     };
 
     return (
-        <div className={`custom--select ${className}`}>
+        <div className={`custom--select ${className} custom--select__${size}`}>
             <CustomInput
                 type="search"
+                size={size}
                 placeholder={placeholder}
                 value={selectValue}
+                required={required}
+                disabled={disabled}
                 onChange={onChangeHandler}
                 onFocus={onFocusHandler}
                 onBlur={onBlurHandler}
@@ -86,7 +99,7 @@ const CustomSelect = ({
                 <ul className="custom--select__options-list">
                     {selectItems.length ? selectItems.map((item) => <li
                         className={`custom--select__options-list_item ${selectOption?.id === item.id ? 'active' : ''}`}
-                        key={item[key]}
+                        key={item[valueKey]}
                         onClick={() => clickOption(item.id)}
                     >
                         {item[name]}

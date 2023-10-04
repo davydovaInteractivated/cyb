@@ -8,15 +8,6 @@
         text-decoration: underline;
     }
 
-    &--logo {
-        cursor: pointer;
-        transform: opacity .3s ease;
-
-        &:hover {
-            opacity: .6;
-        }
-    }
-
     &--search {
         margin: 0 32px;
     }
@@ -48,25 +39,8 @@
     }
 
     &--icons {
-        line-height: 0;
         &__icon {
-            cursor: pointer;
             height: 24px;
-            transition: fill .2s ease;
-            transition: opacity .2s ease;
-
-            &.active {
-                fill: var(--color-light);
-            }
-
-            &.none {
-                width: 0!important;
-            }
-            
-            &:hover {
-                // fill: var(--color-light);
-                opacity: .6;
-            }
         }
     }
 }

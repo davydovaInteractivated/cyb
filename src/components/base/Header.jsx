@@ -22,8 +22,10 @@ import {
 } from '@heroicons/react/24/solid';
 
 /** Components */
-import CustomInput from '../custom/CustomInput';
-import CustomButton from '../custom/CustomButton';
+import CustomInput from '../custom/custom-input/CustomInput';
+import CustomButton from '../custom/custom-button/CustomButton';
+import CustomAvatar from '../custom/custom-avatar/CustomAvatar';
+import Logo from '../base/logo/Logo';
 
 const Header = ({ t }) => {
     console.log('Header render');
@@ -61,9 +63,7 @@ const Header = ({ t }) => {
     return (
         <header className="header">
             <div className="header--wrapper flex justify-space-b align-center">
-                <Link to='/'>
-                    <div className="header--logo font-inverted b">KYB <sub className="thin font-inverted">{t('header.logo')}</sub></div>
-                </Link>
+                <Link to='/'><Logo>{t('header.logo')}</Logo></Link>
 
                 <div className="flex align-center">
                     <nav className="header--menu">
@@ -85,10 +85,13 @@ const Header = ({ t }) => {
                                 >{t('header.menu.services')}</NavLink></li>
                         </ul>
                     </nav>
-                    {atHome && <BookmarkIcon
-                        className={showMarked ? "header--icons__icon active" : "header--icons__icon"}
+                    {atHome && <CustomButton
+                        className={showMarked ? "active" : ""}
+                        icon
                         onClick={goToMarkedPage}
-                    />}
+                    >
+                        <BookmarkIcon className="header--icons__icon" />
+                    </CustomButton>}
                     {atHome && Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
                     {atHome && <div className='header--search'>
                         <CustomInput
@@ -99,47 +102,56 @@ const Header = ({ t }) => {
                         />
                     </div>}
                     <div className="header--icons">
-                        <ArrowsUpDownIcon
-                            className={!sortDirection && atHome ? "header--icons__icon" : "header--icons__icon none m-0"}
+                        <CustomButton
+                            className={!sortDirection && atHome ? "" : "none m-0"}
+                            icon
                             onClick={sort}
-                        />
-                        <BarsArrowDownIcon
-                            className={sortDirection > 0 && atHome ? "header--icons__icon active" : "header--icons__icon none m-0"}
+                        >
+                            <ArrowsUpDownIcon className="header--icons__icon" />
+                        </CustomButton>
+                        <CustomButton
+                            className={sortDirection > 0 && atHome ? "active" : "none m-0"}
+                            icon
                             onClick={sort}
-                        />
-                        <BarsArrowUpIcon
-                            className={sortDirection < 0 && atHome ? "header--icons__icon active" : "header--icons__icon none m-0"}
+                        >
+                            <BarsArrowDownIcon className="header--icons__icon" />
+                        </CustomButton>
+                        <CustomButton
+                            className={sortDirection < 0 && atHome ? "active" : "none m-0"}
+                            icon
                             onClick={sort}
-                        />
+                        >
+                            <BarsArrowUpIcon className="header--icons__icon" />
+                        </CustomButton>
                     </div>
                     <ul className="header--menu__list flex align-center">
                         {user && <li className="header--menu__list-item right cursor-default">
-                            <div className='custom--avatar font-inverted'>{
-                                user.displayName
-                                    ? user.displayName.substr(0, 2).toUpperCase()
-                                    : user.email.substr(0, 2).toUpperCase()
-                            }</div>
+                            <CustomAvatar
+                                inverted
+                                name={user.displayName}
+                                email={user.email}
+                            />
                         </li>}
                         {user
                             ? <li className="header--menu__list-item right">
                                 <CustomButton
-                                    small
-                                    text={t('header.menu.signOut')}
+                                    size='small'
                                     onClick={handlerSignOut}
-                                /></li>
+                                >{t('header.menu.signOut')}</CustomButton></li>
                             : <li className="header--menu__list-item right">
                                 <NavLink
                                     to='/auth'
                                 >
                                     <CustomButton
-                                        small
-                                        text={t('header.menu.auth')}
-                                    />
+                                        size='small'
+                                    >{t('header.menu.auth')}</CustomButton>
                                 </NavLink></li>
                         }
                         <li className="header--menu__list-item right">
                             <NavLink to='/cases'>
-                                <BriefcaseIcon className={onCases ? 'header--icons__icon active' : 'header--icons__icon'} />
+                                <CustomButton className={onCases ? 'active' : ''} icon>
+                                    <BriefcaseIcon className='header--icons__icon active' />
+                                </CustomButton>
                             </NavLink>
                             {Boolean(cases.length) && <sub className='header--cases-count'>{cases.length}</sub>}
                         </li>

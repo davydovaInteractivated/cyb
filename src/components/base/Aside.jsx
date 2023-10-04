@@ -10,11 +10,12 @@ import {
 } from '@heroicons/react/24/solid';
 
 /** Components */
-import AsideSetting from '../aside/AsideSetting';
+import AsideSetting from '../aside/aside-settings/AsideSetting';
 import AsideCube from '../aside/AsideCube';
 
 /** Contexts */
 import { SettingsContext } from '../../context/settings.context';
+import CustomButton from '../custom/custom-button/CustomButton';
 
 const Aside = ({ t }) => {
     const { i18n } = useTranslation('common');
@@ -54,10 +55,13 @@ const Aside = ({ t }) => {
             <div className="aside--wrapper flex f-col justify-space-b align-start">
                 <AsideCube data={cubeData} />
 
-                <Cog6ToothIcon
-                    className="aside--icons__icon"
+                <CustomButton
+                    className="aside--btn__cogs"
+                    icon
                     onClick={showSettings}
-                />
+                >
+                    <Cog6ToothIcon className="aside--icons__icon" />
+                </CustomButton>
 
                 <div
                     className={ isShowSettings ? 'aside--settings absolute active' : 'aside--settings absolute' }>
