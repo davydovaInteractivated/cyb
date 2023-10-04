@@ -1,6 +1,7 @@
 @import './variables';
 
 body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
 
@@ -9,8 +10,8 @@ body {
     background: linear-gradient(to right, var(--color-light), var(--color-dark));
 
     font-size: 16px;
+    color: var(--main-font);
     font-weight: 200;
-    font-family: 'Poppins', sans-serif;
 }
 
 body * {
@@ -19,9 +20,12 @@ body * {
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
-    color: var(--main-font);
     line-height: 1.5;
     user-select: none;
+}
+
+a {
+    color: var(--main-font);
 }
 
 .m-0 {

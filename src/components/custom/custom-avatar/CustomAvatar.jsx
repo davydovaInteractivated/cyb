@@ -1,4 +1,17 @@
-import './custom-avatar.scss';
+import styled from 'styled-components';
+
+const CustomAvatarStyled = styled.div`
+    height: 3em;
+    width: 3em;
+    background: var(--color-light);
+    border-radius: var(--main-border-radius);
+    opacity: .8;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${(({ $inverted }) => $inverted ? 'var(--main-font-inverted)' : 'var(--main-font')};
+`;
 
 const CustomAvatar = ({
     className = '',
@@ -7,11 +20,14 @@ const CustomAvatar = ({
     email = '', // user.email
 }) => {
     return (
-        <div className={`custom--avatar ${className} font-inverted ${inverted ? 'custom--avatar__inverted' : ''}`}>{
+        <CustomAvatarStyled
+            className={`custom--avatar ${className}`}
+            $inverted={inverted}
+        >{
             name
                 ? name.substr(0, 2).toUpperCase()
                 : email.substr(0, 2).toUpperCase()
-        }</div>
+        }</CustomAvatarStyled>
     );
 };
 

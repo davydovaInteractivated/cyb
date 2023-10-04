@@ -1,5 +1,5 @@
 import CustomButton from './CustomButton';
-import './custom-button.scss';
+import '../../../styles/_variables.css';
 
 export default {
     title: 'CustomButton',

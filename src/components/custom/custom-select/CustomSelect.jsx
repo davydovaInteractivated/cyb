@@ -1,10 +1,60 @@
 import { useState, useEffect } from "react";
+import styled from 'styled-components';
 
 /** Styles */
-import './custom-select.scss';
+// import './custom-select.scss';
 
 /** Components */
 import CustomInput from "../custom-input/CustomInput"
+
+const CustomSelectStyled = styled.div`
+    position: relative;
+    font-size: ${(({ $size }) => {
+        if ($size === 'small') return '.808rem';
+        if ($size === 'large') return '1.12rem';
+        return '1rem'
+    })};
+`;
+
+const CustomSelectOptionsStyled = styled.div`
+    position: absolute;
+    z-index: 999;
+`;
+
+const CustomSelectOptionsListStyled = styled.ul`
+    background-color: var(--color-dark);
+    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
+    padding: .6em 0;
+    border-radius: var(--main-border-radius);
+    margin-top: 0.6em;
+    transition: all .2s ease;
+`;
+
+const CustomSelectOptionsListItemStyled = styled.li`
+    font-family: 'Poppins', sans-serif;
+    padding: .4em 1em;
+    cursor: pointer;
+    color: var(--main-font);
+    transition: background-color .2s ease;
+
+    &:hover:not(.empty) {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &.active {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &.empty {
+        cursor: default;
+        font-size: .8rem;
+    }
+
+    &:hover > ${CustomSelectOptionsListStyled} {
+        background-color: pink;
+    }
+`;
+
 
 const CustomSelect = ({
     value = null,
@@ -82,7 +132,10 @@ const CustomSelect = ({
     };
 
     return (
-        <div className={`custom--select ${className} custom--select__${size}`}>
+        <CustomSelectStyled
+            className={`custom--select ${className}`}
+            $size={size}
+        >
             <CustomInput
                 type="search"
                 size={size}
@@ -95,18 +148,18 @@ const CustomSelect = ({
                 onBlur={onBlurHandler}
             />
 
-            {showOptions && <div className="custom--select__options w-100">
-                <ul className="custom--select__options-list">
-                    {selectItems.length ? selectItems.map((item) => <li
+            {true && <CustomSelectOptionsStyled className="custom--select__options w-100">
+                <CustomSelectOptionsListStyled className="custom--select__options-list">
+                    {selectItems.length ? selectItems.map((item) => <CustomSelectOptionsListItemStyled
                         className={`custom--select__options-list_item ${selectOption?.id === item.id ? 'active' : ''}`}
                         key={item[valueKey]}
                         onClick={() => clickOption(item.id)}
                     >
                         {item[name]}
-                    </li>) : <li className="custom--select__options-list_item empty text-center">no items for select</li>}
-                </ul>
-            </div>}
-        </div>
+                    </CustomSelectOptionsListItemStyled>) : <CustomSelectOptionsListItemStyled className="custom--select__options-list_item empty text-center">no items for select</CustomSelectOptionsListItemStyled>}
+                </CustomSelectOptionsListStyled>
+            </CustomSelectOptionsStyled>}
+        </CustomSelectStyled>
     )
 };
 

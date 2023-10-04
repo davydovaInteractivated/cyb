@@ -1,5 +1,7 @@
 import CustomSelect from './CustomSelect';
-// import './custom-select.scss';
+import '../../../styles/_reset.scss';
+import '../../../styles/_variables.css';
+import '../../../styles/_base.scss';
 
 export default {
     title: 'CustomSelect',
@@ -24,6 +26,7 @@ const onChangeHandler = (e) => {
 export const Default = {
     args: {
         className: '',
+        size: 'medium',
         value: null,
         placeholder: 'select',
         items: [{ id: 1, name: 'someName' }],

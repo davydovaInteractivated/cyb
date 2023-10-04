@@ -5,29 +5,13 @@
 /** Custom Alert */
 @keyframes showAlertLeft {
     to {
-        opacity: .8;
         left: 1em;
     }
 }
 
 @keyframes showAlertRight {
     to {
-        opacity: .8;
         right: 1em;
-    }
-}
-
-@keyframes hideAlertLeft {
-    to {
-        opacity: 0;
-        left: -28em;
-    }
-}
-
-@keyframes hideAlertRight {
-    to {
-        opacity: 0;
-        right: -28em;
     }
 }
 

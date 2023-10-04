@@ -1,7 +1,6 @@
 import CustomAlert from './CustomAlert';
 
 /** Styles */
-import './custom-alert.scss';
 import '../../../styles/_animations.scss';
 
 export default {
@@ -20,17 +19,17 @@ export default {
         top: {
             type: 'boolean',
             description: 'Custom Alert top position',
-            defaultValue: false,
+            defaultValue: true,
         },
         bottom: {
             type: 'boolean',
             description: 'Custom Alert bottom position',
-            defaultValue: true,
+            defaultValue: false,
         },
         left: {
             type: 'boolean',
             description: 'Custom Alert left position',
-            defaultValue: false,
+            defaultValue: true,
         },
         right: {
             type: 'boolean',

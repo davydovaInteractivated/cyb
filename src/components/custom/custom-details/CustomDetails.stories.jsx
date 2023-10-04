@@ -1,4 +1,6 @@
-import CustomDetails from "./CustomDetails";
+import CustomDetails from './CustomDetails';
+import '../../../styles/_variables.css';
+import '../../../styles/_base.scss';
 
 export default {
     title: 'CustomDetails',

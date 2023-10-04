@@ -1,5 +1,6 @@
 import CustomAvatar from './CustomAvatar';
-import './custom-avatar.scss';
+import '../../../styles/_variables.css';
+import '../../../styles/_base.scss';
 
 export default {
     title: 'CustomAvatar',

@@ -1,5 +1,5 @@
 import CustomInput from './CustomInput';
-import './custom-input.scss';
+import '../../../styles/_variables.css';
 
 export default {
     title: 'CustomInput',
@@ -27,10 +27,9 @@ export const Default = {
         placeholder: 'search',
         name: '',
         value: '',
+        size: 'medium',
         required: false,
         disabled: false,
         onChange: (e) => onChangeHandler(e),
-        // onFocus,
-        // onBlur,
     },
 };

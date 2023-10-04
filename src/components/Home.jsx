@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AlertContext } from '../context/alert.context';
 
 /** Styles */
+import '../styles/_reset.scss';
 import '../styles/_base.scss';
 import '../styles/_animations.scss';
 import '../styles/app.scss';

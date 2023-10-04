@@ -1,13 +1,8 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
+import styled from 'styled-components';
 
 /** Contexts */
 import { AlertContext } from '../../../context/alert.context';
-
-/** Styles */
-import './custom-alert.scss';
-
-/** Constants */
-import { CUSTOM_ALERT_CLASSES_BY_TYPES } from '../../../constants/custom';
 
 /** Icons */
 import {
@@ -16,6 +11,56 @@ import {
     XCircleIcon, // error
     CheckCircleIcon, // success
 } from '@heroicons/react/24/solid';
+
+const CustomAlertStyled = styled.div`
+    position: fixed;
+    width: 22em;
+    opacity: .9;
+    height: fit-content;
+    cursor: pointer;
+    border-radius: var(--main-border-radius);
+    padding: 1em;
+    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease;
+    transition: box-shadow 0.3s ease;
+
+    background: ${({$type}) => {
+        if ($type === 'success') return '#4CAF50';
+        if ($type === 'error') return '#BF360C';
+        if ($type === 'warning') return '#FFB74D';
+        if ($type === 'info') return '#424242';
+        return 'none';
+    }};
+
+    color: ${({$type}) => {
+        if ($type === 'warning') return '#212121';
+        return 'inherit';
+    }};
+
+    top: ${({$top}) => $top ? '1em!important' : 'unset'};
+    bottom: ${({$bottom}) => $bottom ? '1em!important' : 'unset'};
+    left: ${({$left}) => $left ? '-28em' : 'unset'};
+    right: ${({$right}) => $right ? '-28em' : 'unset'};
+
+    animation: ${({
+        $right,
+        $left,
+        $show,
+    }) => {
+        if ($right && $show) return 'showAlertRight .4s forwards';
+        if ($left && $show) return 'showAlertLeft .4s forwards';
+        return 'unset';
+    }};
+
+    &:hover {
+        opacity: 1!important;
+        box-shadow: none;
+    }
+
+    .custom--alert__icon {
+        width: 24px;
+    }
+`;
 
 const CustomAlert = ({
     type = 'info',
@@ -28,22 +73,9 @@ const CustomAlert = ({
     right = true,
     bottom = true,
 }) => {
-    const [positionsClasses, setPositionsClasses] = useState('');
-
     const {
         setShow,
     } = useContext(AlertContext);
-
-    useEffect(() => {
-        const positionsClasses = [];
-
-        if (top) positionsClasses.push('top');
-        if (left) positionsClasses.push('left');
-        if (right) positionsClasses.push('right');
-        if (bottom) positionsClasses.push('bottom');
-
-        setPositionsClasses(positionsClasses.join(' '));
-    }, [top, left, right, bottom]);
 
     useEffect(() => {
         if (!setShow) return;
@@ -57,9 +89,15 @@ const CustomAlert = ({
         }
     }, [show, setShow, hideDelay]);
 
-    return show && (
-        <div
-            className={`custom--alert ${CUSTOM_ALERT_CLASSES_BY_TYPES[type]} ${positionsClasses} ${show ? 'show' : 'hide'} flex f-col gap`}
+    return (
+        <CustomAlertStyled
+            className='custom--alert flex f-col gap'
+            $type={type}
+            $top={top}
+            $left={left}
+            $right={right}
+            $bottom={bottom}
+            $show={show}
         >
             <div className='flex gap align-center'>
                 {type === 'info' && <InformationCircleIcon className='custom--alert__icon' />}
@@ -69,7 +107,7 @@ const CustomAlert = ({
                 <h2 className='custom--alert__title'> {title || type}</h2>
             </div>
             <p className='custom--alert__message'>{message}</p>
-        </div>
+        </CustomAlertStyled>
     )
 };
 
