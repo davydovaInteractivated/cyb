@@ -7,6 +7,7 @@ import '../../styles/aside.scss';
 /** Icons */
 import {
     Cog6ToothIcon,
+    ArrowTopRightOnSquareIcon,
 } from '@heroicons/react/24/solid';
 
 /** Components */
@@ -58,6 +59,16 @@ const Aside = ({ t }) => {
                     className="aside--icons__icon"
                     onClick={showSettings}
                 />
+
+                <a
+                    className='aside--link flex align-center'
+                    href='https://davydovainteractivated.github.io/cyb/'
+                    target='_blank'
+                    rel='noreferrer'
+                >
+                    storybook&nbsp;
+                    <ArrowTopRightOnSquareIcon className='aside--link__icon' />
+                </a>
 
                 <div
                     className={ isShowSettings ? 'aside--settings absolute active' : 'aside--settings absolute' }>

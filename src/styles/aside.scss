@@ -8,6 +8,12 @@
         top: 4em;
     }
 
+    &--link {
+        &__icon {
+            height: 24px;
+        }
+    }
+
     &--icons {
         &__icon {
             cursor: pointer;
