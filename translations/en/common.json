@@ -1,0 +1,83 @@
+{
+    "main": {
+        "text": {
+            "empty": {
+                "search": "Oops, You don't have any cards. Please change Your search.",
+                "favorites": "Oops, You don't have any favorites. Please add some."
+            }
+        }
+    },
+    "header": {
+        "logo": "web studio",
+        "menu": {
+            "services": "services",
+            "contacts": "contacts",
+            "faq": "FAQ",
+            "auth": "sign in / sign up",
+            "signOut": "sign out"
+        }
+    },
+    "custom": {
+        "input" : {
+            "search": {
+                "placeholder": "search"
+            }
+        },
+        "select" : {
+            "placeholder" : {
+                "employees" : "the number of employees",
+                "hours" : "hours spent per day",
+                "consult" : "include consultations"
+            }
+        },
+        "button" : {
+            "card": {
+                "text": "more",
+                "contact": "contact us for more details"
+            }
+        }
+    },
+    "cube": {
+        "side": {
+            "support": "support",
+            "soft": "soft",
+            "mobile": "mobile",
+            "app": "app",
+            "web": "web",
+            "tech": "tech"
+        }
+    },
+    "settings": {
+        "theme": "theme",
+        "lang": "lang"
+    },
+    "form": {
+        "title": {
+            "contacts": "contact us",
+            "signIn": "if U have an account",
+            "signUp": "if U don't have an account",
+            "signInWith": "U can"
+        },
+        "input" : {
+            "placeholder": {
+                "name": "name",
+                "phone": "phone",
+                "email": "e-mail",
+                "password": "password",
+                "confirmPassword": "confirm the password"
+            }
+        },
+        "button" : {
+            "send": "send",
+            "signIn": "sign in",
+            "signUp": "sign up",
+            "signInWith": "sign in with"
+        }
+    },
+    "calculate" : {
+        "title" : "pre-calculate your personal",
+        "service" : "service"
+    },
+    "addtocase" : "add to case",
+    "total" : "total"
+}

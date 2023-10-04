@@ -1,0 +1,68 @@
+@import './variables';
+
+.card {
+    opacity: 0;
+    transform: translateX(-20px);
+    border-radius: var(--main-border-radius);
+    background: var(--color-dark);
+    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, .2);
+    transition: all .3s ease;
+    animation: showCard .4s forwards;
+
+    &:first-child {
+        /* grid-column: 1/3; */
+        grid-row: 1/3;
+    }
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    &--wrapper {
+        padding: 2em;
+
+        &__title {
+            margin-bottom: 1.6em;
+        }
+        
+        &__text {
+            margin-bottom: 2em;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        &__icon {
+            height: 24px;
+            cursor: pointer;
+            transition: opacity .3s ease;
+
+            &:hover {
+                opacity: .6;
+            }
+
+            &-bookmark {
+                fill: var(--color-dark);
+                stroke: var(--main-font);
+    
+                &.marked {
+                    fill: var(--color-light);
+                    stroke: none;
+                }
+            }
+        }
+
+        &__reference {
+            margin-bottom: 2em;
+        }
+    }
+}
+
+/** Animation */
+@keyframes showCard {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

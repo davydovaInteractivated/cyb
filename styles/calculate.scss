@@ -1,0 +1,15 @@
+.calculate--page {
+    &__title {
+        margin-bottom: 2em;
+    }
+
+    &__form {
+        &-item {
+            margin-bottom: 1em;
+
+            .custom--select {
+                width: 22em;
+            }
+        }
+    }
+}

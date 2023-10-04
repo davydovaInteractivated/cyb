@@ -1,0 +1,14 @@
+.contacts {
+    grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+
+    &--form {
+        &__icon {
+            width: 16px;
+        }
+
+        &__title {
+            align-self: start;
+            line-height: 1;
+        }
+    }
+}

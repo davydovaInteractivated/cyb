@@ -1,0 +1,32 @@
+@import './_variables.css';
+
+/** Animation */
+
+/** Custom Alert */
+@keyframes showAlertLeft {
+    to {
+        left: 1em;
+    }
+}
+
+@keyframes showAlertRight {
+    to {
+        right: 1em;
+    }
+}
+
+/** Aside */
+@keyframes rotateCube {
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+@keyframes rotateCubeSideStop {
+    0% {
+        transform: translateX(6em);
+    }
+    100% {
+        transform: translateX(0) translateY(0) translateZ(0);
+        width: 8em;
+    }
+}

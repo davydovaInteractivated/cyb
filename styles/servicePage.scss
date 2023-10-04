@@ -1,0 +1,46 @@
+@import './_variables.css';
+
+.service--page {
+    &__title {
+        margin-bottom: 1em;
+    }
+
+    &__reference {
+        margin-bottom: 2em;
+
+        .service--refs__link {
+            .service--refs__img {
+                height: 180px;
+            }
+        }
+    }
+
+    &__description {
+        margin-bottom: 2em;
+        line-height: 2;
+        max-width: 70%;
+    }
+
+    &__actions {
+        &-item {
+            margin-left: 1em;
+        }
+    }
+
+    &__icon { margin-bottom: 1em; }
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: opacity .2s ease;
+        
+        &.active {
+            fill: var(--color-dark);
+        }
+
+        &:hover {
+            opacity: .6;
+        }
+    }
+}
