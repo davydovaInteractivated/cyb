@@ -10,6 +10,12 @@
     }
 
     &--link {
+        color: var(--main-font-inverted);
+        transition: opacity .2s ease;
+
+        &:hover {
+            opacity: .6;
+        }
         &__icon {
             height: 24px;
         }
@@ -40,6 +46,7 @@
         width: 4em;
         height: 4em;
         margin-left: 20px;
+        margin-bottom: 4em;
         color: var(--color-light);
         transform-style: preserve-3d;
         animation: 18s rotateCube infinite ease-in-out;

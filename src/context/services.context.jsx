@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 /** Utils */
 import {
@@ -15,7 +16,6 @@ export const ServicesContext = createContext({
     activeService: null,
     sortDirection: 1,
     searchValue: '',
-    showMarked: false,
     markedCount: 0,
 });
 
@@ -23,10 +23,12 @@ export const ServicesContextProvider = ({ children }) => {
     const [services, setServices] = useState([]);
     const [filteredServices, setFilteredServices] = useState([]);
     const [activeService, setActiveService] = useState(null);
-    const [showMarked, setShowMarked] = useState(false);
     const [markedCount, setMarkedCount] = useState(0);
     const [sortDirection, setSortDirection] = useState(1);
     const [searchValue, setSearchValue] = useState('');
+
+    const { pathname } = useLocation();
+    const onFavorites = pathname === '/favorites';
 
     /**
      * Get Services
@@ -43,6 +45,10 @@ export const ServicesContextProvider = ({ children }) => {
         // addCollectionAndDocuments('services', servicesData);
         getServices();
     }, []);
+
+    useEffect(() => {
+        filter({ data: services, sortDirection, searchValue });
+    }, [onFavorites, services, sortDirection, searchValue]);
 
     /**
      * Mark Service
@@ -71,22 +77,12 @@ export const ServicesContextProvider = ({ children }) => {
     
         setServices(servicesDataCopy);
         setMarkedCount(isMarked ? markedCount + 1: markedCount - 1);
-        filter({
-            data: servicesDataCopy,
-            searchValue,
-            sortDirection,
-            showMarked,
-        });
+        // filter({
+        //     data: servicesDataCopy,
+        //     searchValue,
+        //     sortDirection,
+        // });
     };
-
-    /**
-     * Set Marked Services
-     */
-    const setMarkedShow = () => {
-        const newShow = !showMarked;
-        setShowMarked(newShow);
-        filter({ data: services, searchValue, sortDirection, showMarked: newShow });
-    }
 
     /**
      * Search Services
@@ -95,7 +91,7 @@ export const ServicesContextProvider = ({ children }) => {
     const search = (event) => {
         const sValue = event.target.value.toLocaleLowerCase();
         setSearchValue(sValue);
-        filter({ data: services, searchValue: sValue, sortDirection, showMarked });
+        // filter({ data: services, searchValue: sValue, sortDirection });
     };
     
     /**
@@ -105,7 +101,7 @@ export const ServicesContextProvider = ({ children }) => {
         const newSortDirection = sortDirection <= 0 ? sortDirection + 1 : sortDirection - 2;
 
         setSortDirection(newSortDirection);
-        filter({ data: services, sortDirection: newSortDirection, searchValue, showMarked });
+        // filter({ data: services, sortDirection: newSortDirection, searchValue });
     }
     
     /**
@@ -116,7 +112,6 @@ export const ServicesContextProvider = ({ children }) => {
         data,
         searchValue,
         sortDirection,
-        showMarked,
     }) => {
         let filteredServices = [...(data || [])];
     
@@ -125,7 +120,7 @@ export const ServicesContextProvider = ({ children }) => {
             filteredServices = filteredServices
                 .filter((service) => service.title.toLocaleLowerCase().includes(searchValue));
         }
-    
+
         /** Sort Cards */
         if (sortDirection) {
             filteredServices = sortDirection === 1
@@ -135,7 +130,7 @@ export const ServicesContextProvider = ({ children }) => {
                 .sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
         }
 
-        if (showMarked) {
+        if (onFavorites) {
             filteredServices = filteredServices
                 .filter((service) => service.is_marked);
         }
@@ -161,13 +156,10 @@ export const ServicesContextProvider = ({ children }) => {
         setSortDirection,
         searchValue,
         setSearchValue,
-        showMarked,
-        setShowMarked,
         markedCount,
         setMarkedCount,
 
         markService,
-        setMarkedShow,
         search,
         sort,
         getService,

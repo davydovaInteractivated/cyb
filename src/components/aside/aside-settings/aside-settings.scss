@@ -1,17 +1,23 @@
 .aside--settings {
-    bottom: -.6em;
-    left: -1.4em;
-    background-color: var(--color-dark);
-    border-radius: var(--main-border-radius);
-    padding: 1em 1em 1em 2em;
-    z-index: -1;
-    box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transition: all .2s ease;
-    z-index: 99;
+    // bottom: -.6em;
+    // left: -1.4em;
+    // background-color: var(--color-dark);
+    // border: 1px solid var(--main-font-inverted);
+    // border-radius: var(--main-border-radius);
+    // padding: 1em 1em 1em 2em;
+    // z-index: -1;
+    // box-shadow: 12px 14px 20px 0px rgba(0, 0, 0, 0.2);
+    // opacity: 0;
+    // transition: all .2s ease;
+    // z-index: 99;
+    color: var(--main-font-inverted);
 
     &__title {
         user-select: none;
+    }
+
+    &__block {
+        margin-bottom: 1.4em;
     }
 
     &:hover {
@@ -24,7 +30,7 @@
     }
 
     &__item {
-        padding: 0.2em 0 0.2em 1em;
+        padding: 0.4em 0 0.4em 1em;
         font-size: .8rem;
         cursor: pointer;
         user-select: none;

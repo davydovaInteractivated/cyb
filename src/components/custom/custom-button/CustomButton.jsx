@@ -28,6 +28,7 @@ const StyledCustomButton = styled.button`
     })};
     border-radius: var(--main-border-radius);
     padding: ${(({ $icon }) => $icon ? '0' : '1em 2em')};
+    line-height: ${(({ $icon }) => $icon ? '1' : '1.5')};
     cursor: ${(({ $disabled }) => $disabled ? 'default' : 'pointer')};
     transition: all .5s ease;
     opacity: ${(({ $disabled }) => $disabled ? '0.4' : '1')};
@@ -39,17 +40,16 @@ const StyledCustomButton = styled.button`
             $icon,
             $disabled,
         }) => ($icon || $disabled ? 'unset' : 'translateX(10px)'))};
-        opacity: ${(({ $disabled }) => $disabled ? '.4' : '.9')};
+        opacity: ${(({ $disabled, $icon }) => {
+            if ($disabled && $icon) return '1';
+            if (!$disabled && $icon) return '.6';
+            if ($disabled && !$icon) return '.4';
+            return '.9';
+        })};
     }
 
-    &__icon {
-        &:hover {
-            opacity: ${(({ $disabled }) => $disabled ? '1' : '.6')};
-        }
-
-        &.active svg {
-            fill: var(--color-light);
-        }
+    &.active svg {
+        fill: var(--color-light);
     }
 `;
 
@@ -67,10 +67,11 @@ const CustomButton = ({
         className={`custom--button ${className}`}
         $size={size}
         $filled={filled}
-        $type={type}
         $disabled={disabled}
         $icon={icon}
-        $onClick={onClick}
+        type={type}
+        disabled={disabled}
+        onClick={onClick}
     >{children}</StyledCustomButton>
 );
 
