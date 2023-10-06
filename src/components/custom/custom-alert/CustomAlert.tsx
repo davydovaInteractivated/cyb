@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 
 /** Contexts */
@@ -12,7 +12,19 @@ import {
     CheckCircleIcon, // success
 } from '@heroicons/react/24/solid';
 
-const CustomAlertStyled = styled.div`
+/** Types */
+import { TCustomType } from '../../../ts/types/custom';
+
+interface ICustomAlertStyledProps {
+    $type: TCustomType,
+    $top: boolean,
+    $bottom: boolean,
+    $left: boolean,
+    $right: boolean,
+    $show: boolean,
+};
+
+const CustomAlertStyled = styled.div<ICustomAlertStyledProps>`
     position: fixed;
     width: 22em;
     opacity: .9;
@@ -62,6 +74,18 @@ const CustomAlertStyled = styled.div`
     }
 `;
 
+interface ICustomAlertProps {
+    type: TCustomType,
+    show: boolean,
+    title?: string,
+    message?: string,
+    hideDelay?: number | string, // (ms)
+    top?: boolean,
+    left?: boolean,
+    right?: boolean,
+    bottom?: boolean,
+};
+
 const CustomAlert = ({
     type = 'info',
     title = '',
@@ -72,7 +96,7 @@ const CustomAlert = ({
     left = false,
     right = true,
     bottom = true,
-}) => {
+}: ICustomAlertProps) => {
     const {
         setShow,
     } = useContext(AlertContext);

@@ -1,5 +1,8 @@
-import { forwardRef } from 'react';
+import React, { forwardRef, FocusEventHandler, ChangeEventHandler } from 'react';
 import styled, { css } from 'styled-components';
+
+/** Types */
+import { TCustomSize, TCustomValue } from '../../../ts/types/custom';
 
 const SearchCancelBtn = css`
     -webkit-appearance: none;
@@ -11,7 +14,12 @@ const SearchCancelBtn = css`
     transition: all .2s ease;
 `;
 
-const CustomInputStyled = styled.input`
+interface ICustomInputStyledProps {
+    $disabled: boolean,
+    $size: TCustomSize,
+};
+
+const CustomInputStyled = styled.input<ICustomInputStyledProps>`
     background: ${(({ $disabled }) => $disabled ? '#acacac' : 'transparent')};
     border: ${(({ $disabled }) => $disabled ? '1px solid #7f7f7f' : '1px solid var(--main-font)')};
     border-radius: var(--main-border-radius);
@@ -37,19 +45,33 @@ const CustomInputStyled = styled.input`
     &::-webkit-search-cancel-button {${SearchCancelBtn}}
 `;
 
+interface ICustomInputProps {
+    className?: string,
+    type?: string,
+    size?: TCustomSize,
+    placeholder?: string,
+    name?: string,
+    value: TCustomValue,
+    required?: boolean,
+    disabled?: boolean,
+    onChange?: ChangeEventHandler<HTMLInputElement>,
+    onFocus?: FocusEventHandler<HTMLInputElement>,
+    onBlur?: FocusEventHandler<HTMLInputElement>,
+};
+
 const CustomInput = forwardRef(({
     className = '',
     type = 'search',
     size = 'medium',
     placeholder = 'search',
-    name='',
-    value='',
-    required=false,
-    disabled=false,
+    name = '',
+    value = '',
+    required = false,
+    disabled = false,
     onChange,
     onFocus,
     onBlur,
-}, ref) => <CustomInputStyled
+}: ICustomInputProps, ref) => <CustomInputStyled
     className={`custom--input w-100 ${className}`}
     type={type}
     placeholder={placeholder}

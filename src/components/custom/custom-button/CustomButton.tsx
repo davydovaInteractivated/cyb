@@ -1,6 +1,17 @@
+import React, { PropsWithChildren, MouseEventHandler } from 'react';
 import styled from 'styled-components';
 
-const StyledCustomButton = styled.button`
+/** Types */
+import { TCustomSize } from '../../../ts/types/custom';
+
+interface IStyledCustomButtonProps {
+    $filled: boolean,
+    $disabled: boolean,
+    $icon: boolean,
+    $size: TCustomSize,
+};
+
+const StyledCustomButton = styled.button<IStyledCustomButtonProps>`
     background: ${({
         $filled,
         $disabled,
@@ -53,6 +64,16 @@ const StyledCustomButton = styled.button`
     }
 `;
 
+interface ICustomButtonProps {
+    size: TCustomSize,
+    disabled: boolean,
+    filled: boolean,
+    icon: boolean,
+    className?: string,
+    type?: 'button' | 'submit' | 'reset',
+    onClick?: MouseEventHandler<HTMLButtonElement>,
+};
+
 const CustomButton = ({
     className = '',
     type = 'button',
@@ -62,7 +83,7 @@ const CustomButton = ({
     icon = false,
     children = 'more',
     onClick,
-}) => (
+}: PropsWithChildren<ICustomButtonProps>) => (
      <StyledCustomButton
         className={`custom--button ${className}`}
         $size={size}

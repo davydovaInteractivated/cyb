@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const CustomDetailsStyled = styled.details`
@@ -24,9 +25,13 @@ const CustomDetailsContentStyled = styled.div`
     margin: 0 1em 1em;
 `;
 
+interface ICustomDetailsProps {
+    className?: string,
+};
+
 const CustomDetails = ({
     className = '',
-}) => {
+}: ICustomDetailsProps) => {
     return (
         <CustomDetailsStyled className={`custom--details w-100 ${className}`}>
             <CustomSummaryStyled className="custom--details__summary">

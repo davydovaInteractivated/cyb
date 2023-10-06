@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, PropsWithChildren } from "react";
 import styled from 'styled-components';
-
-/** Styles */
-// import './custom-select.scss';
 
 /** Components */
 import CustomInput from "../custom-input/CustomInput"
 
-const CustomSelectStyled = styled.div`
+/** Types */
+import { TCustomSize, TCustomItem, TCustomValue } from '../../../ts/types/custom';
+
+interface ICustomSelectStyledProps {
+    $size: TCustomSize,
+};
+
+const CustomSelectStyled = styled.div<PropsWithChildren<ICustomSelectStyledProps>>`
     position: relative;
     font-size: ${(({ $size }) => {
         if ($size === 'small') return '.808rem';
@@ -55,9 +59,22 @@ const CustomSelectOptionsListItemStyled = styled.li`
     }
 `;
 
+interface ICustomSelectProps {
+    value: TCustomValue,
+    size: TCustomSize,
+    placeholder?: string,
+    className?: string,
+    items: TCustomItem[],
+    valueKey?: string,
+    name?: string,
+    returnObject?: boolean,
+    required: boolean,
+    disabled: boolean,
+    onChange: (value: string | TCustomItem) => void,
+};
 
 const CustomSelect = ({
-    value = null,
+    value = '',
     size = 'medium',
     placeholder = 'select',
     className,
@@ -68,11 +85,11 @@ const CustomSelect = ({
     required = false,
     disabled = false,
     onChange,
-}) => {
-    const [selectItems, setSelectItems] = useState(items);
-    const [selectValue, setSelectValue] = useState('');
-    const [selectOption, setSelectOption] = useState(null);
-    const [showOptions, setShowOptions] = useState(false);
+}: ICustomSelectProps) => {
+    const [selectItems, setSelectItems] = useState<TCustomItem[]>(items);
+    const [selectValue, setSelectValue] = useState<TCustomValue>('');
+    const [selectOption, setSelectOption] = useState<TCustomItem | null>(null);
+    const [showOptions, setShowOptions] = useState<boolean>(false);
 
     useEffect(() => {
         if (value) setSelectValue(value);
@@ -88,7 +105,7 @@ const CustomSelect = ({
         if (!e.target.value) setSelectOption(null);
 
         const newItems = items
-            .filter((item) => item.name.includes(e.target.value));
+            .filter((item) => item[name].includes(e.target.value));
 
         setSelectItems(newItems);
     };
@@ -119,16 +136,16 @@ const CustomSelect = ({
      * Click List Item
      * @param {number} optionId OptionId
      */
-    const clickOption = (optionId) => {
-        const option = items
-            .find((item) => item.id === optionId);
+    const clickOption = (optionId: string | number) => {
+        const option: TCustomItem | undefined = items
+            .find((item) => item[valueKey] === optionId);
 
         if (!option) return;
 
         setSelectOption(option);
-        setSelectValue(option.name);
+        setSelectValue(option[name]);
 
-        onChange(returnObject ? option : option.name);
+        onChange(returnObject ? option : option[name]);
     };
 
     return (
@@ -151,7 +168,7 @@ const CustomSelect = ({
             {showOptions && <CustomSelectOptionsStyled className="custom--select__options w-100">
                 <CustomSelectOptionsListStyled className="custom--select__options-list">
                     {selectItems.length ? selectItems.map((item) => <CustomSelectOptionsListItemStyled
-                        className={`custom--select__options-list_item ${selectOption?.id === item.id ? 'active' : ''}`}
+                        className={`custom--select__options-list_item ${selectOption?.[valueKey] === item[valueKey] ? 'active' : ''}`}
                         key={item[valueKey]}
                         onClick={() => clickOption(item.id)}
                     >

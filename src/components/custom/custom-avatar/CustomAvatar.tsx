@@ -1,6 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const CustomAvatarStyled = styled.div`
+interface ICustomAvatarStyledProps {
+    $inverted: boolean,
+};
+
+const CustomAvatarStyled = styled.div<ICustomAvatarStyledProps>`
     height: 3em;
     width: 3em;
     background: var(--color-light);
@@ -13,12 +18,19 @@ const CustomAvatarStyled = styled.div`
     color: ${(({ $inverted }) => $inverted ? 'var(--main-font-inverted)' : 'var(--main-font')};
 `;
 
+interface ICustomAvatarProps {
+    className?: string,
+    inverted?: boolean,
+    name?: string,
+    email?: string,
+};
+
 const CustomAvatar = ({
     className = '',
     inverted = true,
     name = '', // user.displayName
     email = '', // user.email
-}) => {
+}: ICustomAvatarProps) => {
     return (
         <CustomAvatarStyled
             className={`custom--avatar ${className}`}
