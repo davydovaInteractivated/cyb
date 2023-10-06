@@ -48,6 +48,7 @@ export const ServicesContextProvider = ({ children }) => {
 
     useEffect(() => {
         filter({ data: services, sortDirection, searchValue });
+    // eslint-disable-next-line
     }, [onFavorites, services, sortDirection, searchValue]);
 
     /**
@@ -77,11 +78,6 @@ export const ServicesContextProvider = ({ children }) => {
     
         setServices(servicesDataCopy);
         setMarkedCount(isMarked ? markedCount + 1: markedCount - 1);
-        // filter({
-        //     data: servicesDataCopy,
-        //     searchValue,
-        //     sortDirection,
-        // });
     };
 
     /**
@@ -91,7 +87,6 @@ export const ServicesContextProvider = ({ children }) => {
     const search = (event) => {
         const sValue = event.target.value.toLocaleLowerCase();
         setSearchValue(sValue);
-        // filter({ data: services, searchValue: sValue, sortDirection });
     };
     
     /**
@@ -99,9 +94,7 @@ export const ServicesContextProvider = ({ children }) => {
      */
     const sort = () => {
         const newSortDirection = sortDirection <= 0 ? sortDirection + 1 : sortDirection - 2;
-
         setSortDirection(newSortDirection);
-        // filter({ data: services, sortDirection: newSortDirection, searchValue });
     }
     
     /**
