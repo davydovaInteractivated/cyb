@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -10,19 +11,29 @@ import {
 /** Api */
 // import { servicesData } from '../api/services';
 
+export type TService = {
+    id: string,
+    description: string,
+    is_marked: boolean,
+    references: {
+        src: string,
+        url: string,
+    }[],
+};
+
 export const ServicesContext = createContext({
-    services: [],
-    filteredServices: [],
-    activeService: null,
+    services: [] as TService[],
+    filteredServices: [] as TService[],
+    activeService: null as TService | null,
     sortDirection: 1,
     searchValue: '',
     markedCount: 0,
 });
 
 export const ServicesContextProvider = ({ children }) => {
-    const [services, setServices] = useState([]);
-    const [filteredServices, setFilteredServices] = useState([]);
-    const [activeService, setActiveService] = useState(null);
+    const [services, setServices] = useState([] as TService[]);
+    const [filteredServices, setFilteredServices] = useState([] as TService[]);
+    const [activeService, setActiveService] = useState(null as TService | null);
     const [markedCount, setMarkedCount] = useState(0);
     const [sortDirection, setSortDirection] = useState(1);
     const [searchValue, setSearchValue] = useState('');
@@ -37,8 +48,8 @@ export const ServicesContextProvider = ({ children }) => {
         const data = await getCollection('services');
         console.log('services data', data);
 
-        setServices(data);
-        setFilteredServices(data);
+        setServices(data as typeof data & TService[]);
+        setFilteredServices(data as typeof data & TService[]);
     };
 
     useEffect(() => {
@@ -54,9 +65,9 @@ export const ServicesContextProvider = ({ children }) => {
     /**
      * Mark Service
      * @param {Boolean} isMarked
-     * @param {Number} serviceId
+     * @param {String} serviceId
      */
-    const markService = (isMarked, serviceId) => {
+    const markService = (isMarked: boolean, serviceId: string) => {
         const servicesDataCopy = [...services];
         const currentServiceDataIndex = servicesDataCopy
             .findIndex((card) => card.id === serviceId);
@@ -133,10 +144,10 @@ export const ServicesContextProvider = ({ children }) => {
 
     /**
      * Get Service
-     * @param {string} id 
+     * @param {String} Id 
      * @returns 
      */
-    const getService = (Id) => services
+    const getService = (Id: string) => services
         .find((serv) => serv.id === Id) || null;
 
     const value = {

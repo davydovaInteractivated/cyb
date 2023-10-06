@@ -1,20 +1,49 @@
+import React, { PropsWithChildren } from "react";
 import { createContext, useState } from "react";
 
 /** Api */
 import { themes } from '../api/themes';
 import { langs } from '../api/lang';
 
-export const SettingsContext = createContext({
-    themes,
-    langs,
-    theme: 'transfile',
-    lang: 'en',
+export type TThemes = typeof themes[number]['name'];
+export type TLangs = typeof langs[number]['name'];
+
+export type TTheme = {
+    name: TThemes,
+    colors: {
+        light: string,
+        dark: string,
+        font: string,
+        fontInverted: string,
+    },
+};
+export type TLang = {
+    name: TLangs,
+};
+
+interface ISettingsContextProps {
+    themes: TTheme[],
+    langs: TLang[],
+    isShowSettings: boolean,
+    activeTheme: TThemes | null,
+    activeLang: TLangs | null,
+    selectLang?: (lang: TLang) => void,
+    selectTheme?: (theme: TTheme) => void,
+    showSettings?: (value: boolean) => void,
+};
+
+export const SettingsContext = createContext<ISettingsContextProps>({
+    themes: themes,
+    langs: langs,
+    isShowSettings: false,
+    activeTheme: null,
+    activeLang: null,
 });
 
 export const SettingsContextProvider = ({ children }) => {
     const [isShowSettings, setIsShowSettings] = useState(false);
-    const [activeTheme, setActiveTheme] = useState('transfile');
-    const [activeLang, setActiveLang] = useState('en');
+    const [activeTheme, setActiveTheme] = useState<TThemes>('transfile');
+    const [activeLang, setActiveLang] = useState<TLangs>('en');
 
     /**
      * Show Settings popup
@@ -28,7 +57,7 @@ export const SettingsContextProvider = ({ children }) => {
      * Select Main app. Theme
      * @param {*} param0
      */
-    const selectTheme = ({ colors, name }) => {
+    const selectTheme = ({ colors, name }: TTheme) => {
         const [ body ] = document.getElementsByTagName('body');
         if (!body) return;
 
@@ -48,11 +77,11 @@ export const SettingsContextProvider = ({ children }) => {
      * Select Main app. Language
      * @param {*} param0 
      */
-    const selectLang = ({ name }) => {
+    const selectLang = ({ name }: { name: TLangs }) => {
         setActiveLang(name);
     };
 
-    const value = {
+    const value: ISettingsContextProps = {
         themes,
         langs,
         isShowSettings,
