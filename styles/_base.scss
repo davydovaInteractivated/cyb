@@ -98,6 +98,19 @@ a {
     justify-content: space-around!important;
 }
 
+.grid.justify-self-start {
+    justify-self: start!important;
+}
+.grid.justify-self-end {
+    justify-self: end!important;
+}
+.align-self-start {
+    align-self: start!important;
+}
+.align-self-end {
+    align-self: end!important;
+}
+
 .grid,
 .d-grid {
     display: grid!important;
@@ -127,6 +140,10 @@ a {
 .height100,
 .height-100 {
     height: 100%!important;
+}
+
+.fit-content {
+    width: fit-content!important;
 }
 
 .b,

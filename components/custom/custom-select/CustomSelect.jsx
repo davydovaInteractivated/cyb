@@ -148,7 +148,7 @@ const CustomSelect = ({
                 onBlur={onBlurHandler}
             />
 
-            {true && <CustomSelectOptionsStyled className="custom--select__options w-100">
+            {showOptions && <CustomSelectOptionsStyled className="custom--select__options w-100">
                 <CustomSelectOptionsListStyled className="custom--select__options-list">
                     {selectItems.length ? selectItems.map((item) => <CustomSelectOptionsListItemStyled
                         className={`custom--select__options-list_item ${selectOption?.id === item.id ? 'active' : ''}`}

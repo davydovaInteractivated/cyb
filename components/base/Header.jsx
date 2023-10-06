@@ -31,26 +31,20 @@ const Header = ({ t }) => {
     console.log('Header render');
     const { pathname } = useLocation();
     const atHome = pathname === '/';
+    const onFavorites = pathname === '/favorites';
     const onCases = pathname === '/cases';
 
     const user = useContext(UserContext);
     const {
         sortDirection,
-        showMarked,
         markedCount,
         searchValue,
         search,
         sort,
-        setMarkedShow,
     } = useContext(ServicesContext);
     const { cases } = useContext(CasesContext); 
 
-    const goHome = useLinkClickHandler('/');
-
-    const goToMarkedPage = (e) => {
-        setMarkedShow(e);
-        if (!atHome) goHome(e);
-    };
+    const goToFavorites = useLinkClickHandler('/favorites');
 
     const handlerSignOut = async () => {
         try {
@@ -85,39 +79,40 @@ const Header = ({ t }) => {
                                 >{t('header.menu.services')}</NavLink></li>
                         </ul>
                     </nav>
-                    {atHome && <CustomButton
-                        className={showMarked ? "active" : ""}
+                    <CustomButton
+                        className={onFavorites ? "active" : ""}
                         icon
-                        onClick={goToMarkedPage}
+                        onClick={goToFavorites}
                     >
                         <BookmarkIcon className="header--icons__icon" />
-                    </CustomButton>}
-                    {atHome && Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
-                    {atHome && <div className='header--search'>
+                    </CustomButton>
+                    {Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
+                    {(atHome || onFavorites) && <div className='header--search'>
                         <CustomInput
                             placeholder={t('custom.input.search.placeholder')}
                             value={searchValue}
                             type="search"
+                            size="small"
                             onChange={event => search(event)}
                         />
                     </div>}
                     <div className="header--icons">
                         <CustomButton
-                            className={!sortDirection && atHome ? "" : "none m-0"}
+                            className={!sortDirection && (atHome || onFavorites) ? "" : "none m-0"}
                             icon
                             onClick={sort}
                         >
                             <ArrowsUpDownIcon className="header--icons__icon" />
                         </CustomButton>
                         <CustomButton
-                            className={sortDirection > 0 && atHome ? "active" : "none m-0"}
+                            className={sortDirection > 0 && (atHome || onFavorites) ? "active" : "none m-0"}
                             icon
                             onClick={sort}
                         >
                             <BarsArrowDownIcon className="header--icons__icon" />
                         </CustomButton>
                         <CustomButton
-                            className={sortDirection < 0 && atHome ? "active" : "none m-0"}
+                            className={sortDirection < 0 && (atHome || onFavorites) ? "active" : "none m-0"}
                             icon
                             onClick={sort}
                         >

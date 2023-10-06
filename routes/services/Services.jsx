@@ -15,7 +15,6 @@ const Services = ({ t }) => {
 
     const {
         filteredServices,
-        showMarked,
         searchValue,
     } = useContext(ServicesContext);
 
@@ -30,7 +29,6 @@ const Services = ({ t }) => {
                     />
                 )
             }
-            { showMarked && !searchValue && !filteredServices.length ? <span>{t('main.text.empty.favorites')}</span> : "" }
             { searchValue && !filteredServices.length ? <span>{t('main.text.empty.search')}</span> : "" }
         </div>
     )

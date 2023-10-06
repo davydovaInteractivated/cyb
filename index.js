@@ -5,6 +5,7 @@ import App from './App';
 /** Contexts */
 import { UserContextProvider } from './context/user.context';
 import { ServicesContextProvider } from './context/services.context';
+import { FavoritesContextProvider } from './context/favorites.context';
 import { CasesContextProvider } from './context/cases.context';
 import { SettingsContextProvider } from './context/settings.context';
 import { AlertContextProvider } from './context/alert.context';
@@ -44,13 +45,15 @@ root.render(
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <UserContextProvider>
           <ServicesContextProvider>
-            <CasesContextProvider>
-              <SettingsContextProvider>
-                <AlertContextProvider>
-                  <App/>
-                </AlertContextProvider>
-              </SettingsContextProvider>
-            </CasesContextProvider>
+            <FavoritesContextProvider>
+              <CasesContextProvider>
+                <SettingsContextProvider>
+                  <AlertContextProvider>
+                    <App/>
+                  </AlertContextProvider>
+                </SettingsContextProvider>
+              </CasesContextProvider>
+            </FavoritesContextProvider>
           </ServicesContextProvider>
         </UserContextProvider>
       </BrowserRouter>

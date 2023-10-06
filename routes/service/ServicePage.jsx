@@ -81,10 +81,8 @@ const ServicePage = ({ t }) => {
 
             <p className='service--page__description'>{description || ''}</p>
             <div className='service--page__actions flex justify-end'>
-                {/* <button className='custom--button service--page__actions-item'>pre-calculate</button>
-                <button className='custom--button service--page__actions-item'>mark it</button> */}
                 <Link to='/contacts'>
-                    <button className='custom--button service--page__actions-item'>{t('custom.button.card.contact')}</button>
+                    <CustomButton className='service--page__actions-item'>{t('custom.button.card.contact')}</CustomButton>
                 </Link>
             </div>
         </div>
