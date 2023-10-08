@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { createContext, useState } from "react";
 
 /** Types */
@@ -8,7 +8,7 @@ export const FavoritesContext = createContext({
     favorites: [] as TService[],
 });
 
-export const FavoritesContextProvider = ({ children }) => {
+export const FavoritesContextProvider = ({ children }: PropsWithChildren) => {
     const [favorites, setFavorites] = useState([]);
 
     const value = {

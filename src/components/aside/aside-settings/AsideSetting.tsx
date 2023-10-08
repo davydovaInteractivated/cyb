@@ -4,7 +4,21 @@ import { CheckIcon } from '@heroicons/react/24/solid';
 /** Styles */
 import './aside-settings.scss';
 
-const AsideSetting = ({ item, activeItem, selectItem }) => {
+/** Types */
+import { TTheme } from '../../../context/settings.context';
+
+interface IAsideSettingsProps{
+    item: TAsideSettingsPropsItem,
+    activeItem: string | null,
+    selectItem: (item: TAsideSettingsPropsItem) => void,
+};
+
+export type TAsideSettingsPropsItem = {
+    name: string,
+    colors?: TTheme['colors'],
+};
+
+const AsideSetting = ({ item, activeItem, selectItem }: IAsideSettingsProps) => {
     const { colors, name } = item;
     const { light, dark } = colors || {};
     const itemLabel = name.replace('_', ' ');

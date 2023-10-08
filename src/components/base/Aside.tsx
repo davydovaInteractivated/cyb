@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useTranslation, withTranslation } from 'react-i18next';
 
 /** Styles */
@@ -17,9 +17,14 @@ import AsideCube from '../aside/AsideCube';
 /** Contexts */
 import { SettingsContext } from '../../context/settings.context';
 
-const Aside = ({ t }) => {
-    const { i18n } = useTranslation('common');
-    const [cubeData] = useState([{
+export type TSideCube = {
+    name: string,
+    class: string,
+};
+
+const Aside = ({ t }: { t: any }) => {
+    const { i18n }: any = useTranslation('common');
+    const [cubeData] = useState<TSideCube[]>([{
         name: 'tech',
         class: 'aside--cube__side-back',
     }, {

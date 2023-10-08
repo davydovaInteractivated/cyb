@@ -2,6 +2,8 @@ import { withTranslation } from 'react-i18next';
 import {
     useState,
     useContext,
+    ChangeEvent,
+    FormEventHandler,
 } from "react";
 import { useNavigate } from 'react-router-dom';
 
@@ -17,10 +19,12 @@ import {
 /** Contexts */
 import { AlertContext } from '../../context/alert.context';
 
-const SignInForm = ({ t }) => {
+const SignInForm = ({ t }: { t: any }) => {
     const [formIn, setFormIn] = useState({
+        displayName: '',
         email: '',
         password: '',
+        confirmPassword: '',
     });
     const {
         email,
@@ -40,7 +44,7 @@ const SignInForm = ({ t }) => {
      * Handle Form In Change
      * @param {*} event
      */
-    const handleFormInChange = (event) => {
+    const handleFormInChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {
             name, value,
         } = event.target;
@@ -56,7 +60,7 @@ const SignInForm = ({ t }) => {
     /**
      * Submit Form In
      */
-    const submitFormIn = async (event) => {
+    const submitFormIn: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
         if (!email || !password) return;
 
@@ -72,10 +76,11 @@ const SignInForm = ({ t }) => {
             goToHome();
         } catch (error) {
             console.error(error);
+            const { code } = error as { code: string };
 
             let message = '';
-            if (error.code === 'auth/wrong-password') message = 'Wrong password. Please, try again.';
-            if (error.code === 'auth/user-not-found') message = 'User not found.';
+            if (code === 'auth/wrong-password') message = 'Wrong password. Please, try again.';
+            if (code === 'auth/user-not-found') message = 'User not found.';
 
             /** Set Alert props. */
             setShow(true);

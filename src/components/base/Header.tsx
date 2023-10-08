@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { withTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation, useLinkClickHandler } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ import CustomButton from '../custom/custom-button/CustomButton';
 import CustomAvatar from '../custom/custom-avatar/CustomAvatar';
 import Logo from '../base/logo/Logo';
 
-const Header = ({ t }) => {
+const Header = ({ t }: { t: any }) => {
     console.log('Header render');
     const { pathname } = useLocation();
     const atHome = pathname === '/';
@@ -45,6 +45,7 @@ const Header = ({ t }) => {
     const { cases } = useContext(CasesContext); 
 
     const goToFavorites = useLinkClickHandler('/favorites');
+    const goToFavoritesHandler = () => goToFavorites;
 
     const handlerSignOut = async () => {
         try {
@@ -82,7 +83,7 @@ const Header = ({ t }) => {
                     <CustomButton
                         className={onFavorites ? "active" : ""}
                         icon
-                        onClick={goToFavorites}
+                        onClick={goToFavoritesHandler}
                     >
                         <BookmarkIcon className="header--icons__icon" />
                     </CustomButton>

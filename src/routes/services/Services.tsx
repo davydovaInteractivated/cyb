@@ -10,7 +10,7 @@ import Service from '../../components/services/Service';
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
 
-const Services = ({ t }) => {
+const Services = ({ t }: { t: any }) => {
     console.log('Services list render');
 
     const {

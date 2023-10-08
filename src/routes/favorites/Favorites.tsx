@@ -8,7 +8,7 @@ import Service from '../../components/services/Service';
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
 
-const Favorites = ({ t }) => {
+const Favorites = ({ t }: { t: any }) => {
     const { filteredServices } = useContext(ServicesContext);
 
     return (

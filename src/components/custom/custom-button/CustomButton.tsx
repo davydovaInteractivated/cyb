@@ -65,10 +65,10 @@ const StyledCustomButton = styled.button<IStyledCustomButtonProps>`
 `;
 
 interface ICustomButtonProps {
-    size: TCustomSize,
-    disabled: boolean,
-    filled: boolean,
-    icon: boolean,
+    size?: TCustomSize,
+    disabled?: boolean,
+    filled?: boolean,
+    icon?: boolean,
     className?: string,
     type?: 'button' | 'submit' | 'reset',
     onClick?: MouseEventHandler<HTMLButtonElement>,

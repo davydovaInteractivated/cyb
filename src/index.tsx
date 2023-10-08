@@ -15,7 +15,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 /** Translations */
 import { I18nextProvider } from 'react-i18next';
-import i18next from 'i18next';
+import i18next, { TOptions } from 'i18next';
 import common_en from './translations/en/common.json';
 import common_ua from './translations/ua/common.json';
 import common_ru from './translations/ru/common.json';
@@ -37,11 +37,11 @@ i18next.init({
   },
 });
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
-    <I18nextProvider i18n={i18next}>
+    <I18nextProvider i18n={i18next as TOptions}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <UserContextProvider>
           <ServicesContextProvider>

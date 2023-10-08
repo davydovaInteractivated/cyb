@@ -5,6 +5,9 @@ import { createContext, useState } from "react";
 import { themes } from '../api/themes';
 import { langs } from '../api/lang';
 
+/** Types */
+import { TAsideSettingsPropsItem } from '../components/aside/aside-settings/AsideSetting';
+
 export type TThemes = typeof themes[number]['name'];
 export type TLangs = typeof langs[number]['name'];
 
@@ -27,9 +30,9 @@ interface ISettingsContextProps {
     isShowSettings: boolean,
     activeTheme: TThemes | null,
     activeLang: TLangs | null,
-    selectLang?: (lang: TLang) => void,
-    selectTheme?: (theme: TTheme) => void,
-    showSettings?: (value: boolean) => void,
+    selectLang: (lang: TAsideSettingsPropsItem) => void,
+    selectTheme: (theme: TAsideSettingsPropsItem) => void,
+    showSettings: (value: boolean) => void,
 };
 
 export const SettingsContext = createContext<ISettingsContextProps>({
@@ -38,9 +41,12 @@ export const SettingsContext = createContext<ISettingsContextProps>({
     isShowSettings: false,
     activeTheme: null,
     activeLang: null,
+    selectLang: () => {},
+    selectTheme: () => {},
+    showSettings: () => {},
 });
 
-export const SettingsContextProvider = ({ children }) => {
+export const SettingsContextProvider = ({ children }: PropsWithChildren) => {
     const [isShowSettings, setIsShowSettings] = useState(false);
     const [activeTheme, setActiveTheme] = useState<TThemes>('transfile');
     const [activeLang, setActiveLang] = useState<TLangs>('en');
@@ -57,18 +63,20 @@ export const SettingsContextProvider = ({ children }) => {
      * Select Main app. Theme
      * @param {*} param0
      */
-    const selectTheme = ({ colors, name }: TTheme) => {
-        const [ body ] = document.getElementsByTagName('body');
+    const selectTheme = (item: TAsideSettingsPropsItem) => {
+        const body = document.getElementsByTagName('body')[0];
         if (!body) return;
+
+        const { colors, name } = item;
 
         const {
             light, dark, font, fontInverted,
-        } = colors;
+        } = colors || {};
 
-        body.style.setProperty('--color-light', light);
-        body.style.setProperty('--color-dark', dark);
-        body.style.setProperty('--main-font', font);
-        body.style.setProperty('--main-font-inverted', fontInverted);
+        body.style.setProperty('--color-light', light || '');
+        body.style.setProperty('--color-dark', dark || '');
+        body.style.setProperty('--main-font', font || '');
+        body.style.setProperty('--main-font-inverted', fontInverted || '');
 
         setActiveTheme(name);
     };

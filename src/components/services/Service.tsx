@@ -18,7 +18,16 @@ import ServiceReference from '../service/ServiceReference';
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
 
-const Service = ({ service, index, t }) => {
+/** Types */
+import { TService } from '../../context/services.context';
+
+interface IServiceProps {
+    service: TService,
+    index: number,
+    t: any,
+};
+
+const Service = ({ service, index, t }: IServiceProps) => {
     console.log('Service card render');
 
     const { markService, setActiveService } = useContext(ServicesContext);

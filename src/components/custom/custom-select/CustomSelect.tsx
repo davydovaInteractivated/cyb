@@ -1,4 +1,4 @@
-import React, { useState, useEffect, PropsWithChildren } from "react";
+import { useState, useEffect, PropsWithChildren } from "react";
 import styled from 'styled-components';
 
 /** Components */
@@ -61,15 +61,15 @@ const CustomSelectOptionsListItemStyled = styled.li`
 
 interface ICustomSelectProps {
     value: TCustomValue,
-    size: TCustomSize,
+    size?: TCustomSize,
     placeholder?: string,
     className?: string,
     items: TCustomItem[],
     valueKey?: string,
     name?: string,
     returnObject?: boolean,
-    required: boolean,
-    disabled: boolean,
+    required?: boolean,
+    disabled?: boolean,
     onChange: (value: string | TCustomItem) => void,
 };
 
@@ -99,7 +99,7 @@ const CustomSelect = ({
      * On Custom Input Change Handler
      * @param {MouseEvent} e Event
      */
-    const onChangeHandler = (e) => {
+    const onChangeHandler = (e: { target: { value: string} }) => {
         setSelectValue(e.target.value);
 
         if (!e.target.value) setSelectOption(null);
@@ -170,10 +170,11 @@ const CustomSelect = ({
                     {selectItems.length ? selectItems.map((item) => <CustomSelectOptionsListItemStyled
                         className={`custom--select__options-list_item ${selectOption?.[valueKey] === item[valueKey] ? 'active' : ''}`}
                         key={item[valueKey]}
-                        onClick={() => clickOption(item.id)}
+                        onClick={() => clickOption(item[valueKey])}
                     >
                         {item[name]}
-                    </CustomSelectOptionsListItemStyled>) : <CustomSelectOptionsListItemStyled className="custom--select__options-list_item empty text-center">no items for select</CustomSelectOptionsListItemStyled>}
+                    </CustomSelectOptionsListItemStyled>)
+                    : <CustomSelectOptionsListItemStyled className="custom--select__options-list_item empty text-center">no items for select</CustomSelectOptionsListItemStyled>}
                 </CustomSelectOptionsListStyled>
             </CustomSelectOptionsStyled>}
         </CustomSelectStyled>

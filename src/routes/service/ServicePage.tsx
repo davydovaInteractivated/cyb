@@ -23,10 +23,11 @@ import {
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
 
-const ServicePage = ({ t }) => {
+const ServicePage = ({ t }: { t: any }) => {
     console.log('Service Page render');
 
     const {
+        services,
         activeService,
         markService,
         getService,
@@ -38,9 +39,9 @@ const ServicePage = ({ t }) => {
 
     const { serviceId } = useParams();
 
-    const Id = id || serviceId || null;
+    const Id = id || serviceId || '';
 
-    const currentService = activeService || getService(Id) || null;
+    const currentService = activeService || getService(Id, services) || null;
 
     const {
         is_marked,
@@ -74,8 +75,8 @@ const ServicePage = ({ t }) => {
                         </CustomButton>
                     </div>
                 </div>
-                {references.length && <div className="service--page__reference flex gap justify-end">
-                    <ServiceReference refs={references} alt={title}/>
+                {references?.length && <div className="service--page__reference flex gap justify-end">
+                    <ServiceReference refs={references} alt={title || ''}/>
                 </div>}
             </div>
 

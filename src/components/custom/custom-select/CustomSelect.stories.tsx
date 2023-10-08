@@ -2,6 +2,7 @@ import CustomSelect from './CustomSelect';
 import '../../../styles/_reset.scss';
 import '../../../styles/_variables.css';
 import '../../../styles/_base.scss';
+import { MouseEventHandler } from 'react';
 
 export default {
     title: 'CustomSelect',
@@ -19,7 +20,7 @@ export default {
     },
 };
 
-const onChangeHandler = (e) => {
+const onChangeHandler = (e: MouseEventHandler<HTMLInputElement>) => {
     console.log(e);
 };
 
@@ -35,6 +36,6 @@ export const Default = {
         returnObject: true,
         required: false,
         disabled: false,
-        onChange: (e) => onChangeHandler(e),
+        onChange: (e: MouseEventHandler<HTMLInputElement>) => onChangeHandler(e),
     },
 };

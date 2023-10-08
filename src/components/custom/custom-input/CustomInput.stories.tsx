@@ -1,5 +1,6 @@
 import CustomInput from './CustomInput';
 import '../../../styles/_variables.css';
+import { MouseEventHandler } from 'react';
 
 export default {
     title: 'CustomInput',
@@ -17,8 +18,8 @@ export default {
     },
 };
 
-const onChangeHandler = (e) => {
-    console.log(e.target.value);
+const onChangeHandler = (e: MouseEventHandler<HTMLInputElement>) => {
+    console.log(e);
 };
 
 export const Default = {
@@ -30,6 +31,6 @@ export const Default = {
         size: 'medium',
         required: false,
         disabled: false,
-        onChange: (e) => onChangeHandler(e),
+        onChange: (e: MouseEventHandler<HTMLInputElement>) => onChangeHandler(e),
     },
 };

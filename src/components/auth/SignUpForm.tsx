@@ -1,5 +1,5 @@
 import { withTranslation } from 'react-i18next';
-import { useState, useContext } from "react";
+import { useState, useContext, ChangeEvent, FormEventHandler } from "react";
 
 /** Contexts */
 import { AlertContext } from '../../context/alert.context';
@@ -14,7 +14,10 @@ import {
     createUserDocFromAuth,
 } from "../../utils/firebase";
 
-const SignUpForm = ({ t }) => {
+/** Types */
+import { UserCredential } from 'firebase/auth';
+
+const SignUpForm = ({ t }: { t: any }) => {
     const [formUp, setFormUp] = useState({
         displayName: '',
         email: '',
@@ -39,7 +42,7 @@ const SignUpForm = ({ t }) => {
      * Handle Form Up Change
      * @param {*} event
      */
-    const handleFormUpChange = (event) => {
+    const handleFormUpChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {
             name, value,
         } = event.target;
@@ -55,12 +58,13 @@ const SignUpForm = ({ t }) => {
     /**
      * Submit Form Up
      */
-    const submitFormUp = async (event) => {
+    const submitFormUp: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
         if (password !== confirmPassword) return;
 
         try {
-            const { user } = await createAuthUserWithEmailAndPassword(email, password);
+            const data: UserCredential | undefined = await createAuthUserWithEmailAndPassword(email, password);
+            const { user } = data || {};
             await createUserDocFromAuth(user, {
                 displayName,
             });
@@ -74,9 +78,11 @@ const SignUpForm = ({ t }) => {
         } catch (error) {
             console.error(error);
 
+            const { code } = error as { code: string };
+
             let message = '';
-            if (error.code === 'auth/email-already-in-use') message = 'Cannot create User. E-mail already in use.';
-            if (error.code === 'auth/weak-password') message = 'Password should be at least 6 characters.';
+            if (code === 'auth/email-already-in-use') message = 'Cannot create User. E-mail already in use.';
+            if (code === 'auth/weak-password') message = 'Password should be at least 6 characters.';
 
             /** Set Alert props. */
             setShow(true);

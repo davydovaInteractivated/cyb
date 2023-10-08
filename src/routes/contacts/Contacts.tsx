@@ -14,20 +14,16 @@ import {
 /** Styles */
 import '../../styles/contacts.scss';
 
-const Contacts = ({ t }) => {
+const Contacts = ({ t }: { t: any }) => {
     const [ name, setName ] = useState('');
     const [ phone, setPhone ] = useState('');
     const [ mail, setMail ] = useState('');
 
-    const inputNameEl = useRef(null);
-    // const inputPhoneEl = useRef(null);
-    // const inputMailEl = useRef(null);
+    const inputNameEl = useRef(document.querySelector('.name'));
 
     useEffect(() => {
         inputNameEl.current = document.querySelector('.name');
-        // inputPhoneEl.current = document.querySelector('.phone');
-        // inputMailEl.current = document.querySelector('.mail');
-        inputNameEl.current.focus();
+        (inputNameEl.current as HTMLInputElement)?.focus();
     }, []);
 
     /**
@@ -47,6 +43,7 @@ const Contacts = ({ t }) => {
             <form className="contacts--form flex f-col align-end gap">
                 <h3 className="contacts--form__title">{t('form.title.contacts')}</h3>
                 <CustomInput
+                    value={name}
                     ref={inputNameEl}
                     className="contacts--form__item name"
                     type="text"
@@ -54,6 +51,7 @@ const Contacts = ({ t }) => {
                     onChange={(e) => setName(e.target.value)}
                 />
                 <CustomInput
+                    value={phone}
                     // ref={inputPhoneEl}
                     className="contacts--form__item phone"
                     type="text"
@@ -61,6 +59,7 @@ const Contacts = ({ t }) => {
                     onChange={(e) => setPhone(e.target.value)}
                 />
                 <CustomInput
+                    value={mail}
                     // ref={inputMailEl}
                     className="contacts--form__item mail"
                     type="text"
@@ -90,7 +89,7 @@ const Contacts = ({ t }) => {
                     width="auto"
                     height="202"
                     style={{ border: 0, borderRadius: '4px' }}
-                    allowFullScreen=""
+                    allowFullScreen={undefined}
                     title="map"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"

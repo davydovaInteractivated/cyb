@@ -16,9 +16,18 @@ import { CasesContext } from '../../context/cases.context';
 /** Components */
 import CustomButton from '../../components/custom/custom-button/CustomButton';
 
-const Case = ({ caseItem, caseIndex, t }) => {
+/** Types */
+import { TCase, TCaseDataKey } from '../../context/cases.context';
+
+interface ICaseProps {
+    caseItem: TCase,
+    caseIndex: number,
+    t: any,
+};
+
+const Case = ({ caseItem, caseIndex, t }: ICaseProps) => {
     const { title, data } = caseItem || {};
-    const { cases, setCases } = useContext(CasesContext);
+    const { cases, setCases, getTotalCost } = useContext(CasesContext);
 
     /**
      * Delete Case
@@ -50,11 +59,11 @@ const Case = ({ caseItem, caseIndex, t }) => {
             <div className='case--content grid gap'>
                 {
                     Object.keys(data).map((key) => <div key={key} className="case--content__field">
-                        <strong>{key}:</strong>&nbsp;&nbsp;{data[key].name}
-                        <span>&nbsp;(~&nbsp;${data[key].cost})</span>
+                        <strong>{key}:</strong>&nbsp;&nbsp;{data[key as TCaseDataKey].value}
+                        <span>&nbsp;(~&nbsp;${data[key as TCaseDataKey].cost})</span>
                     </div>)
                 }
-                <strong className='case--total'>{t('total')}:&nbsp;&nbsp;~&nbsp;${520}</strong>
+                <strong className='case--total'>{t('total')}:&nbsp;&nbsp;~&nbsp;${getTotalCost(caseItem)}</strong>
             </div>
         </div>
     );

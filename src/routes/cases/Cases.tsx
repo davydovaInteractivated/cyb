@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext } from 'react';
 
 /** Styles */
@@ -9,12 +10,12 @@ import Case from '../case/Case';
 /** Contexts */
 import { CasesContext } from '../../context/cases.context';
 
-const Cases = ({ t }) => {
+const Cases = () => {
     const {
         cases,
     } = useContext(CasesContext);
 
-    console.log(cases);
+    console.log('Cases render', cases);
 
     return (
         <div className="cases grid gap-2 w-100">

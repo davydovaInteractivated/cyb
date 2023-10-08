@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, PropsWithChildren, useState } from "react";
 
 /** Types */
 import { TCustomType } from '../ts/types/custom';
@@ -7,18 +7,21 @@ interface IAlertContextProps {
     show: boolean,
     type: TCustomType,
     message: string,
-    setShow?: (value: boolean) => void,
-    setType?: (value: TCustomType) => void,
-    setMessage?: (value: string) => void,
+    setShow: (value: boolean) => void,
+    setType: (value: TCustomType) => void,
+    setMessage: (value: string) => void,
 };
 
 export const AlertContext = createContext<IAlertContextProps>({
     show: false,
     type: 'info',
     message: 'info message',
+    setShow: () => {},
+    setType: () => {},
+    setMessage: () => {},
 });
 
-export const AlertContextProvider = ({ children }) => {
+export const AlertContextProvider = ({ children }: PropsWithChildren) => {
     const [show, setShow] = useState<boolean>(false);
     const [type, setType] = useState<TCustomType>('info');
     const [message, setMessage] = useState<string>('info message');

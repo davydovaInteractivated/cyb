@@ -4,6 +4,9 @@ import AsideSetting from './AsideSetting';
 import './aside-settings.scss';
 import '../../../styles/aside.scss';
 
+/** Types */
+import { TTheme, TLang } from '../../../context/settings.context';
+
 export default {
     title: 'AsideSetting',
     component: AsideSetting,
@@ -19,6 +22,6 @@ export const Default = {
             },
         },
         activeItem: 'setting',
-        selectItem: (item) => { console.log(item); },
+        selectItem: (item: TTheme | TLang) => { console.log(item); },
     },
 };

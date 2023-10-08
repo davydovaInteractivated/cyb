@@ -20,7 +20,7 @@ import SignUpForm from "../../components/auth/SignUpForm";
 /** Styles */
 import "../../styles/auth.scss";
 
-const Auth = ({ t }) => {
+const Auth = ({ t }: { t: any }) => {
     useEffect(() => {
         getRedirect();
     }, []);
@@ -57,9 +57,11 @@ const Auth = ({ t }) => {
         } catch (error) {
             console.error(error);
 
+            const { code } = error as { code: string };
+
             let message = '';
-            if (error.code === 'auth/email-already-in-use') message = 'Cannot create User. E-mail already in use.';
-            if (error.code === 'auth/weak-password') message = 'Password should be at least 6 characters.';
+            if (code === 'auth/email-already-in-use') message = 'Cannot create User. E-mail already in use.';
+            if (code === 'auth/weak-password') message = 'Password should be at least 6 characters.';
 
             /** Set Alert props. */
             setShow(true);
