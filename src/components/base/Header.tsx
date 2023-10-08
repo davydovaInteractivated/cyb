@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { withTranslation } from 'react-i18next';
-import { Link, NavLink, useLocation, useLinkClickHandler } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import { signOutUser } from '../../utils/firebase';
 
@@ -44,9 +44,6 @@ const Header = ({ t }: { t: any }) => {
     } = useContext(ServicesContext);
     const { cases } = useContext(CasesContext); 
 
-    const goToFavorites = useLinkClickHandler('/favorites');
-    const goToFavoritesHandler = () => goToFavorites;
-
     const handlerSignOut = async () => {
         try {
             await signOutUser();
@@ -80,13 +77,12 @@ const Header = ({ t }: { t: any }) => {
                                 >{t('header.menu.services')}</NavLink></li>
                         </ul>
                     </nav>
-                    <CustomButton
-                        className={onFavorites ? "active" : ""}
-                        icon
-                        onClick={goToFavoritesHandler}
-                    >
-                        <BookmarkIcon className="header--icons__icon" />
-                    </CustomButton>
+                    <NavLink to='/favorites'>
+                        <CustomButton
+                            className={onFavorites ? "active" : ""}
+                            icon
+                        ><BookmarkIcon className="header--icons__icon" /></CustomButton>
+                    </NavLink>
                     {Boolean(markedCount) && <sub className='header--marked-count'>{markedCount}</sub>}
                     {(atHome || onFavorites) && <div className='header--search'>
                         <CustomInput

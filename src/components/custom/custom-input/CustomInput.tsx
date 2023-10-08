@@ -1,4 +1,4 @@
-import React, { forwardRef, FocusEventHandler, ChangeEventHandler } from 'react';
+import { forwardRef, FocusEventHandler, ChangeEventHandler } from 'react';
 import styled, { css } from 'styled-components';
 
 /** Types */
