@@ -79,5 +79,14 @@
         "service" : "service"
     },
     "addtocase" : "add to case",
-    "total" : "total"
+    "total" : "total",
+    "download" : "download",
+    "case" : {
+        "case" : "case",
+        "case_params" : "case params",
+        "case_values" : "case values",
+        "pre-calculate" : "pre-calculate",
+        "cost" : "cost",
+        "in" : "in"
+    }
 }

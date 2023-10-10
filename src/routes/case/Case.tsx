@@ -91,6 +91,16 @@ const Case = ({ caseItem, caseIndex, t }: ICaseProps) => {
                 content: 'pre-calculate cost in $',
                 colSpan: 1,
             }]],
+            // headers: [[{
+            //     content: t('case.case_params'),
+            //     colSpan: 1,
+            // }, {
+            //     content: t('case.case_values'),
+            //     colSpan: 1,
+            // }, {
+            //     content: `${t('case.pre-calculate')} ${t('case.cost')} ${t('case.in')} $`,
+            //     colSpan: 1,
+            // }]],
             data,
         }
     };
@@ -116,7 +126,7 @@ const Case = ({ caseItem, caseIndex, t }: ICaseProps) => {
                     <Link to={`/${title}`}>
                         <span style={{textDecoration: 'underline'}}>{title}</span>&nbsp;
                     </Link>
-                } pre-calculate case</h2>
+                } {t('case.pre-calculate')} {t('case.case')}</h2>
                 <CustomButton
                     icon
                     onClick={() => deleteCase()}
@@ -138,7 +148,7 @@ const Case = ({ caseItem, caseIndex, t }: ICaseProps) => {
                         size='small'
                         onClick={() => downloadCase()}
                     >
-                        download PDF
+                        {t('download')} PDF
                     </CustomButton>
                 </div>
             </div>
