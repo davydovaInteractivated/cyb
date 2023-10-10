@@ -82,7 +82,7 @@ export const tableDataToPdf = (
     didDrawPage: (HookData) => {
       /** Set Page Number */
       doc.setFont('helvetica');
-      doc.setFontSize(10);
+      doc.setFontSize(8);
       doc.setTextColor('#BDBDBD');
       doc.text(`${HookData.table.pageCount}`, 30, 15, {
         align: 'right',
