@@ -12,6 +12,7 @@ interface IStyledCustomButtonProps {
 };
 
 const StyledCustomButton = styled.button<IStyledCustomButtonProps>`
+    width: fit-content;
     background: ${({
         $filled,
         $disabled,

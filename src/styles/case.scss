@@ -1,11 +1,11 @@
 .case {
-    max-height: 246px;
+    max-height: fit-content;
     border: 2px solid var(--main-font);
     border-radius: var(--main-border-radius);
     padding: 1.4em;
 
     &--header {
-        margin-bottom: 1em;
+        margin-bottom: 2em;
     }
 
     &--delete {
@@ -20,7 +20,17 @@
         }
     }
 
-    &--total {
-        justify-self: end;
+    &--content {
+        &__footer {
+            grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+        }
+
+        &__total {
+            align-self: end;
+        }
+
+        &__download {
+            justify-self: end;
+        }
     }
 }
