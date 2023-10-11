@@ -10,7 +10,7 @@ const Aside = () => {
     return (
         <div className="aside">
             <div className="aside--wrapper grid gap-2">
-                <Cube />
+                <Cube className='aside--cube' showText />
                 <Settings inverted />
                 <StorybookLink inverted />
             </div>

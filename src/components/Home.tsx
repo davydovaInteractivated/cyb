@@ -15,6 +15,7 @@ import CustomAlert from './custom/custom-alert/CustomAlert';
 import Header from './base/Header';
 import Aside from './base/Aside';
 import Sidebar from './base/Sidebar';
+import CustomOverlay from './custom/custom-overlay/CustomOverlay';
 
 const Home = () => {
   console.log('Home render');
@@ -28,6 +29,8 @@ const Home = () => {
   return (
     <div className="app">
       <div className="app--wrapper flex f-col">
+        <CustomOverlay />
+
         <Header />
 
         <div className="flex justify-space-b">

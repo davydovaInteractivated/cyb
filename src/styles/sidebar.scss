@@ -2,15 +2,13 @@
 
 .sidebar {
     width: 80vw;
-    max-width: 320px;
+    max-width: 354px;
     height: 100vh;
     background-color: var(--color-dark);
     box-shadow: -12px -14px 20px 0px rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 0;
-    z-index: 999;
-    // background: rgba(#212121, 0.6);
-    // width: 100%;
+    z-index: 9999;
 
     &--header {
         margin-bottom: 2em;

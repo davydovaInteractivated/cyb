@@ -1,5 +1,8 @@
 import { PropsWithChildren } from "react";
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
+
+/** Contexts */
+import { OverlayContext } from "./overlay.context";
 
 /** Api */
 // import { servicesCases as servicesCasesData } from '../api/servicesCases';
@@ -56,6 +59,8 @@ export const CasesContextProvider = ({ children }: PropsWithChildren) => {
     const [servicesCases, setServicesCases] = useState([] as TServiceCase[]);
     const [cases, setCases] = useState([] as TCase[]);
 
+    const { setShow, setType } = useContext(OverlayContext);
+
     /**
      * Get Total Cost
      */
@@ -66,10 +71,16 @@ export const CasesContextProvider = ({ children }: PropsWithChildren) => {
      * Get Services Cases
      */
     const getServicesCases = async () => {
+        setType('loader');
+        setShow(true);
         const data = await getCollection('servicesCases');
         console.log('servicesCases data', data);
 
-        setServicesCases(data as typeof data & TServiceCase[]);
+        setTimeout(() => {
+            setServicesCases(data as typeof data & TServiceCase[]);
+            setShow(false);
+            setType('overlay');
+        }, 2000);
     };
     
     // useEffect(() => {

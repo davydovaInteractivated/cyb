@@ -16,12 +16,15 @@ import StorybookLink from './links/StorybookLink';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 /** Contexts */
 import { SidebarContext } from '../../context/sidebar.context';
+import { OverlayContext } from '../../context/overlay.context';
 
 const Sidebar = ({ t }: { t: any }) => {
     const { show, setShow } = useContext(SidebarContext);
+    const { setShow: setOverlayShow } = useContext(OverlayContext);
 
     const closeSidebar = () => {
         setShow(false);
+        setOverlayShow(false);
     };
 
     return (

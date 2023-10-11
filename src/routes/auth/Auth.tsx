@@ -77,6 +77,7 @@ const Auth = ({ t }: { t: any }) => {
                 <CustomButton
                     className='w-100'
                     filled
+                    inverted
                     onClick={signInWithGoogle}
                 >{t('form.button.signInWith')}&nbsp;<strong>Google</strong></CustomButton>
             </div>

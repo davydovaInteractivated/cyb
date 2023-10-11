@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 /** Contexts */
 import { SidebarContext } from "../../../context/sidebar.context";
+import { OverlayContext } from '../../../context/overlay.context';
 /** Icons */
 import {
     Bars3Icon,
@@ -14,12 +15,17 @@ const BurgerLink = () => {
         show,
         setShow,
     } = useContext(SidebarContext);
+    const {
+        show: overlayShow,
+        setShow: setOverlayShow,
+    } = useContext(OverlayContext);
 
     /**
      * Open Sidebar
      */
     const openSidebar = () => {
         setShow(!show);
+        setOverlayShow(!overlayShow);
     };
 
     return (

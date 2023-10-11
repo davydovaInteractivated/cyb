@@ -23,6 +23,7 @@ export const Default = {
         icon: false,
         disabled: false,
         filled: false,
+        inverted: false,
         type: 'button',
         size: 'medium',
     },

@@ -1,6 +1,9 @@
 import React, { PropsWithChildren } from "react";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { useLocation } from 'react-router-dom';
+
+/** Contexts */
+import { OverlayContext } from "./overlay.context";
 
 /** Utils */
 import {
@@ -82,20 +85,29 @@ export const ServicesContextProvider = ({ children }: PropsWithChildren) => {
     const { pathname } = useLocation();
     const onFavorites = pathname === '/favorites';
 
-    /**
-     * Get Services
-     */
-    const getServices = async () => {
-        const data = await getCollection('services');
-        console.log('services data', data);
-
-        setServices(data as typeof data & TService[]);
-        setFilteredServices(data as typeof data & TService[]);
-    };
+    const { setShow, setType } = useContext(OverlayContext);
 
     useEffect(() => {
         // addCollectionAndDocuments('services', servicesData);
+        /**
+         * Get Services
+         */
+        const getServices = async () => {
+            setType('loader');
+            setShow(true);
+            const data = await getCollection('services');
+            console.log('services data', data);
+    
+            setTimeout(() => {
+                setServices(data as typeof data & TService[]);
+                setFilteredServices(data as typeof data & TService[]);
+                setShow(false);
+                setType('overlay');
+            }, 2000);
+        };
+
         getServices();
+    // eslint-disable-next-line
     }, []);
 
     useEffect(() => {

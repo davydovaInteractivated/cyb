@@ -10,6 +10,7 @@ import { CasesContextProvider } from './context/cases.context';
 import { SettingsContextProvider } from './context/settings.context';
 import { AlertContextProvider } from './context/alert.context';
 import { SidebarContextProvider } from './context/sidebar.context';
+import { OverlayContextProvider } from './context/overlay.context';
 
 /** Router */
 import { BrowserRouter } from 'react-router-dom';
@@ -44,21 +45,23 @@ root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next as TOptions}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <UserContextProvider>
-          <ServicesContextProvider>
-            <FavoritesContextProvider>
-              <CasesContextProvider>
-                <SettingsContextProvider>
-                  <AlertContextProvider>
-                    <SidebarContextProvider>
-                      <App/>
-                    </SidebarContextProvider>
-                  </AlertContextProvider>
-                </SettingsContextProvider>
-              </CasesContextProvider>
-            </FavoritesContextProvider>
-          </ServicesContextProvider>
-        </UserContextProvider>
+        <OverlayContextProvider>
+          <UserContextProvider>
+            <ServicesContextProvider>
+              <FavoritesContextProvider>
+                <CasesContextProvider>
+                  <SettingsContextProvider>
+                    <AlertContextProvider>
+                      <SidebarContextProvider>
+                        <App/>
+                      </SidebarContextProvider>
+                    </AlertContextProvider>
+                  </SettingsContextProvider>
+                </CasesContextProvider>
+              </FavoritesContextProvider>
+            </ServicesContextProvider>
+          </UserContextProvider>
+        </OverlayContextProvider>
       </BrowserRouter>
     </I18nextProvider>
   </React.StrictMode>
