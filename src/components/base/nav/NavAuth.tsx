@@ -9,6 +9,8 @@ import CustomButton from "../../custom/custom-button/CustomButton";
 
 /** Contexts */
 import { UserContext } from "../../../context/user.context";
+import { SidebarContext } from "../../../context/sidebar.context";
+import { OverlayContext } from "../../../context/overlay.context";
 
 const NavAuth = ({ t, className = '' }: { t: any, className?: string }) => {
     const user = useContext(UserContext);
@@ -24,6 +26,16 @@ const NavAuth = ({ t, className = '' }: { t: any, className?: string }) => {
         }
     };
 
+    const { show: sidebarShow, setShow: setSidebarShow } = useContext(SidebarContext);
+    const { show: overlayShow, setShow: setOverlayShow } = useContext(OverlayContext);
+    /**
+     * Close Sidebar
+     */
+    const closeSidebar = () => {
+        if (sidebarShow) setSidebarShow(false);
+        if (overlayShow) setOverlayShow(false);
+    };
+
     return (
         <nav className={`nav nav--auth ${className}`}>
             <ul className="nav__list flex align-center">
@@ -36,6 +48,7 @@ const NavAuth = ({ t, className = '' }: { t: any, className?: string }) => {
                     <NavLink to='/auth'>
                         <CustomButton
                             size='small'
+                            onClick={closeSidebar}
                         >{t('auth')}</CustomButton>
                     </NavLink></li>
                 }

@@ -2,6 +2,9 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { withTranslation } from 'react-i18next';
 
+/** Reducer */
+// import { Reducer } from "../../../reducer";
+
 /** Contexts */
 import { OverlayContext } from "../../../context/overlay.context";
 import { SidebarContext } from "../../../context/sidebar.context";
@@ -19,6 +22,8 @@ const NavMenu = ({ t, className = '' }: { t: any, className?: string }) => {
         if (sidebarShow) setSidebarShow(false);
         if (overlayShow) setOverlayShow(false);
     };
+
+    // const [state, dispatch] = useReducer(Reducer, []);
 
     return (
         <nav className={`nav nav--menu ${className}`}>

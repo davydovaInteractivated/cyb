@@ -19,17 +19,19 @@ import { SidebarContext } from '../../context/sidebar.context';
 import { OverlayContext } from '../../context/overlay.context';
 
 const Sidebar = ({ t }: { t: any }) => {
-    const { show, setShow } = useContext(SidebarContext);
-    const { setShow: setOverlayShow } = useContext(OverlayContext);
-
+    const { show: sidebarShow, setShow: setSidebarShow } = useContext(SidebarContext);
+    const { show: overlayShow, setShow: setOverlayShow } = useContext(OverlayContext);
+    /**
+     * Close Sidebar
+     */
     const closeSidebar = () => {
-        setShow(false);
-        setOverlayShow(false);
+        if (sidebarShow) setSidebarShow(false);
+        if (overlayShow) setOverlayShow(false);
     };
 
     return (
         <div
-            className={show ? 'sidebar sidebar--visible' : 'sidebar sidebar--hidden'}
+            className={sidebarShow ? 'sidebar sidebar--visible' : 'sidebar sidebar--hidden'}
         >
             <div className="sidebar--inner">
                 <div className='sidebar--header flex w-100 align-center justify-space-b'>
@@ -39,7 +41,7 @@ const Sidebar = ({ t }: { t: any }) => {
                     >
                         <XMarkIcon className='case--delete__icon' />
                     </CustomButton>
-                    <Link to='/'><Logo>{t('logo')}</Logo></Link>
+                    <Link to='/' onClick={closeSidebar}><Logo>{t('logo')}</Logo></Link>
                 </div>
                 <div className='sidebar--content grid gap-2'>
                     <NavAuth className='nav__right justify-self-end' />
