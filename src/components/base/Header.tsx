@@ -10,6 +10,7 @@ import NavMenu from './nav/NavMenu';
 import NavLinks from './nav/NavLinks';
 import NavAuth from './nav/NavAuth';
 import BurgerLink from './links/BurgerLink';
+import Cube from './Cube';
 
 const Header = ({ t }: { t: any }) => {
     console.log('Header render');
@@ -17,15 +18,17 @@ const Header = ({ t }: { t: any }) => {
     return (
         <header className="header">
             <div className="header--wrapper flex justify-space-b align-center">
-                <Link to='/'><Logo inverted>{t('logo')}</Logo></Link>
+                <Cube showText className='header--cube' />
 
-                <div className="flex align-center">
-                    <NavMenu className='nav__left' />
-                    <NavLinks className='nav__left' />
-                    <NavAuth className='nav__left' />
+                <Link to='/'><Logo className='header--logo' inverted>{t('logo')}</Logo></Link>
 
-                    <BurgerLink />
+                <div className="header--nav flex align-center">
+                    <NavMenu className='nav__right' />
+                    <NavLinks className='nav__right' />
+                    <NavAuth className='nav__right' />
                 </div>
+
+                <BurgerLink />
             </div>
         </header>
     )

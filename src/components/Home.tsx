@@ -8,6 +8,7 @@ import { AlertContext } from '../context/alert.context';
 import '../styles/_reset.scss';
 import '../styles/_base.scss';
 import '../styles/_animations.scss';
+import '../styles/_media.scss';
 import '../styles/app.scss';
 
 /** Components */
