@@ -6,7 +6,7 @@ import { themes } from '../api/themes';
 import { langs } from '../api/lang';
 
 /** Types */
-import { TAsideSettingsPropsItem } from '../components/aside/aside-settings/AsideSetting';
+import { TSettingsPropsItem } from '../components/base/settings/Setting';
 
 export type TThemes = typeof themes[number]['name'];
 export type TLangs = typeof langs[number]['name'];
@@ -30,8 +30,8 @@ interface ISettingsContextProps {
     isShowSettings: boolean,
     activeTheme: TThemes | null,
     activeLang: TLangs | null,
-    selectLang: (lang: TAsideSettingsPropsItem) => void,
-    selectTheme: (theme: TAsideSettingsPropsItem) => void,
+    selectLang: (lang: TSettingsPropsItem) => void,
+    selectTheme: (theme: TSettingsPropsItem) => void,
     showSettings: (value: boolean) => void,
 };
 
@@ -63,7 +63,7 @@ export const SettingsContextProvider = ({ children }: PropsWithChildren) => {
      * Select Main app. Theme
      * @param {*} param0
      */
-    const selectTheme = (item: TAsideSettingsPropsItem) => {
+    const selectTheme = (item: TSettingsPropsItem) => {
         const body = document.getElementsByTagName('body')[0];
         if (!body) return;
 

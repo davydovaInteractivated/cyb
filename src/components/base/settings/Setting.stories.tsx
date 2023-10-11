@@ -1,15 +1,15 @@
-import AsideSetting from './AsideSetting';
+import Setting from './Setting';
 
 /** Styles */
-import './aside-settings.scss';
-import '../../../styles/aside.scss';
+import './-settings.scss';
+import '../../../styles/.scss';
 
 /** Types */
 import { TTheme, TLang } from '../../../context/settings.context';
 
 export default {
-    title: 'AsideSetting',
-    component: AsideSetting,
+    title: 'Setting',
+    component: Setting,
 };
 
 export const Default = {

@@ -10,7 +10,7 @@ interface ILogoProps {
 
 const Logo = ({
     className = '',
-    inverted = true,
+    inverted = false,
     children,
 }: PropsWithChildren<ILogoProps>) => {
     return (

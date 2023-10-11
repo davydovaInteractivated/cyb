@@ -14,6 +14,7 @@ import '../styles/app.scss';
 import CustomAlert from './custom/custom-alert/CustomAlert';
 import Header from './base/Header';
 import Aside from './base/Aside';
+import Sidebar from './base/Sidebar';
 
 const Home = () => {
   console.log('Home render');
@@ -39,6 +40,8 @@ const Home = () => {
           type={type}
           message={message}
         />
+
+        <Sidebar></Sidebar>
       </div>
     </div>
   );

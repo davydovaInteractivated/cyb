@@ -9,6 +9,7 @@ import { FavoritesContextProvider } from './context/favorites.context';
 import { CasesContextProvider } from './context/cases.context';
 import { SettingsContextProvider } from './context/settings.context';
 import { AlertContextProvider } from './context/alert.context';
+import { SidebarContextProvider } from './context/sidebar.context';
 
 /** Router */
 import { BrowserRouter } from 'react-router-dom';
@@ -49,7 +50,9 @@ root.render(
               <CasesContextProvider>
                 <SettingsContextProvider>
                   <AlertContextProvider>
-                    <App/>
+                    <SidebarContextProvider>
+                      <App/>
+                    </SidebarContextProvider>
                   </AlertContextProvider>
                 </SettingsContextProvider>
               </CasesContextProvider>

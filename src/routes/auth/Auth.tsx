@@ -75,6 +75,7 @@ const Auth = ({ t }: { t: any }) => {
             <div className="auth--btns flex f-col gap">
                 <h3>{t('form.title.signInWith')}</h3>
                 <CustomButton
+                    className='w-100'
                     filled
                     onClick={signInWithGoogle}
                 >{t('form.button.signInWith')}&nbsp;<strong>Google</strong></CustomButton>

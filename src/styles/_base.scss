@@ -89,6 +89,9 @@ a {
 .justify-end {
     justify-content: end!important;
 }
+.justify-items-end {
+    justify-items: end!important;
+}
 .justify-space-b,
 .justify-space-between {
     justify-content: space-between!important;
@@ -98,10 +101,10 @@ a {
     justify-content: space-around!important;
 }
 
-.grid.justify-self-start {
+.justify-self-start {
     justify-self: start!important;
 }
-.grid.justify-self-end {
+.justify-self-end {
     justify-self: end!important;
 }
 .align-self-start {

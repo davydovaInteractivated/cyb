@@ -60,6 +60,14 @@ const StyledCustomButton = styled.button<IStyledCustomButtonProps>`
         })};
     }
 
+    & svg {
+        height: ${({$size}) => {
+            if ($size === 'small') return '18px';
+            if ($size === 'large') return '28px';
+            return '24px';
+        }};
+    }
+
     &.active svg {
         fill: var(--color-light);
     }
