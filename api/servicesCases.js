@@ -1,6 +1,6 @@
 export const servicesCases = [
     {
-        title: 'e-commerce',
+        id: 'design',
         data: {
             hours: [{
                 value: '1 - 4',
@@ -31,7 +31,7 @@ export const servicesCases = [
             }]
         },
     }, {
-        title: 'design',
+        id: 'website',
         data: {
             hours: [{
                 value: '1 - 4',
@@ -62,7 +62,7 @@ export const servicesCases = [
             }]
         },
     }, {
-        title: 'website',
+        id: 'admin',
         data: {
             hours: [{
                 value: '1 - 4',
@@ -93,7 +93,7 @@ export const servicesCases = [
             }]
         },
     }, {
-        title: 'admin',
+        id: 'database',
         data: {
             hours: [{
                 value: '1 - 4',
@@ -124,255 +124,7 @@ export const servicesCases = [
             }]
         },
     }, {
-        title: 'manage',
-        data: {
-            hours: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            employees: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            consult: [{
-                value: 'yes',
-                cost: 400,
-            }, {
-                value: 'no',
-                cost: 0,
-            }]
-        },
-    }, {
-        title: 'mobile',
-        data: {
-            hours: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            employees: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            consult: [{
-                value: 'yes',
-                cost: 400,
-            }, {
-                value: 'no',
-                cost: 0,
-            }]
-        },
-    }, {
-        title: 'PWA',
-        data: {
-            hours: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            employees: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            consult: [{
-                value: 'yes',
-                cost: 400,
-            }, {
-                value: 'no',
-                cost: 0,
-            }]
-        },
-    }, {
-        title: 'SPA',
-        data: {
-            hours: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            employees: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            consult: [{
-                value: 'yes',
-                cost: 400,
-            }, {
-                value: 'no',
-                cost: 0,
-            }]
-        },
-    }, {
-        title: 'SEO',
-        data: {
-            hours: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            employees: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            consult: [{
-                value: 'yes',
-                cost: 400,
-            }, {
-                value: 'no',
-                cost: 0,
-            }]
-        },
-    }, {
-        title: 'server',
-        data: {
-            hours: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            employees: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            consult: [{
-                value: 'yes',
-                cost: 400,
-            }, {
-                value: 'no',
-                cost: 0,
-            }]
-        },
-    }, {
-        title: 'support',
-        data: {
-            hours: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            employees: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            consult: [{
-                value: 'yes',
-                cost: 400,
-            }, {
-                value: 'no',
-                cost: 0,
-            }]
-        },
-    }, {
-        title: 'api',
-        data: {
-            hours: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            employees: [{
-                value: '1 - 4',
-                cost: 40,
-            }, {
-                value: '1 - 8',
-                cost: 80,
-            }, {
-                value: 'more than 8',
-                cost: 200,
-            }],
-            consult: [{
-                value: 'yes',
-                cost: 400,
-            }, {
-                value: 'no',
-                cost: 0,
-            }]
-        },
-    }, {
-        title: 'tech',
+        id: 'spa',
         data: {
             hours: [{
                 value: '1 - 4',

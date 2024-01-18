@@ -1,0 +1,35 @@
+/** FROM Mobile view */
+@media (max-width: 624px) {
+    .app {
+        &--wrapper {
+            padding: 2em!important;
+        }
+    }
+
+    .header {
+        margin-bottom: 2em;
+    }
+}
+
+/** FOR Tablet view */
+@media (min-width: 625px) and (max-width: 979px) {
+}
+
+/** FROM Tablet view */
+@media (max-width: 979px) {
+    .header {
+        &--nav { display: none!important }
+        &--logo { display: none!important }
+        &--burger { display: block!important }
+        &--cube { display: block!important }
+    }
+
+    .aside { display: none!important }
+}
+
+/** Desktop view */
+@media (min-width: 980px) {
+    .app--wrapper {
+        padding: 4em;
+    }
+}

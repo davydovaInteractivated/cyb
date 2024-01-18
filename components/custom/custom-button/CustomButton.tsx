@@ -6,6 +6,7 @@ import { TCustomSize } from '../../../ts/types/custom';
 
 interface IStyledCustomButtonProps {
     $filled: boolean,
+    $inverted: boolean,
     $disabled: boolean,
     $icon: boolean,
     $size: TCustomSize,
@@ -45,7 +46,11 @@ const StyledCustomButton = styled.button<IStyledCustomButtonProps>`
     transition: all .5s ease;
     opacity: ${(({ $disabled }) => $disabled ? '0.4' : '1')};
 
-    color: ${(({ $disabled }) => $disabled ? '#7f7f7f' : 'var(--main-font)')};
+    color: ${(({ $disabled, $inverted }) => {
+        if ($disabled) return '#7f7f7f';
+        if ($inverted) return 'var(--main-font-inverted)';
+        return 'var(--main-font)';
+    })};
 
     &:hover {
         transform: ${(({
@@ -60,6 +65,14 @@ const StyledCustomButton = styled.button<IStyledCustomButtonProps>`
         })};
     }
 
+    & svg {
+        height: ${({$size}) => {
+            if ($size === 'small') return '18px';
+            if ($size === 'large') return '28px';
+            return '24px';
+        }};
+    }
+
     &.active svg {
         fill: var(--color-light);
     }
@@ -69,6 +82,7 @@ interface ICustomButtonProps {
     size?: TCustomSize,
     disabled?: boolean,
     filled?: boolean,
+    inverted?: boolean,
     icon?: boolean,
     className?: string,
     type?: 'button' | 'submit' | 'reset',
@@ -81,6 +95,7 @@ const CustomButton = ({
     size = 'medium',
     disabled = false,
     filled = false,
+    inverted = false,
     icon = false,
     children = 'more',
     onClick,
@@ -89,6 +104,7 @@ const CustomButton = ({
         className={`custom--button ${className}`}
         $size={size}
         $filled={filled}
+        $inverted={inverted}
         $disabled={disabled}
         $icon={icon}
         type={type}

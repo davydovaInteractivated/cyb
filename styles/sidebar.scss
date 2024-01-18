@@ -1,0 +1,58 @@
+@import './_variables.css';
+
+.sidebar {
+    width: 80vw;
+    max-width: 354px;
+    height: 100vh;
+    background-color: var(--color-dark);
+    box-shadow: -12px -14px 20px 0px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+
+    &--header {
+        margin-bottom: 2em;
+    }
+
+    &--inner {
+        padding: 1em;
+    }
+
+    &--visible {
+        right: -80vw;
+        animation: showSidebar .4s ease forwards;
+    }
+
+    &--hidden {
+        right: 0;
+        animation: hideSidebar .4s ease forwards;
+    }
+
+    &--content {
+        padding: 2em 0;
+    }
+
+    .icons {
+        &__icon {
+            height: 24px;
+        }
+    }
+}
+
+@keyframes showSidebar {
+    from {
+        right: -100%;
+    }
+    to {
+        right: 0;
+    }
+}
+
+@keyframes hideSidebar {
+    from {
+        right: 0;
+    }
+    to {
+        right: -100%;
+    }
+}

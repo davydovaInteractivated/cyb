@@ -89,6 +89,9 @@ a {
 .justify-end {
     justify-content: end!important;
 }
+.justify-items-end {
+    justify-items: end!important;
+}
 .justify-space-b,
 .justify-space-between {
     justify-content: space-between!important;
@@ -98,10 +101,10 @@ a {
     justify-content: space-around!important;
 }
 
-.grid.justify-self-start {
+.justify-self-start {
     justify-self: start!important;
 }
-.grid.justify-self-end {
+.justify-self-end {
     justify-self: end!important;
 }
 .align-self-start {
@@ -126,6 +129,12 @@ a {
 .gap-2 {
     grid-gap: calc(1em * 2);
     gap: calc(1em * 2);
+}
+
+.grid-gap-3,
+.gap-3 {
+    grid-gap: calc(1em * 3);
+    gap: calc(1em * 3);
 }
 
 .w100,

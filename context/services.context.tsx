@@ -1,6 +1,10 @@
-import React, { PropsWithChildren } from "react";
-import { createContext, useState, useEffect } from "react";
+import React, { PropsWithChildren, useCallback } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { useLocation } from 'react-router-dom';
+
+/** Contexts */
+import { OverlayContext } from "./overlay.context";
+import { SettingsContext, TLangsKeys } from "./settings.context";
 
 /** Utils */
 import {
@@ -16,15 +20,26 @@ import { TCustomSortDirection } from '../ts/types/custom';
 
 export type TService = {
     id: string,
-    title: string,
+    title: {
+        ru: string,
+        en: string,
+        ua: string,
+    }
     description: string,
     is_marked: boolean,
     references: TServiceRef[],
+    logos: TServiceLogo[],
 };
 
 export type TServiceRef = {
     url: string,
     src: string,
+};
+
+export type TServiceLogo = {
+    alt: string,
+    src: string,
+    url: string,
 };
 
 interface IServicesContextProps {
@@ -82,26 +97,74 @@ export const ServicesContextProvider = ({ children }: PropsWithChildren) => {
     const { pathname } = useLocation();
     const onFavorites = pathname === '/favorites';
 
-    /**
-     * Get Services
-     */
-    const getServices = async () => {
-        const data = await getCollection('services');
-        console.log('services data', data);
+    const { setShow, setType } = useContext(OverlayContext);
+    const { activeLang } = useContext(SettingsContext);
 
-        setServices(data as typeof data & TService[]);
-        setFilteredServices(data as typeof data & TService[]);
-    };
+    /**
+     * Filter Services
+     * @param {*} param0
+     */
+    const filter = useCallback(({
+        data,
+        searchValue,
+        sortDirection,
+    }: {
+        data: TService[],
+        searchValue: string,
+        sortDirection: TCustomSortDirection,
+    }) => {
+        let filteredServices = [...(data || [])];
+    
+        /** Search Cards */
+        if (searchValue) {
+            filteredServices = filteredServices
+                .filter((service: TService) => service.title[activeLang as TLangsKeys].toLocaleLowerCase().includes(searchValue));
+        }
+
+        /** Sort Cards */
+        if (sortDirection) {
+            filteredServices = sortDirection === 1
+                ? [...(filteredServices || [])]
+                .sort((a, b) => a.title[activeLang as TLangsKeys].toLowerCase().localeCompare(b.title[activeLang as TLangsKeys].toLowerCase()))
+                : [...(filteredServices || [])]
+                .sort((a, b) => b.title[activeLang as TLangsKeys].toLowerCase().localeCompare(a.title[activeLang as TLangsKeys].toLowerCase()));
+        }
+
+        if (onFavorites) {
+            filteredServices = filteredServices
+                .filter((service) => service.is_marked);
+        }
+    
+        setFilteredServices(filteredServices);
+    }, [onFavorites]);
 
     useEffect(() => {
         // addCollectionAndDocuments('services', servicesData);
+        /**
+         * Get Services
+         */
+        const getServices = async () => {
+            setType('loader');
+            setShow(true);
+            const data = await getCollection('services');
+            // const data = servicesData;
+            console.log('services data', data);
+    
+            setTimeout(() => {
+                setServices(data as typeof data & TService[]);
+                setFilteredServices(data as typeof data & TService[]);
+                setShow(false);
+                setType('overlay');
+            }, 2000);
+        };
+
         getServices();
+    // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
         filter({ data: services, sortDirection, searchValue });
-    // eslint-disable-next-line
-    }, [onFavorites, services, sortDirection, searchValue]);
+    }, [onFavorites, services, sortDirection, searchValue, filter]);
 
     /**
      * Mark Service
@@ -148,44 +211,6 @@ export const ServicesContextProvider = ({ children }: PropsWithChildren) => {
         const newSortDirection = sortDirection <= 0 ? sortDirection + 1 : sortDirection - 2;
         setSortDirection(newSortDirection as TCustomSortDirection);
     }
-    
-    /**
-     * Filter Services
-     * @param {*} param0
-     */
-    const filter = ({
-        data,
-        searchValue,
-        sortDirection,
-    }: {
-        data: TService[],
-        searchValue: string,
-        sortDirection: TCustomSortDirection,
-    }) => {
-        let filteredServices = [...(data || [])];
-    
-        /** Search Cards */
-        if (searchValue) {
-            filteredServices = filteredServices
-                .filter((service: TService) => service.title.toLocaleLowerCase().includes(searchValue));
-        }
-
-        /** Sort Cards */
-        if (sortDirection) {
-            filteredServices = sortDirection === 1
-                ? [...(filteredServices || [])]
-                .sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
-                : [...(filteredServices || [])]
-                .sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
-        }
-
-        if (onFavorites) {
-            filteredServices = filteredServices
-                .filter((service) => service.is_marked);
-        }
-    
-        setFilteredServices(filteredServices);
-    };
 
     const value: IServicesContextProps = {
         services,

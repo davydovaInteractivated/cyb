@@ -6,6 +6,7 @@ import '../../styles/services.scss';
 
 /** Components */
 import Service from '../../components/services/Service';
+import NavFilters from '../../components/base/nav/NavFilters';
 
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
@@ -19,17 +20,21 @@ const Services = ({ t }: { t: any }) => {
     } = useContext(ServicesContext);
 
     return (
-        <div className="services services--wrapper w-100 grid gap">
-            {
-                filteredServices.map((service, index) =>
-                    <Service
-                        key={service.id}
-                        service={service}
-                        index={index}
-                    />
-                )
-            }
-            { searchValue && !filteredServices.length ? <span>{t('main.text.empty.search')}</span> : "" }
+        <div className="services w-100 flex f-col gap-2">
+            <NavFilters className='nav__right align-self-end' />
+
+            <div className="services--wrapper w-100 grid gap">
+                {
+                    filteredServices.map((service, index) =>
+                        <Service
+                            key={service.id}
+                            service={service}
+                            index={index}
+                        />
+                    )
+                }
+                { searchValue && !filteredServices.length ? <span>{t('main.text.empty.search')}</span> : "" }
+            </div>
         </div>
     )
 };

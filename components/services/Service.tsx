@@ -13,10 +13,11 @@ import {
 
 /** Components */
 import CustomButton from '../custom/custom-button/CustomButton';
-import ServiceReference from '../service/ServiceReference';
+import ServiceLogo from '../service/ServiceLogo';
 
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
+import { SettingsContext, TLangsKeys } from '../../context/settings.context';
 
 /** Types */
 import { TService } from '../../context/services.context';
@@ -31,12 +32,13 @@ const Service = ({ service, index, t }: IServiceProps) => {
     console.log('Service card render');
 
     const { markService, setActiveService } = useContext(ServicesContext);
+    const { activeLang } = useContext(SettingsContext);
 
     const {
         id,
         title,
         description,
-        references,
+        logos,
         is_marked,
     } = service;
 
@@ -45,15 +47,15 @@ const Service = ({ service, index, t }: IServiceProps) => {
 
     return (
         <div className="card">
-            <div className="card--wrapper h-100 flex f-col align-start justify-space-b">
+            <div className="card--wrapper h-100 flex f-col gap-3 align-start justify-space-b">
                 <div>
-                    <h2 className="card--wrapper__title">{title}</h2>
+                    <h2 className="card--wrapper__title">{title[activeLang as TLangsKeys]}</h2>
                     <p className="card--wrapper__text">
                         {description}
                     </p>
                 </div>
-                {(references.length > 0 && index === 0) && <div className="card--wrapper__reference grid grid-gap w-100">
-                    <ServiceReference refs={references} alt={title}/>
+                {logos.length > 0 && <div className="card--wrapper__reference grid grid-gap w-100">
+                    <ServiceLogo logos={logos}/>
                 </div>}
                 <div className="card--wrapper__buttons flex align-center justify-space-b w-100">
                     <Link to={`/${id}`}>
