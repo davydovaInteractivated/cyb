@@ -52,7 +52,7 @@ export const db = getFirestore();
  * @param {*} objectsToAdd
  * @param {string} field
  */
-export const addCollectionAndDocuments = async (collectionKey, objectsToAdd, field = 'title') => {
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd, field = 'id') => {
     const collectionRef = collection(db, collectionKey);
     const batch = writeBatch(db);
 

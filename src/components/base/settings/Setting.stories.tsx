@@ -1,8 +1,6 @@
 import Setting from './Setting';
 
 /** Styles */
-import './-settings.scss';
-import '../../../styles/.scss';
 
 /** Types */
 import { TTheme, TLang } from '../../../context/settings.context';

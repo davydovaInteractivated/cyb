@@ -18,16 +18,6 @@ const NavFilters = ({ t, className = '' }: { t: any, className?: string }) => {
 
     return (
         <div className={`nav nav--filters flex align-center ${className}`}>
-            <div className='nav__list-item nav--search'>
-                <CustomInput
-                    placeholder={t('custom.input.search.placeholder')}
-                    value={searchValue}
-                    type="search"
-                    size="small"
-                    onChange={event => search(event)}
-                />
-            </div>
-
             <div className="nav__list-item nav--icons nav--icons__sort">
                 <CustomButton
                     className={!sortDirection ? "" : "none m-0"}
@@ -50,6 +40,16 @@ const NavFilters = ({ t, className = '' }: { t: any, className?: string }) => {
                 >
                     <BarsArrowUpIcon className="icons__icon" />
                 </CustomButton>
+            </div>
+
+            <div className='nav__list-item nav--search'>
+                <CustomInput
+                    placeholder={t('custom.input.search.placeholder')}
+                    value={searchValue}
+                    type="search"
+                    size="small"
+                    onChange={event => search(event)}
+                />
             </div>
         </div>
     )

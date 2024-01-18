@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 /** Contexts */
 import { OverlayContext } from "./overlay.context";
+import { SettingsContext, TLangsKeys } from "./settings.context";
 
 /** Utils */
 import {
@@ -19,15 +20,26 @@ import { TCustomSortDirection } from '../ts/types/custom';
 
 export type TService = {
     id: string,
-    title: string,
+    title: {
+        ru: string,
+        en: string,
+        ua: string,
+    }
     description: string,
     is_marked: boolean,
     references: TServiceRef[],
+    logos: TServiceLogo[],
 };
 
 export type TServiceRef = {
     url: string,
     src: string,
+};
+
+export type TServiceLogo = {
+    alt: string,
+    src: string,
+    url: string,
 };
 
 interface IServicesContextProps {
@@ -86,6 +98,7 @@ export const ServicesContextProvider = ({ children }: PropsWithChildren) => {
     const onFavorites = pathname === '/favorites';
 
     const { setShow, setType } = useContext(OverlayContext);
+    const { activeLang } = useContext(SettingsContext);
 
     /**
      * Filter Services
@@ -105,16 +118,16 @@ export const ServicesContextProvider = ({ children }: PropsWithChildren) => {
         /** Search Cards */
         if (searchValue) {
             filteredServices = filteredServices
-                .filter((service: TService) => service.title.toLocaleLowerCase().includes(searchValue));
+                .filter((service: TService) => service.title[activeLang as TLangsKeys].toLocaleLowerCase().includes(searchValue));
         }
 
         /** Sort Cards */
         if (sortDirection) {
             filteredServices = sortDirection === 1
                 ? [...(filteredServices || [])]
-                .sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+                .sort((a, b) => a.title[activeLang as TLangsKeys].toLowerCase().localeCompare(b.title[activeLang as TLangsKeys].toLowerCase()))
                 : [...(filteredServices || [])]
-                .sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
+                .sort((a, b) => b.title[activeLang as TLangsKeys].toLowerCase().localeCompare(a.title[activeLang as TLangsKeys].toLowerCase()));
         }
 
         if (onFavorites) {
@@ -134,6 +147,7 @@ export const ServicesContextProvider = ({ children }: PropsWithChildren) => {
             setType('loader');
             setShow(true);
             const data = await getCollection('services');
+            // const data = servicesData;
             console.log('services data', data);
     
             setTimeout(() => {

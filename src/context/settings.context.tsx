@@ -1,5 +1,4 @@
-import { PropsWithChildren } from "react";
-import { createContext, useState } from "react";
+import { PropsWithChildren, createContext, useState } from "react";
 
 /** Api */
 import { themes } from '../api/themes';
@@ -10,6 +9,7 @@ import { TSettingsPropsItem } from '../components/base/settings/Setting';
 
 export type TThemes = typeof themes[number]['name'];
 export type TLangs = typeof langs[number]['name'];
+export type TLangsKeys = 'ru' | 'en' | 'ua';
 
 export type TTheme = {
     name: TThemes,
@@ -40,7 +40,7 @@ export const SettingsContext = createContext<ISettingsContextProps>({
     langs: langs,
     isShowSettings: false,
     activeTheme: null,
-    activeLang: null,
+    activeLang: 'en',
     selectLang: () => {},
     selectTheme: () => {},
     showSettings: () => {},

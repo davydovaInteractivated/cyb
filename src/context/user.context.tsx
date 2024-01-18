@@ -1,5 +1,4 @@
-import { PropsWithChildren } from "react";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, PropsWithChildren } from "react";
 import { onAuthStateChangedListener, createUserDocFromAuth } from "../utils/firebase";
 
 export interface IUser {

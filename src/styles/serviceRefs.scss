@@ -1,11 +1,11 @@
 .service--refs {
-    // &__link {}
-    &__img {
-        border-radius: var(--main-border-radius);
-        transition: transform .2s ease;
+    &__link {
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: transform .3s ease-in-out;
 
         &:hover {
-            transform: scale(.96);
+            transform: scale(1.1);
         }
     }
 }

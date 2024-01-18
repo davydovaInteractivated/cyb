@@ -12,6 +12,7 @@ import "../../styles/calculate.scss";
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
 import { CasesContext } from '../../context/cases.context';
+import { SettingsContext, TLangsKeys } from '../../context/settings.context';
 
 /** Types */
 import { TServiceCase, TCaseDataField } from '../../context/cases.context';
@@ -48,7 +49,9 @@ const Calculate = ({ t }: { t: any }) => {
     const Id = id || serviceId || null;
 
     const currentService = activeService || getService(Id, services) || null;
-    const { title } = currentService || {};
+    const { title, id: currentServiceId } = currentService || {};
+
+    const { activeLang } = useContext(SettingsContext);
 
     const {
         servicesCases,
@@ -65,10 +68,10 @@ const Calculate = ({ t }: { t: any }) => {
 
     useEffect(() => {
         const aCase = servicesCases
-            .find((cs: TServiceCase) => cs.title === title) || null;
+            .find((cs: TServiceCase) => cs.id === currentServiceId) || null;
 
         setActiveCase(aCase);
-    }, [servicesCases, title]);
+    }, [servicesCases, currentServiceId]);
 
     /**
      * Change Current Case
@@ -79,7 +82,7 @@ const Calculate = ({ t }: { t: any }) => {
         console.log('changedCaseField', changedCaseField);
         console.log('currentCase', currentCase);
         setCurrentCase({
-            title: title || '',
+            title: title?.[activeLang as TLangsKeys] || '',
             data: {
                 ...currentCase.data,
                 [field]: changedCaseField,
@@ -102,7 +105,7 @@ const Calculate = ({ t }: { t: any }) => {
             <h2 className="calculate--page__title">
                 {t('calculate.title')}&nbsp;
                 <Link to={`/${Id}`}>
-                    <span style={{textDecoration: 'underline'}}>{title}</span>
+                    <span style={{textDecoration: 'underline'}}>{title?.[activeLang as TLangsKeys] || ''}</span>
                 </Link>&nbsp;
                 {t('calculate.service')}
             </h2>

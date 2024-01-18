@@ -22,6 +22,7 @@ import {
 
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
+import { SettingsContext, TLangsKeys } from '../../context/settings.context';
 
 const ServicePage = ({ t }: { t: any }) => {
     console.log('Service Page render');
@@ -53,11 +54,13 @@ const ServicePage = ({ t }: { t: any }) => {
     const navigate = useNavigate();
     const goToCalculate = () => navigate(`/${Id}/calculate`);
 
+    const { activeLang } = useContext(SettingsContext);
+
     return (
         currentService && <div className='service--page'>
             <div className='flex justify-space-b'>
                 <div className='flex f-col'>
-                    <h2 className='service--page__title'>{title || ''}</h2>
+                    <h2 className='service--page__title'>{title?.[activeLang as TLangsKeys] || ''}</h2>
                     <div className='service--page__icons flex gap'>
                         <CustomButton
                             icon
@@ -76,7 +79,7 @@ const ServicePage = ({ t }: { t: any }) => {
                     </div>
                 </div>
                 {references?.length && <div className="service--page__reference flex gap justify-end">
-                    <ServiceReference refs={references} alt={title || ''}/>
+                    <ServiceReference refs={references} alt={title?.[activeLang as TLangsKeys] || ''}/>
                 </div>}
             </div>
 

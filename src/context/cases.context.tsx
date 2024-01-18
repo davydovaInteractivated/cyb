@@ -21,7 +21,7 @@ export type TCase = {
 };
 
 export type TServiceCase = {
-    title: string,
+    id: string,
     data: TServiceCaseData,
 };
 
