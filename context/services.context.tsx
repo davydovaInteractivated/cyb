@@ -136,7 +136,7 @@ export const ServicesContextProvider = ({ children }: PropsWithChildren) => {
         }
     
         setFilteredServices(filteredServices);
-    }, [onFavorites]);
+    }, [onFavorites, activeLang]);
 
     useEffect(() => {
         // addCollectionAndDocuments('services', servicesData);
