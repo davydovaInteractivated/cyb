@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 
 /** Contexts */
 import { AlertContext } from '../context/alert.context';
@@ -19,13 +19,7 @@ import Sidebar from './base/Sidebar';
 import CustomOverlay from './custom/custom-overlay/CustomOverlay';
 
 const Home = () => {
-  console.log('Home render');
-
-  const {
-    show,
-    type,
-    message,
-  } = useContext(AlertContext);
+  const { show, type, message } = useContext(AlertContext);
 
   return (
     <div className="app">
@@ -39,16 +33,12 @@ const Home = () => {
           <Outlet />
         </div>
 
-        <CustomAlert
-          show={show}
-          type={type}
-          message={message}
-        />
+        <CustomAlert show={show} type={type} message={message} />
 
         <Sidebar></Sidebar>
       </div>
     </div>
   );
-}
+};
 
 export default Home;

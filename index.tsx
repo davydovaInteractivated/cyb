@@ -17,24 +17,24 @@ import { BrowserRouter } from 'react-router-dom';
 
 /** Translations */
 import { I18nextProvider } from 'react-i18next';
-import i18next, { TOptions } from 'i18next';
+import i18next from 'i18next';
 import common_en from './translations/en/common.json';
 import common_ua from './translations/ua/common.json';
 import common_ru from './translations/ru/common.json';
 
 i18next.init({
-  interpolation: { escapeValue: false },  // React already does escaping
-  lng: 'en',                              // language to use
+  interpolation: { escapeValue: false }, // React already does escaping
+  lng: 'en', // language to use
   useSuspense: false,
   resources: {
     en: {
-      common: common_en               // 'common' is our custom namespace
+      common: common_en, // 'common' is our custom namespace
     },
     ua: {
-      common: common_ua
+      common: common_ua,
     },
     ru: {
-      common: common_ru
+      common: common_ru,
     },
   },
 });
@@ -43,25 +43,25 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <React.StrictMode>
-    <I18nextProvider i18n={i18next as TOptions}>
+    <I18nextProvider i18n={i18next}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <OverlayContextProvider>
-          <UserContextProvider>
-            <ServicesContextProvider>
-              <FavoritesContextProvider>
-                <CasesContextProvider>
-                  <SettingsContextProvider>
+        <SettingsContextProvider>
+          <OverlayContextProvider>
+            <UserContextProvider>
+              <ServicesContextProvider>
+                <FavoritesContextProvider>
+                  <CasesContextProvider>
                     <AlertContextProvider>
                       <SidebarContextProvider>
-                        <App/>
+                        <App />
                       </SidebarContextProvider>
                     </AlertContextProvider>
-                  </SettingsContextProvider>
-                </CasesContextProvider>
-              </FavoritesContextProvider>
-            </ServicesContextProvider>
-          </UserContextProvider>
-        </OverlayContextProvider>
+                  </CasesContextProvider>
+                </FavoritesContextProvider>
+              </ServicesContextProvider>
+            </UserContextProvider>
+          </OverlayContextProvider>
+        </SettingsContextProvider>
       </BrowserRouter>
     </I18nextProvider>
   </React.StrictMode>
