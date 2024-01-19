@@ -45,23 +45,23 @@ root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next as TOptions}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <OverlayContextProvider>
-          <UserContextProvider>
-            <ServicesContextProvider>
-              <FavoritesContextProvider>
-                <CasesContextProvider>
-                  <SettingsContextProvider>
+        <SettingsContextProvider>
+          <OverlayContextProvider>
+            <UserContextProvider>
+              <ServicesContextProvider>
+                <FavoritesContextProvider>
+                  <CasesContextProvider>
                     <AlertContextProvider>
                       <SidebarContextProvider>
                         <App/>
                       </SidebarContextProvider>
                     </AlertContextProvider>
-                  </SettingsContextProvider>
-                </CasesContextProvider>
-              </FavoritesContextProvider>
-            </ServicesContextProvider>
-          </UserContextProvider>
-        </OverlayContextProvider>
+                  </CasesContextProvider>
+                </FavoritesContextProvider>
+              </ServicesContextProvider>
+            </UserContextProvider>
+          </OverlayContextProvider>
+        </SettingsContextProvider>
       </BrowserRouter>
     </I18nextProvider>
   </React.StrictMode>

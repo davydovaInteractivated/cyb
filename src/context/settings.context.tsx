@@ -40,7 +40,7 @@ export const SettingsContext = createContext<ISettingsContextProps>({
     langs: langs,
     isShowSettings: false,
     activeTheme: null,
-    activeLang: 'en',
+    activeLang: null,
     selectLang: () => {},
     selectTheme: () => {},
     showSettings: () => {},

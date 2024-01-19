@@ -118,16 +118,25 @@ export const ServicesContextProvider = ({ children }: PropsWithChildren) => {
         /** Search Cards */
         if (searchValue) {
             filteredServices = filteredServices
-                .filter((service: TService) => service.title[activeLang as TLangsKeys].toLocaleLowerCase().includes(searchValue));
+                .filter((service: TService) => {
+                    console.log('activeLang', activeLang);
+                    console.log('searchValue', searchValue);
+                    console.log(service.title[activeLang as TLangsKeys]);
+                    return service.title[activeLang as TLangsKeys].toLocaleLowerCase().includes(searchValue)
+                });
         }
 
         /** Sort Cards */
         if (sortDirection) {
             filteredServices = sortDirection === 1
                 ? [...(filteredServices || [])]
-                .sort((a, b) => a.title[activeLang as TLangsKeys].toLowerCase().localeCompare(b.title[activeLang as TLangsKeys].toLowerCase()))
+                .sort((a, b) => a.title[activeLang as TLangsKeys]
+                    .toLowerCase()
+                        .localeCompare(b.title[activeLang as TLangsKeys].toLowerCase()))
                 : [...(filteredServices || [])]
-                .sort((a, b) => b.title[activeLang as TLangsKeys].toLowerCase().localeCompare(a.title[activeLang as TLangsKeys].toLowerCase()));
+                .sort((a, b) => b.title[activeLang as TLangsKeys]
+                    .toLowerCase()
+                        .localeCompare(a.title[activeLang as TLangsKeys].toLowerCase()));
         }
 
         if (onFavorites) {
