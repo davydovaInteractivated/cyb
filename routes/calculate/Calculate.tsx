@@ -11,15 +11,13 @@ import '../../styles/calculate.scss';
 
 /** Contexts */
 import { ServicesContext } from '../../context/services.context';
-import { CasesContext } from '../../context/cases.context';
+import { CasesContext, TServiceCase, TCaseDataField } from '../../context/cases.context';
 import { SettingsContext, TLangsKeys } from '../../context/settings.context';
-
-/** Types */
-import { TServiceCase, TCaseDataField } from '../../context/cases.context';
 
 const Calculate = ({ t }: { t: any }) => {
   const [activeCase, setActiveCase] = useState(null as TServiceCase | null);
   const [currentCase, setCurrentCase] = useState({
+    id: '',
     title: '',
     data: {
       hours: {
@@ -71,6 +69,7 @@ const Calculate = ({ t }: { t: any }) => {
     console.log('changedCaseField', changedCaseField);
     console.log('currentCase', currentCase);
     setCurrentCase({
+      id: currentServiceId || '',
       title: title?.[activeLang as TLangsKeys] || '',
       data: {
         ...currentCase.data,
