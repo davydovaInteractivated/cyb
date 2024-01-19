@@ -15,6 +15,7 @@ import {
 export type TCaseDataKey = 'hours' | 'employees' | 'consult';
 
 export type TCase = {
+  id: string;
   title: string;
   data: TCaseData;
 };

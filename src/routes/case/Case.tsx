@@ -28,7 +28,7 @@ interface ICaseProps {
 }
 
 const Case = ({ caseItem, caseIndex, t }: ICaseProps) => {
-  const { title, data } = caseItem || {};
+  const { title, id, data } = caseItem || {};
   const { cases, setCases, getTotalCost } = useContext(CasesContext);
   const { activeTheme, themes } = useContext(SettingsContext);
   const colorsFromCurrentTheme = themes.find((th) => th.name === activeTheme)?.colors;
@@ -128,7 +128,7 @@ const Case = ({ caseItem, caseIndex, t }: ICaseProps) => {
         <h2 className="case--title">
           {caseIndex + 1}.&nbsp;
           {
-            <Link to={`/${title}`}>
+            <Link to={`/${id}`}>
               <span style={{ textDecoration: 'underline' }}>{title}</span>&nbsp;
             </Link>
           }{' '}
