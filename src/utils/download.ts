@@ -15,22 +15,19 @@ import { TDataItem } from '../ts/types/download';
 export const tableDataToPdf = (
   fileName: string,
   orientation: 'p' | 'l',
-  table: { data: TDataItem[][], headers: {
-  content: string,
-  colSpan: number,
-  }[][] },
+  table: {
+    data: TDataItem[][];
+    headers: {
+      content: string;
+      colSpan: number;
+    }[][];
+  }
 ): void => {
-  const doc = new jsPDF(
-    orientation,
-    'px',
-    'a4',
-  );
+  const doc = new jsPDF(orientation, 'px', 'a4');
 
   autoTable(doc, {
     head: [...table.headers],
-    body: [
-      ...table.data,
-    ],
+    body: [...table.data],
     theme: 'grid',
     // tableWidth: 'wrap',
     horizontalPageBreak: true,
@@ -77,8 +74,8 @@ export const tableDataToPdf = (
       pdfCellStyles.textColor = cellStyle.color;
       pdfCellStyles.fontStyle = cellStyle.weight;
       pdfCellStyles.fillColor = cellStyle.fill;
-  },
-  
+    },
+
     didDrawPage: (HookData) => {
       /** Set Page Number */
       doc.setFont('helvetica');
@@ -90,12 +87,12 @@ export const tableDataToPdf = (
       });
     },
   });
-  
+
   const dateTime = new Date().toDateString();
 
   doc.save(`${fileName}_${dateTime}.pdf`);
 };
-  
+
 // /**
 //  * Create Table in Xls file by table data
 //  * @param fileName
@@ -118,9 +115,9 @@ export const tableDataToPdf = (
 //     const worksheet = XLSX.utils.aoa_to_sheet(table, { cellStyles: true });
 //     const workbook = XLSX.utils.book_new();
 //     XLSX.utils.book_append_sheet(workbook, worksheet, '1', true);
-  
+
 //     const dateTime = getDateWithDayOfWeek();
-  
+
 //     const rowHeightList = Array(table.length + 1);
 //     const colsWidthsList = Array(table[0].length);
 //     rowHeightList.fill({ hpx: 20 });
@@ -128,9 +125,9 @@ export const tableDataToPdf = (
 //     colsWidthsList.unshift({ wpx: 155 });
 //     worksheet['!rows'] = rowHeightList;
 //     worksheet['!cols'] = colsWidthsList;
-  
+
 //     if (merge) worksheet['!merges'] = merge;
-  
+
 //     XLSX.writeFile(workbook, `${fileName}_${dateTime}.xlsx`, {
 //       compression: true,
 //       cellStyles: true,

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /** Router */
 import { Routes, Route } from 'react-router-dom';
 
@@ -16,24 +18,22 @@ import NoMatch from './routes/NoMatch';
 import Calculate from './routes/calculate/Calculate';
 
 const App = () => {
-  console.log('App render');
-
   return (
     <Routes>
-      <Route path='/' element={<Home />}>
+      <Route path="/" element={<Home />}>
         <Route index element={<Services />} />
-        <Route path='favorites' element={<Favorites />} />
-        <Route path='auth' element={<Auth />} />
-        <Route path='contacts' element={<Contacts />} />
-        <Route path='faq' element={<Faq />} />
-        <Route path='cases' element={<Cases />} />
-        <Route path=':serviceId' element={<ServicePage />} />
-        <Route path=':serviceId/calculate' element={<Calculate />} />
+        <Route path="favorites" element={<Favorites />} />
+        <Route path="auth" element={<Auth />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="faq" element={<Faq />} />
+        <Route path="cases" element={<Cases />} />
+        <Route path=":serviceId" element={<ServicePage />} />
+        <Route path=":serviceId/calculate" element={<Calculate />} />
 
-        <Route path='*' element={<NoMatch />} />
+        <Route path="*" element={<NoMatch />} />
       </Route>
     </Routes>
-  )
-}
+  );
+};
 
 export default App;

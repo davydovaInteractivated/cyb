@@ -1,7 +1,11 @@
-export const langs = [{
+export const langs = [
+  {
     name: 'en',
-}, {
+  },
+  {
     name: 'ua',
-}, {
+  },
+  {
     name: 'ru',
-}];
+  },
+];
