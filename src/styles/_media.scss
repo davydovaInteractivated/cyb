@@ -21,6 +21,12 @@
 
 /** FROM Tablet view */
 @media (max-width: 979px) {
+    .app {
+        &--wrapper {
+            padding: 2em;
+        }
+    }
+
     .header {
         &--nav { display: none!important }
         &--logo { display: none!important }
