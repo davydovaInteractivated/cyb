@@ -2,12 +2,16 @@
 @media (max-width: 624px) {
     .app {
         &--wrapper {
-            padding: 2em!important;
+            padding: 2em;
         }
     }
 
     .header {
         margin-bottom: 2em;
+    }
+
+    .card:first-child {
+        grid-column: 1/2;
     }
 }
 
@@ -31,5 +35,9 @@
 @media (min-width: 980px) {
     .app--wrapper {
         padding: 4em;
+    }
+
+    .card:first-child {
+        grid-column: 1/3;
     }
 }
