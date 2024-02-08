@@ -9,11 +9,6 @@
     transition: all .3s ease;
     animation: showCard .4s forwards;
 
-    &:first-child {
-        grid-column: 1/3;
-        // grid-row: 1/3;
-    }
-
     &:hover {
         box-shadow: none;
     }
